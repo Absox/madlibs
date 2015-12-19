@@ -3,4 +3,15 @@ Mad Libs API Specification
 User Login:
     Method: POST
     Path: /madlibs/api/login
+    Request Content:
+        {
+            "user" : <username>
+            "password" : <password>
+        }
+    Response Cases:
+        Successful Login:
+            Code: 200 OK
+            Content:
+                {
 
+                }
