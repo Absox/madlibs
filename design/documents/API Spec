@@ -1,5 +1,7 @@
 Mad Libs API Specification
 
+--- RESTFUL ---
+
 User Login:
     Method: POST
     Path: /madlibs/api/login
@@ -13,5 +15,92 @@ User Login:
             Code: 200 OK
             Content:
                 {
-
+                    "status" : "success",
+                    "user" : <username>
                 }
+        Failure - User Not Found:
+            Code: 200 OK
+                {
+                    "status" : "failure",
+                    "why": "User not found"
+                }
+        Failure - Incorrect Password:
+            Code: 200 OK
+                {
+                    "status" : "failure",
+                    "why" : "Invalid password"
+                }
+
+User Registration:
+    Method: POST
+    Path: /madlibs/api/register
+    Request Content:
+        {
+            "user" : <username>,
+            "password" : <password>,
+            "email" : <email>
+        }
+    Response Cases:
+        Successful Registration:
+            Code: 200 OK
+            Content:
+                {
+                    "status" : "success",
+                    "user" : <username>
+                }
+        Failure - Username Taken:
+            Code: 200 OK
+                {
+                    "status" : "failure",
+                    "why" : "Username taken"
+                }
+
+Create Template:
+    Method: POST
+    Path: /madlibs/api/template/create
+    Request Content:
+        {
+            "user" : <username>
+        }
+    Response Cases:
+        Success:
+            Code: 200 OK
+            Content:
+                {
+                    "status" : "success",
+                    "id" : <id> // uuid of template
+                }
+
+Get List of Templates By User:
+    Method: GET
+    Path: /madlibs/api/template/user/<username>
+    Response Cases:
+        Success:
+            Code: 200 OK
+            Content:
+                {
+                    "status" : "success",
+                    "id" : [ids of templates]
+                }
+        Failure - User Not Found:
+            Code: 404 NOT FOUND
+            Content:
+                {
+                    "status" : "failure",
+                    "why" : "User not found"
+                }
+
+Get Template Body:
+    METHOD:
+
+Update Template:
+    Method:
+
+Check Voting Status For Template:
+
+Update Vote For Template:
+
+Comment on Template:
+
+Update Template:
+--- WEBSOCKET ---
