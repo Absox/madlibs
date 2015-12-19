@@ -1,5 +1,7 @@
 Mad Libs API Specification
 
+--- RESTFUL ---
+
 User Login:
     Method: POST
     Path: /madlibs/api/login
@@ -52,3 +54,25 @@ User Registration:
                     "status" : "failure",
                     "why" : "Username taken"
                 }
+
+Create Template:
+    METHOD: POST
+    Path: /madlibs/api/template/create
+    Request Content:
+        {
+            "user" : <username>
+        }
+    Response Cases:
+        Success:
+            Code: 200 OK
+            Content:
+                {
+                    "status" : "success",
+                    "id" : <id> // uuid of template
+                }
+
+Get List of Templates By User:
+    METHOD: POST
+
+Update Template:
+--- WEBSOCKET ---
