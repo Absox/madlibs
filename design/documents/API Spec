@@ -56,7 +56,7 @@ User Registration:
                 }
 
 Create Template:
-    METHOD: POST
+    Method: POST
     Path: /madlibs/api/template/create
     Request Content:
         {
@@ -72,7 +72,33 @@ Create Template:
                 }
 
 Get List of Templates By User:
-    METHOD: POST
+    Method: GET
+    Path: /madlibs/api/template/user/<username>
+    Response Cases:
+        Success:
+            Code: 200 OK
+            Content:
+                {
+                    "status" : "success",
+                    "id" : [ids of templates]
+                }
+        Failure - User Not Found:
+            Code: 404 NOT FOUND
+            Content:
+                {
+                    "status" : "failure",
+                    "why" : "User not found"
+                }
+
+Get Template Body:
+    METHOD:
+
+Update Template:
+    Method:
+
+Check Voting Status For Template:
+
+Comment on Template:
 
 Update Template:
 --- WEBSOCKET ---
