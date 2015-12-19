@@ -1,0 +1,6 @@
+Mad Libs API Specification
+
+User Login:
+    Method: POST
+    Path: /madlibs/api/login
+
