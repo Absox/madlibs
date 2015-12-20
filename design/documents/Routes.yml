@@ -1,0 +1,12 @@
+Routes:
+  - url: "/"
+    description: "Home page"
+
+  - url: "/account"
+    description: "Account page"
+
+  - url: "/script/<id>"
+    description: "View a finished script (anonymous)"
+
+  - url: "/game/<id>"
+    description: "Main game page"
