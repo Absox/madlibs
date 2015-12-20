@@ -91,16 +91,49 @@ Get List of Templates By User:
                 }
 
 Get Template Body:
-    METHOD:
+    Method: GET
+    Path: /madlibs/api/template/<id>
+    Response Cases:
+        Success:
+            Code: 200 OK
+            Content:
+                {
+                    "status" : "success",
+                    "creator" : <creator>,
+                    "rating" : <rating>,
+                    "comments" : [comments],
+                    "content" : <content>
+
+                }
+        Failure - Template Not Found:
+            Code: 404 NOT FOUND
+            Content:
+                {
+                    "status" : "failure",
+                    "why" : "Template not found"
+                }
 
 Update Template:
+    Method: POST
+    Path: /madlibs/api/template/<id>
+    Request Content:
+        {
+            "user" : <username>
+        }
+
+Delete Template:
     Method:
 
 Check Voting Status For Template:
+    Method:
 
 Update Vote For Template:
+    Method:
 
 Comment on Template:
+    Method:
 
 Update Template:
+
+
 --- WEBSOCKET ---
