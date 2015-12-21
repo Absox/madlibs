@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.Random;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -33,6 +34,8 @@ public class RegisteredUserTest {
                 }
 
                 assertTrue(testUser.validatePassword(password));
+                randomBytes[0] += 1;
+                assertFalse(testUser.validatePassword(new String(randomBytes)));
             } catch (DecoderException e) {
 
             }
