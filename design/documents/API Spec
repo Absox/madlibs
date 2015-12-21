@@ -117,6 +117,7 @@ Get Template Body:
             Content:
                 {
                     "status" : "success",
+                    "title" : <title>,
                     "creator" : <creator>,
                     "rating" : <rating>,
                     "comments" : [comments],
