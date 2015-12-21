@@ -1,12 +1,26 @@
 Routes:
   - url: "/"
-    description: "Home page"
+    description: "Game intro page. Start new or join random."
 
   - url: "/account"
-    description: "Account page"
+    description: "Edit account details"
 
-  - url: "/script/<id>"
+  - url: "/game/create"
+    description: "Creates a new game instance and redirects the user to its URL"
+
+  - url: "/play/<id>"
+    description: "Main game UI. 'Play' term more descriptive and better connotations than 'game'"
+
+  - url: "/game/random"
+    description: "Redirects user to the URL of a randomly chosen game session"
+
+  - url: "/script/view/<id>"
     description: "View a finished script (anonymous)"
 
-  - url: "/game/<id>"
-    description: "Main game page"
+  - url: "/template/create"
+    description: "Creates a new template object and redirects the user to its URL"
+    permissions: "Must be a logged in."
+
+  - url: "/template/view/<id>"
+    description: "Creates a new template object and redirects the user to its URL"
+    permissions: "Must be a logged in and own the template."
