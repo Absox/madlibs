@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60ab085f-66ab-4aa2-af29-d0a18158961a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsBlankComponent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsComponent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/unit/MadLibsTemplateTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsTextComponent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsTemplate.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsTemplate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/server/RegisteredUser.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/server/RegisteredUser.java" />
+      <change type="DELETED" beforePath="C:\Users\Ran\IdeaProjects\madlibs\src\test\java\unit\MadLibsTemplateTest.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MadLibs.iws" />
@@ -89,18 +84,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MadLibsTemplateTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/unit/MadLibsTemplateTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="classDiagram.png" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/design/uml/classDiagram.png">
           <provider selected="true" editor-type-id="images">
@@ -173,11 +156,11 @@
         <option value="$PROJECT_DIR$/src/test/java/RegisteredUserTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/unit/RegisteredUserTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/server/RegisteredUser.java" />
-        <option value="$PROJECT_DIR$/src/test/java/unit/MadLibsTemplateTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsTemplate.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsComponent.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsTextComponent.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsBlankComponent.java" />
+        <option value="$PROJECT_DIR$/src/test/java/unit/MadLibsTemplateTest.java" />
       </list>
     </option>
   </component>
@@ -903,7 +886,13 @@
       <option name="project" value="LOCAL" />
       <updated>1450661097882</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added skeleton classes for model.">
+      <created>1450662427762</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1450662427762</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -965,7 +954,8 @@
     <MESSAGE value="Added registered user, salted hashed password validation + unit test." />
     <MESSAGE value="Split tests into packages." />
     <MESSAGE value="Correct implementation of salting. Refactored, extracted concatenation method." />
-    <option name="LAST_COMMIT_MESSAGE" value="Correct implementation of salting. Refactored, extracted concatenation method." />
+    <MESSAGE value="Added skeleton classes for model." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added skeleton classes for model." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1226,16 +1216,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/unit/MadLibsTemplateTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
