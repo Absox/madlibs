@@ -30,7 +30,7 @@ public class RegisteredUser extends User {
     private String salt;
 
     /**
-     *
+     * Creates a registered user.
      * @param username Username.
      * @param password Plaintext password.
      */
@@ -54,7 +54,7 @@ public class RegisteredUser extends User {
     }
 
     /**
-     *
+     * Validates password against salted hash.
      * @param password Plaintext password.
      * @return True if this is the same as the original password.
      */
