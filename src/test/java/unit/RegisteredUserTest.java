@@ -1,3 +1,5 @@
+package unit;
+
 import com.madlibs.server.RegisteredUser;
 import org.apache.commons.codec.DecoderException;
 import org.junit.Test;
@@ -19,7 +21,7 @@ public class RegisteredUserTest {
         for (int c = 0; c < 100; c++) {
 
             String username = "testUser" + c;
-            byte[] randomBytes = new byte[15];
+            byte[] randomBytes = new byte[25];
             rng.nextBytes(randomBytes);
             String password = new String(randomBytes);
 
