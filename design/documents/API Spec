@@ -287,4 +287,40 @@ Comment on Template:
                     "why" : "User does not exist/Not logged in"
                 }
 
+Get List Of Scripts For User:
+    Method: GET
+    Path: /madlibs/api/script/user/<username>
+    Response Cases:
+        Success:
+            Code: 200 OK
+            Content:
+                {
+                    // TODO
+                }
+        Failure - User Does Not Exist:
+            Code: 404 NOT FOUND
+            Content:
+                {
+                    "status" : "failure",
+                    "why" : "User does not exist"
+                }
+
+Get Finished Script:
+    Method: GET
+    Path: /madlibs/api/script/<id>
+    Response Cases:
+        Success:
+            Code: 200 OK
+            Content:
+                {
+                    // TODO
+                }
+        Failure - Script Does Not Exist:
+            Code: 404 NOT FOUND
+            Content:
+                {
+                    "status" : "failure",
+                    "why" : "Script does not exist!"
+                }
+
 --- WEBSOCKET ---
