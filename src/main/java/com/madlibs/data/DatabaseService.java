@@ -5,4 +5,6 @@ package com.madlibs.data;
  * Created by Ran on 12/20/2015.
  */
 public class DatabaseService {
+
+    
 }
