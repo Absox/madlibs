@@ -1,26 +1,26 @@
 Routes:
-  - url: "/"
-    description: "Game intro page. Start new or join random."
+  - url: /
+    description: Game intro page. Start new or join random.
 
-  - url: "/account"
-    description: "Edit account details"
+  - url: /account
+    description: Edit account details
 
-  - url: "/game/create"
-    description: "Creates a new game instance and redirects the user to its URL"
+  - url: /game/create
+    description: Creates a new game instance and redirects the user to its URL
 
-  - url: "/play/<id>"
-    description: "Main game UI. 'Play' term more descriptive and better connotations than 'game'"
+  - url: /game/<id>
+    description: Main game UI.
 
-  - url: "/game/random"
-    description: "Redirects user to the URL of a randomly chosen game session"
+  - url: /game/random
+    description: Redirects user to the URL of a randomly chosen game session
 
-  - url: "/script/view/<id>"
-    description: "View a finished script (anonymous)"
+  - url: /script/view/<id>
+    description: View a finished script (anonymous)
 
-  - url: "/template/create"
-    description: "Creates a new template object and redirects the user to its URL"
-    permissions: "Must be a logged in."
+  - url: /template/create
+    description: Creates a new template object and redirects the user to its URL
+    permissions: Must be a logged in. Redirects to login if not.
 
   - url: "/template/view/<id>"
-    description: "Creates a new template object and redirects the user to its URL"
-    permissions: "Must be a logged in and own the template."
+    description: Creates a new template object and redirects the user to its URL
+    permissions: Must be a logged in and own the template. Redirects to login if not logged in. Standard 404 if you don't own the template.
