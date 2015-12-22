@@ -7,6 +7,7 @@ import org.sql2o.Query;
 import org.sql2o.Sql2o;
 import org.sqlite.SQLiteDataSource;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -17,15 +18,17 @@ public class DatabaseService {
 
     private Sql2o database;
 
+    private File databaseFile;
+
     /**
      * Initializes a service for the SQLite database contained within the file.
      * @param filename Filename of SQLite database file.
      */
     public DatabaseService(String filename) {
-
         SQLiteDataSource dataSource = new SQLiteDataSource();
         dataSource.setUrl("jdbc:sqlite:" + filename);
         this.database = new Sql2o(dataSource);
+        this.databaseFile = new File(filename);
     }
 
     /**
@@ -83,8 +86,21 @@ public class DatabaseService {
         connection.close();
     }
 
+    /**
+     * Updates user in database.
+     * @param user User to update.
+     */
     public void updateUser(RegisteredUser user) {
+        Connection connection = this.database.open();
 
+        String queryString = "update users set saltedHashedPassword = :password, salt = : salt where username = :username";
+        Query query = connection.createQuery(queryString);
+        query.addParameter("password", user.getSaltedHashedPassword());
+        query.addParameter("salt", user.getSalt());
+        query.addParameter("username", user.getUsername());
+        query.executeUpdate();
+
+        connection.close();
     }
 
     /**
@@ -106,5 +122,12 @@ public class DatabaseService {
         } else {
             return result.get(0);
         }
+    }
+
+    /**
+     * Deletes the database.
+     */
+    public void delete() {
+        this.databaseFile.delete();
     }
 }

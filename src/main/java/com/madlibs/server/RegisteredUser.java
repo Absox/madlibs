@@ -37,7 +37,14 @@ public class RegisteredUser extends User {
     public RegisteredUser(String username, String password) throws IOException {
         // Call super constructor with username.
         super(username);
+        this.setPassword(password);
+    }
 
+    /**
+     * Generates a new salt, and hashes password.
+     * @param password
+     */
+    public void setPassword(String password) throws IOException {
         // Generate salt.
         SecureRandom rng = new SecureRandom();
         byte[] passwordBytes = password.getBytes();
@@ -50,14 +57,6 @@ public class RegisteredUser extends User {
         // Hash password and store.
         this.saltedHashedPassword = DigestUtils.sha256Hex(concatenatedBytes);
         this.salt = Hex.encodeHexString(saltBytes);
-    }
-
-    /**
-     * Generates a new salt, and hashes password.
-     * @param password
-     */
-    public void setPassword(String password) {
-
     }
 
     /**
