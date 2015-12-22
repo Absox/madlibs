@@ -50,7 +50,22 @@ public class RegisteredUser extends User {
         // Hash password and store.
         this.saltedHashedPassword = DigestUtils.sha256Hex(concatenatedBytes);
         this.salt = Hex.encodeHexString(saltBytes);
+    }
 
+    /**
+     * Accessor for the the salted hashed password.
+     * @return Hex representation of salted hashed password.
+     */
+    public String getSaltedHashedPassword() {
+        return this.saltedHashedPassword;
+    }
+
+    /**
+     * Accessor for the salt.
+     * @return Hex representation of salt.
+     */
+    public String getSalt() {
+        return this.salt;
     }
 
     /**
