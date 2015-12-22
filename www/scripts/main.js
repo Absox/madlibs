@@ -7,18 +7,24 @@ var Navigation = ReactRouter.Navigation;
 var createBrowserHistory = require('history/lib/createBrowserHistory');
 
 import GameIntro from './components/GameIntro';
-import GameUI from './components/GameUI';
+import Game from './components/Game';
+import TemplateList from './components/TemplateList';
+import TemplateEditor from './components/TemplateEditor';
+import Account from './components/Account';
 import NotFound from './components/NotFound';
 
 
 var routes = (
 	<Router history={createBrowserHistory()}>
 		<Route path="/" component={GameIntro} />
-		<Route path="/game/:gameId" component={GameUI} />
+		<Route path="/game/:gameID" component={Game} />
+		<Route path="/templates/" component={TemplateList} />
+		<Route path="/templates/:templateID" component={TemplateEditor} />
+		<Route path="/account/" component={Account} />
     	<Route path="*" component={NotFound}/>
 	</Router>
 );
 
 ReactDOM.render(
 	routes
-, document.getElementById('game-root'));
+, document.getElementById('site-root'));
