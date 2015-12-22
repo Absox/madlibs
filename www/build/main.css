@@ -242,14 +242,14 @@ body:before {
 }
 .site-footer {
   line-height: 4.6rem;
-  background: #73d4a5;
+  background: #4cc88c;
   color: #fff;
 }
 .site-footer a {
   color: inherit;
 }
 .site-header {
-  box-shadow: 0 0 66px rgba(0,0,0,0.1);
+  box-shadow: 0 0 20px rgba(0,0,0,0.075);
   background: #fff;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -277,7 +277,7 @@ body:before {
   line-height: 4.6rem;
 }
 .site-logo-link:hover {
-  background: #f4f4f4;
+  background: #f8f8f8;
   box-shadow: 0 2px 4px -1px rgba(0,0,0,0.2);
 }
 .site-logo {

@@ -11,8 +11,8 @@ import Game from './components/Game';
 import TemplateList from './components/TemplateList';
 import TemplateEditor from './components/TemplateEditor';
 import Account from './components/Account';
+import SignUp from './components/SignUp';
 import NotFound from './components/NotFound';
-
 
 var routes = (
 	<Router history={createBrowserHistory()}>
@@ -21,6 +21,7 @@ var routes = (
 		<Route path="/templates/" component={TemplateList} />
 		<Route path="/templates/:templateID" component={TemplateEditor} />
 		<Route path="/account/" component={Account} />
+		<Route path="/signup/" component={Account} />
     	<Route path="*" component={NotFound}/>
 	</Router>
 );
