@@ -20,6 +20,11 @@ public class Bootstrap {
         port(3000);
         externalStaticFileLocation("www");
 
+        // Set access origin header.
+        before((request, response) -> {
+            response.header("Access-Control-Allow-Origin", "*");
+        });
+
         // Serve static files.
         get("/game*", (request, response) -> {
             return new String(Files.readAllBytes(Paths.get("www/index.html")));
