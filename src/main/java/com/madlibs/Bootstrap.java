@@ -1,6 +1,7 @@
 package com.madlibs;
 
 import com.madlibs.server.RestEndpoint;
+import com.madlibs.server.TemplateCreateController;
 import com.madlibs.server.UserLoginController;
 import com.madlibs.server.UserRegisterController;
 
@@ -34,6 +35,13 @@ public class Bootstrap {
         // Delegate register call to user register controller.
         post("/madlibs/api/register", "application/json", (request, response) -> {
             RestEndpoint controller = new UserRegisterController(request);
+            response.status(controller.getResponseCode());
+            return controller.getResponseBody();
+        });
+
+        // Delegate template creation call to template create controller.
+        post("/madlibs/api/template", "application/json", (request, response) -> {
+            RestEndpoint controller = new TemplateCreateController(request);
             response.status(controller.getResponseCode());
             return controller.getResponseBody();
         });
