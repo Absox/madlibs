@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class UserLoginController implements RestEndpoint {
 
-    private int responseCode;
+    private int responseCode = 200;
     private JsonObject responseBody;
 
     /**
@@ -24,21 +24,24 @@ public class UserLoginController implements RestEndpoint {
     public UserLoginController(Request request) throws IOException, DecoderException {
         this.responseBody = new JsonObject();
         JsonObject requestObject = parser.parse(request.body()).getAsJsonObject();
-        String username = requestObject.get("username").getAsString().toLowerCase();
+        String username = requestObject.get("user").getAsString().toLowerCase();
         String password = requestObject.get("password").getAsString();
 
         if (DatabaseService.getInstance().userExists(username)) {
             RegisteredUser user = DatabaseService.getInstance().getUser(username);
             if (user.validatePassword(password)) {
                 // Valid login.
-
+                responseBody.addProperty("status", "success");
+                responseBody.addProperty("user", username);
             } else {
-                // Invalid login
-
+                // Invalid password
+                responseBody.addProperty("status", "failure");
+                responseBody.addProperty("why", "Invalid password");
             }
         } else {
             // User doesn't exist.
-
+            responseBody.addProperty("status", "failure");
+            responseBody.addProperty("why", "User doesn't exist");
         }
     }
 

@@ -25,14 +25,14 @@ public class Bootstrap {
         });
 
         // Delegate login call to user login controller.
-        get("/madlibs/api/login", "application/json", (request, response) -> {
+        post("/madlibs/api/login", "application/json", (request, response) -> {
             RestEndpoint controller = new UserLoginController(request);
             response.status(controller.getResponseCode());
             return controller.getResponseBody();
         });
 
         // Delegate register call to user register controller.
-        get("/madlibs/api/register", "application/json", (request, response) -> {
+        post("/madlibs/api/register", "application/json", (request, response) -> {
             RestEndpoint controller = new UserRegisterController(request);
             response.status(controller.getResponseCode());
             return controller.getResponseBody();
