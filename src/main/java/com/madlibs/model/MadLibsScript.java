@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class MadLibsScript {
 
+    private String owner;
     private String id;
     private MadLibsTemplate template;
     private List<MadLibsResponse> responses;
@@ -16,8 +17,9 @@ public class MadLibsScript {
      * Creates a new blank mad libs script.
      * @param template
      */
-    public MadLibsScript(MadLibsTemplate template, String id) {
+    public MadLibsScript(MadLibsTemplate template, String owner, String id) {
         this.id = id;
+        this.owner = owner;
         this.template = template;
         this.responses = new ArrayList<>();
     }

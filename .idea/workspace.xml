@@ -2,24 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60ab085f-66ab-4aa2-af29-d0a18158961a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/ChatMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsResponse.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsScript.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSession.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsTemplateComment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/server/MadLibsServer.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsBlankComponent.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsComponent.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsTextComponent.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/server/RegisteredUser.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/RegisteredUser.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/server/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design/documents/API Spec" afterPath="$PROJECT_DIR$/design/documents/API Spec" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/Bootstrap.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/Bootstrap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/data/DatabaseService.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/data/DatabaseService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsTemplate.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsTemplate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/unit/DatabaseServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/unit/DatabaseServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/unit/RegisteredUserTest.java" afterPath="$PROJECT_DIR$/src/test/java/unit/RegisteredUserTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsScript.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsScript.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSession.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSession.java" />
     </list>
     <ignored path="MadLibs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -77,14 +62,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MadLibsScript.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MadLibsScript.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsScript.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.1510416">
-              <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MadLibsTemplate.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsTemplate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,12 +94,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MadLibsSession.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MadLibsSession.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSession.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-              <folding />
+            <state vertical-scroll-proportion="0.46875">
+              <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -151,7 +148,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/server/RegisteredUser.java" />
         <option value="$PROJECT_DIR$/src/test/java/unit/DatabaseServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/Bootstrap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsScript.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsTemplate.java" />
         <option value="$PROJECT_DIR$/design/documents/API Spec" />
@@ -159,6 +155,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/RegisteredUser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/ChatMessage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsScript.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSession.java" />
       </list>
     </option>
@@ -1167,7 +1164,13 @@
       <option name="project" value="LOCAL" />
       <updated>1450755327153</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Model code.">
+      <created>1450811600896</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1450811600896</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1267,7 +1270,8 @@
     <MESSAGE value="Updating of databases." />
     <MESSAGE value="Updated database service." />
     <MESSAGE value="Updated database service. Wrote unit tests." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated database service. Wrote unit tests." />
+    <MESSAGE value="Model code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Model code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1544,23 +1548,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
-          <folding>
-            <element signature="e#743#744#0" expanded="true" />
-            <element signature="e#773#774#0" expanded="true" />
-            <element signature="e#888#889#0" expanded="true" />
-            <element signature="e#923#924#0" expanded="true" />
-            <element signature="e#1032#1033#0" expanded="true" />
-            <element signature="e#1066#1067#0" expanded="true" />
-            <element signature="e#1190#1191#0" expanded="true" />
-            <element signature="e#1225#1226#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/data/DatabaseService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1609,11 +1596,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSession.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsScript.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1625,10 +1622,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsScript.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSession.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1510416">
-          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.46875">
+          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
