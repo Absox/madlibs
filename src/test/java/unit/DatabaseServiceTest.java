@@ -1,16 +1,21 @@
 package unit;
 
 import com.madlibs.data.DatabaseService;
+import com.madlibs.server.RegisteredUser;
+import org.apache.commons.codec.DecoderException;
 import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Query;
 import org.sql2o.Sql2o;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Ran on 12/20/2015.
@@ -44,5 +49,29 @@ public class DatabaseServiceTest {
         connection.close();
 
         testFile.delete();
+    }
+
+    @Test
+    public void registeredUserTest() {
+
+        DatabaseService testDatabase = new DatabaseService("registeredUserTest.db");
+        testDatabase.initializeDatabase();
+
+        try {
+            RegisteredUser testUser = new RegisteredUser("absox", "topspinrules");
+            assertFalse(testDatabase.userExists("absox"));
+            testDatabase.storeUser(testUser);
+            assertTrue(testDatabase.userExists("absox"));
+            RegisteredUser retrievedUser = testDatabase.getUser("absox");
+            assertTrue(retrievedUser.validatePassword("topspinrules"));
+
+        } catch (IOException e) {
+
+        } catch (DecoderException e) {
+
+        }
+
+        new File("registeredUserTest.db").delete();
+
     }
 }

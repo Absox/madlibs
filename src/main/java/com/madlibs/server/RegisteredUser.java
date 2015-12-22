@@ -30,18 +30,6 @@ public class RegisteredUser extends User {
     private String salt;
 
     /**
-     * Creates a registered user from all parameters.
-     * @param username Username.
-     * @param saltedHashedPassword Salted hashed password hex string.
-     * @param salt Salt hex string.
-     */
-    public RegisteredUser(String username, String saltedHashedPassword, String salt) {
-        super(username);
-        this.saltedHashedPassword = saltedHashedPassword;
-        this.salt = salt;
-    }
-
-    /**
      * Creates a registered user.
      * @param username Username.
      * @param password Plaintext password.
