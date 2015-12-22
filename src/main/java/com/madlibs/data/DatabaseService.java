@@ -23,7 +23,15 @@ public class DatabaseService {
         this.database = new Sql2o(dataSource);
     }
 
+    /**
+     * Returns Sql2o object.
+     * @return Sql2o database object.
+     */
     public Sql2o getDatabase() {
         return this.database;
+    }
+
+    public boolean userExists(String username) {
+        return true; // TODO
     }
 }
