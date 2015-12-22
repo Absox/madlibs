@@ -1,7 +1,7 @@
 package unit;
 
 import com.madlibs.data.DatabaseService;
-import com.madlibs.server.RegisteredUser;
+import com.madlibs.model.RegisteredUser;
 import org.apache.commons.codec.DecoderException;
 import org.junit.Test;
 import org.sql2o.Connection;

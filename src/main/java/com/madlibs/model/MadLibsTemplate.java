@@ -1,37 +1,51 @@
 package com.madlibs.model;
 
-import com.madlibs.server.User;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
 /**
  * A mad libs template.
  * Created by Ran on 12/20/2015.
  */
 public class MadLibsTemplate {
 
-    private UUID id;
+    private String id;
 
-    private User creator;
+    private String creator;
 
     private int rating;
 
-    private List<TemplateLine> content;
+    private String content;
 
     /**
-     * Creates a new mad libs template.
-     * @param creator
+     * Creates a mad libs template object.
+     * @param id Id of template.
+     * @param creator Username of creator.
+     * @param rating Rating.
+     * @param content Content of template.
      */
-    public MadLibsTemplate(User creator) {
+    public MadLibsTemplate(String id, String creator, int rating, String content) {
+        this.id = id;
         this.creator = creator;
-        this.content = new ArrayList<>();
-        this.id = UUID.randomUUID();
+        this.rating = rating;
+        this.content = content;
     }
 
     /**
-     * Accessor for the rating of the template.
+     * Accessor for id.
+     * @return Id of template.
+     */
+    public String getId() {
+        return this.id;
+    }
+
+    /**
+     * Accessor for creator.
+     * @return Creator of template.
+     */
+    public String getCreator() {
+        return this.creator;
+    }
+
+    /**
+     * Accessor for rating.
      * @return Rating of template.
      */
     public int getRating() {
@@ -39,18 +53,12 @@ public class MadLibsTemplate {
     }
 
     /**
-     * Accessor for the creator of the template.
-     * @return Creator of the template.
+     * Accessor for template content.
+     * @return Content of template.
      */
-    public User getCreator() {
-        return this.creator;
+    public String getContent() {
+        return this.content;
     }
 
-    /**
-     * A single line within the template.
-     */
-    private class TemplateLine {
-
-    }
 
 }

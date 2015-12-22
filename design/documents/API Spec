@@ -46,7 +46,6 @@ User Registration:
         {
             "user" : <username>,
             "password" : <password>,
-            "email" : <email>
         }
     Response Cases:
         Successful Registration:

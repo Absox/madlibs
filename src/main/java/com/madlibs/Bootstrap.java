@@ -1,7 +1,9 @@
 package com.madlibs;
 
-import static spark.Spark.externalStaticFileLocation;
-import static spark.Spark.port;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import static spark.Spark.*;
 
 /**
  * Created by Ran on 12/20/2015.
@@ -10,8 +12,12 @@ public class Bootstrap {
 
     public static void main(String[] args) {
 
-        port(8080);
-        externalStaticFileLocation("html");
+        port(3000);
+        externalStaticFileLocation("www");
+
+        get("/game/*", (request, response) -> {
+            return new String(Files.readAllBytes(Paths.get("www/index.html")));
+        });
 
     }
 }

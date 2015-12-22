@@ -1,7 +1,7 @@
 package com.madlibs.data;
 
 
-import com.madlibs.server.RegisteredUser;
+import com.madlibs.model.RegisteredUser;
 import org.sql2o.Connection;
 import org.sql2o.Query;
 import org.sql2o.Sql2o;

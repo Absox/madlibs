@@ -1,4 +1,4 @@
-package com.madlibs.server;
+package com.madlibs.model;
 
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;

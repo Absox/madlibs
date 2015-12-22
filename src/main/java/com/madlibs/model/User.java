@@ -1,4 +1,4 @@
-package com.madlibs.server;
+package com.madlibs.model;
 
 /**
  * User class.

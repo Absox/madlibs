@@ -1,6 +1,6 @@
 package unit;
 
-import com.madlibs.server.RegisteredUser;
+import com.madlibs.model.RegisteredUser;
 import org.apache.commons.codec.DecoderException;
 import org.junit.Test;
 
