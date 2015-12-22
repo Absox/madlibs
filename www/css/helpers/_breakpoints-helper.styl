@@ -1,0 +1,39 @@
+@keyframes breakpoint-fader-odd {
+	100% {
+		opacity:0.3;
+		transform:scale(0.5);
+	}
+}
+
+@keyframes breakpoint-fader-even {
+	100% {
+		opacity:0.3;
+		transform:scale(0.5);
+	}
+}
+
+body:before
+	content:"0";
+	background:black;
+	color:white;
+	position:fixed;
+	bottom:0em;
+	left:0em;
+	width:1em;
+	text-align:center;
+	line-height:1;
+	font-size:4.6em;
+	animation:breakpoint-fader-even 2s forwards ease-out;
+	
+	i = 0;
+	
+	for breakpoint in breakpoints
+		i = (i) + 1
+		
+		+bp(i)
+			content \"i\"
+			
+			if i%2
+				animation breakpoint-fader-odd 2s forwards ease-in
+			else
+				animation breakpoint-fader-even 2s forwards ease-in
