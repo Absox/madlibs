@@ -20,6 +20,16 @@ public class DatabaseService {
 
     private File databaseFile;
 
+    private static DatabaseService instance = new DatabaseService("data/madlibs.db");
+
+    /**
+     * Accessor for singleton instance of database service.
+     * @return Singleton instance of database service.
+     */
+    public static DatabaseService getInstance() {
+        return instance;
+    }
+
     /**
      * Initializes a service for the SQLite database contained within the file.
      * @param filename Filename of SQLite database file.

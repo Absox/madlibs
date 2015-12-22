@@ -20,7 +20,7 @@ public class MadLibsSession {
      * @param host Host of session.
      * @param template Template being used for session.
      */
-    public MadLibsSession(String id, String host,MadLibsTemplate template) {
+    public MadLibsSession(String id, String host, MadLibsTemplate template) {
         this.host = host;
         this.id = id;
         this.script = new MadLibsScript(template, host, id);
