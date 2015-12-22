@@ -2,6 +2,7 @@ package com.madlibs.server;
 
 import com.google.gson.JsonObject;
 import spark.Request;
+import spark.Response;
 
 /**
  * Endpoint controller for template creation.
@@ -9,12 +10,8 @@ import spark.Request;
  */
 public class TemplateCreateController implements RestEndpoint {
 
-    public TemplateCreateController(Request request) {
+    public TemplateCreateController(Request request, Response response) {
 
-    }
-
-    public int getResponseCode() {
-        return 0; // TODO
     }
 
     public JsonObject getResponseBody() {

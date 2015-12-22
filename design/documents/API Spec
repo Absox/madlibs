@@ -321,5 +321,14 @@ Get Finished Script:
                     "status" : "failure",
                     "why" : "Script does not exist!"
                 }
+Start Game Session:
+    Method: POST
+    Path: /madlibs/api/session
+    Request Content:
+        {
+            // TODO
+        }
+    Response Cases:
+        // TODO
 
 --- WEBSOCKET ---

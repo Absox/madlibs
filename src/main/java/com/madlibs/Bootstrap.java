@@ -21,29 +21,52 @@ public class Bootstrap {
         externalStaticFileLocation("www");
 
         // Serve static files.
-        get("/game/*", (request, response) -> {
+        get("/game*", (request, response) -> {
+            return new String(Files.readAllBytes(Paths.get("www/index.html")));
+        });
+        get("/script*", (request, response) -> {
+            return new String(Files.readAllBytes(Paths.get("www/index.html")));
+        });
+        get("/template*", (request, response) -> {
             return new String(Files.readAllBytes(Paths.get("www/index.html")));
         });
 
-        // Delegate login call to user login controller.
+        // User login call
         post("/madlibs/api/login", "application/json", (request, response) -> {
-            RestEndpoint controller = new UserLoginController(request);
-            response.status(controller.getResponseCode());
+            RestEndpoint controller = new UserLoginController(request, response);
             return controller.getResponseBody();
         });
 
-        // Delegate register call to user register controller.
+        // User register call
         post("/madlibs/api/register", "application/json", (request, response) -> {
-            RestEndpoint controller = new UserRegisterController(request);
-            response.status(controller.getResponseCode());
+            RestEndpoint controller = new UserRegisterController(request, response);
             return controller.getResponseBody();
         });
 
-        // Delegate template creation call to template create controller.
+        // Template create call
         post("/madlibs/api/template", "application/json", (request, response) -> {
-            RestEndpoint controller = new TemplateCreateController(request);
-            response.status(controller.getResponseCode());
+            RestEndpoint controller = new TemplateCreateController(request, response);
             return controller.getResponseBody();
+        });
+
+        // Template update call
+        put("/madlibs/api/template/:id", "application/json", (request, response) -> {
+            return ""; // TODO
+        });
+
+        // Template delete call
+        delete("/madlibs/api/template/:id", "application/json", (request, response) -> {
+            return ""; // TODO
+        });
+
+        // Template body get call
+        get("/madlibs/api/template/:id", "applicaton/json", (request, response) -> {
+            return ""; // TODO
+        });
+
+        // Get list of templates for user
+        get("/madlibs/api/template/user/:username", "application/json", (request, response) -> {
+            return ""; // TODO
         });
 
     }
