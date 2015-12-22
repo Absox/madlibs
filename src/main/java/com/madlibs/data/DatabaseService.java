@@ -20,7 +20,11 @@ public class DatabaseService {
 
     private File databaseFile;
 
-    private static DatabaseService instance = new DatabaseService("data/madlibs.db");
+    private static DatabaseService instance;
+    static {
+        instance = new DatabaseService("data/madlibs.db");
+        instance.initializeDatabase();
+    }
 
     /**
      * Accessor for singleton instance of database service.
@@ -55,6 +59,7 @@ public class DatabaseService {
     public void initializeDatabase() {
         Connection connection = this.database.open();
 
+        // Create users table
         String queryString = "create table if not exists users(username TEXT, saltedHashedPassword TEXT, salt TEXT)";
         Query query = connection.createQuery(queryString);
         query.executeUpdate();

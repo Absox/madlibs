@@ -19,18 +19,21 @@ public class Bootstrap {
         port(3000);
         externalStaticFileLocation("www");
 
+        // Serve static files.
         get("/game/*", (request, response) -> {
             return new String(Files.readAllBytes(Paths.get("www/index.html")));
         });
 
+        // Delegate login call to user login controller.
         get("/madlibs/api/login", "application/json", (request, response) -> {
-            RestEndpoint controller = new UserLoginController(request, response);
+            RestEndpoint controller = new UserLoginController(request);
             response.status(controller.getResponseCode());
             return controller.getResponseBody();
         });
 
+        // Delegate register call to user register controller.
         get("/madlibs/api/register", "application/json", (request, response) -> {
-            RestEndpoint controller = new UserRegisterController(request, response);
+            RestEndpoint controller = new UserRegisterController(request);
             response.status(controller.getResponseCode());
             return controller.getResponseBody();
         });
