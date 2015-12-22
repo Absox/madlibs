@@ -60,7 +60,7 @@ public class DatabaseServiceTest {
         try {
             RegisteredUser testUser = new RegisteredUser("absox", "topspinrules");
             assertFalse(testDatabase.userExists("absox"));
-            testDatabase.storeUser(testUser);
+            testDatabase.addUser(testUser);
             assertTrue(testDatabase.userExists("absox"));
             RegisteredUser retrievedUser = testDatabase.getUser("absox");
             assertTrue(retrievedUser.validatePassword("topspinrules"));

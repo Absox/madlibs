@@ -70,7 +70,7 @@ public class DatabaseService {
      * Stores user in database.
      * @param user User to store.
      */
-    public void storeUser(RegisteredUser user) {
+    public void addUser(RegisteredUser user) {
         Connection connection = this.database.open();
 
         String queryString = "insert into users values(:username, :password, :salt)";
@@ -81,6 +81,10 @@ public class DatabaseService {
         query.executeUpdate();
 
         connection.close();
+    }
+
+    public void updateUser(RegisteredUser user) {
+
     }
 
     /**

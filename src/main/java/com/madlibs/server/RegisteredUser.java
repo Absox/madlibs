@@ -53,6 +53,14 @@ public class RegisteredUser extends User {
     }
 
     /**
+     * Generates a new salt, and hashes password.
+     * @param password
+     */
+    public void setPassword(String password) {
+
+    }
+
+    /**
      * Accessor for the the salted hashed password.
      * @return Hex representation of salted hashed password.
      */
