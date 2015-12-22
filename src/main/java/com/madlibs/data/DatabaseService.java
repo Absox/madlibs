@@ -93,7 +93,7 @@ public class DatabaseService {
     public void updateUser(RegisteredUser user) {
         Connection connection = this.database.open();
 
-        String queryString = "update users set saltedHashedPassword = :password, salt = : salt where username = :username";
+        String queryString = "update users set saltedHashedPassword = :password, salt = :salt where username = :username";
         Query query = connection.createQuery(queryString);
         query.addParameter("password", user.getSaltedHashedPassword());
         query.addParameter("salt", user.getSalt());

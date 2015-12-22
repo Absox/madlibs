@@ -25,6 +25,7 @@ public class DatabaseServiceTest {
     @Test
     public void basicFunctionalityTest() {
         File testFile = new File("test.db");
+        if (testFile.exists()) testFile.delete();
 
         DatabaseService testService = new DatabaseService("test.db");
         Sql2o testDatabase = testService.getDatabase();
@@ -54,6 +55,9 @@ public class DatabaseServiceTest {
     @Test
     public void registeredUserTest() {
 
+        File testFile = new File("registeredUserTest.db");
+        if (testFile.exists()) testFile.delete();
+
         DatabaseService testDatabase = new DatabaseService("registeredUserTest.db");
         testDatabase.initializeDatabase();
 
@@ -64,6 +68,9 @@ public class DatabaseServiceTest {
             assertTrue(testDatabase.userExists("absox"));
             RegisteredUser retrievedUser = testDatabase.getUser("absox");
             assertTrue(retrievedUser.validatePassword("topspinrules"));
+            testUser.setPassword("emergencycode400iamapotato");
+            testDatabase.updateUser(testUser);
+            assertTrue(testDatabase.getUser("absox").validatePassword("emergencycode400iamapotato"));
 
         } catch (IOException e) {
 
