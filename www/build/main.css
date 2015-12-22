@@ -236,8 +236,9 @@ body:before {
   }
 }
 .site-content {
-  min-height: calc(100vh - 4.6rem - 4.6rem);
+  height: calc(100vh - 4.6rem - 4.6rem);
   overflow: hidden;
+  min-height: 400px;
 }
 .site-footer {
   line-height: 4.6rem;
@@ -414,7 +415,7 @@ body {
   text-shadow: 0 -2px #008000, 2px 2px #f00, -2px 2px #00f, 0 0 1em #000;
 }
 .home-screen {
-  height: calc(100vh - 4.6rem - 4.6rem);
+  height: 100%;
   min-height: 400px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -553,4 +554,29 @@ body {
             transform: scale(1);
     opacity: 1;
   }
+}
+.game-bar {
+  height: 5em;
+  line-height: 5em;
+  border-top: 1px solid rgba(0,0,0,0.2);
+  box-sizing: border-box;
+}
+.game-bar__invite {
+  float: left;
+}
+.game-bar__invite input {
+  overflow: hidden;
+  background: none;
+  border: none;
+  color: #4cc88c;
+  margin-left: 0.3em;
+}
+.game-bar__connected {
+  float: right;
+}
+.game-wrapper {
+  height: 100%;
+}
+.game-ui {
+  height: calc(100% - 5em);
 }
