@@ -96,20 +96,23 @@ public class DatabaseServiceTest {
         ServerConfigs testConfigs = testDatabase.getServerConfigs();
         assertEquals(testConfigs.getScriptId(),0);
         assertEquals(testConfigs.getTemplateId(), 0);
+        assertEquals(testConfigs.getCommentId(), 0);
 
         testConfigs.getNextScriptId();
         testConfigs.getNextTemplateId();
+        testConfigs.getNextCommentId();
         testDatabase.updateServerConfigs(testConfigs);
 
         ServerConfigs retrievedConfigs = testDatabase.getServerConfigs();
         assertEquals(retrievedConfigs.getScriptId(), 1);
         assertEquals(retrievedConfigs.getTemplateId(), 1);
+        assertEquals(retrievedConfigs.getCommentId(), 1);
 
         testDb.delete();
     }
 
     @Test
-    public void addTemplateTest() {
+    public void addUpdateTemplateTest() {
 
         File testDb = new File("templateAddTest.db");
         if (testDb.exists()) testDb.delete();
@@ -117,7 +120,7 @@ public class DatabaseServiceTest {
         DatabaseService testDatabase = new DatabaseService("templateAddTest.db");
         testDatabase.initializeDatabase();
 
-        MadLibsTemplate testTemplate = new MadLibsTemplate("1f", "absox", 0, "I am a [adjective] potato");
+        MadLibsTemplate testTemplate = new MadLibsTemplate("1f", "Potato Template", "absox", 0, "I am a [adjective] potato");
         assertFalse(testDatabase.templateExists("1f"));
         testDatabase.addTemplate(testTemplate);
         assertTrue(testDatabase.templateExists("1f"));
@@ -125,8 +128,15 @@ public class DatabaseServiceTest {
         MadLibsTemplate retrievedTemplate = testDatabase.getTemplate("1f");
         assertEquals(retrievedTemplate.getNumBlanks(), 1);
 
-        testDb.delete();
+        retrievedTemplate.setTitle("Not a potato template");
+        retrievedTemplate.setContent("I am no longer a potato");
+        testDatabase.updateTemplate(retrievedTemplate);
 
+        MadLibsTemplate reRetrievedTemplate = testDatabase.getTemplate("1f");
+        assertEquals(reRetrievedTemplate.getContent(), "I am no longer a potato");
+        assertEquals(retrievedTemplate.getTitle(), "Not a potato template");
+
+        testDb.delete();
     }
 
     @Test

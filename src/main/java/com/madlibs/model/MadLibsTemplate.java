@@ -11,6 +11,8 @@ public class MadLibsTemplate {
 
     private String id;
 
+    private String title;
+
     private String creator;
 
     private int rating;
@@ -22,8 +24,8 @@ public class MadLibsTemplate {
      * @param id Integer id of object.
      * @param creator Username of creator.
      */
-    public MadLibsTemplate(int id, String creator, String content) {
-        this(Integer.toHexString(id), creator, 0, content);
+    public MadLibsTemplate(int id, String title, String creator, String content) {
+        this(Integer.toHexString(id), title, creator, 0, content);
     }
 
     /**
@@ -33,8 +35,9 @@ public class MadLibsTemplate {
      * @param rating Rating.
      * @param content Content of template.
      */
-    public MadLibsTemplate(String id, String creator, int rating, String content) {
+    public MadLibsTemplate(String id, String title, String creator, int rating, String content) {
         this.id = id;
+        this.title = title;
         this.creator = creator;
         this.rating = rating;
         this.content = content;
@@ -46,6 +49,22 @@ public class MadLibsTemplate {
      */
     public String getId() {
         return this.id;
+    }
+
+    /**
+     * Accessor for title.
+     * @return Title (human-friendly) of template.
+     */
+    public String getTitle() {
+        return this.title;
+    }
+
+    /**
+     * Mutator for title.
+     * @param title New title of template.
+     */
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     /**
@@ -70,6 +89,14 @@ public class MadLibsTemplate {
      */
     public String getContent() {
         return this.content;
+    }
+
+    /**
+     * Mutator for template content.
+     * @param content New content of template.
+     */
+    public void setContent(String content) {
+        this.content = content;
     }
 
     /**

@@ -12,9 +12,9 @@ public class MadLibsTemplateTest {
 
     @Test
     public void testIdEncoding() {
-        MadLibsTemplate testTemplate = new MadLibsTemplate(0, "absox", "boop");
+        MadLibsTemplate testTemplate = new MadLibsTemplate(0, "A template", "absox", "boop");
         assertEquals(testTemplate.getId(), "0");
-        MadLibsTemplate testTemplate2 = new MadLibsTemplate(15, "absox", "boop");
+        MadLibsTemplate testTemplate2 = new MadLibsTemplate(15, "A template", "absox", "boop");
         assertEquals(testTemplate2.getId(), "f");
     }
 
@@ -30,7 +30,7 @@ public class MadLibsTemplateTest {
                 "\n" +
                 "<p>Fred awaited death with [adjective] [noun].</p>";
 
-        MadLibsTemplate testTemplate = new MadLibsTemplate(0, "absox", content);
+        MadLibsTemplate testTemplate = new MadLibsTemplate(0, "Fred Template", "absox", content);
 
         assertEquals(testTemplate.getNumBlanks(), 5);
 
