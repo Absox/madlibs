@@ -10,8 +10,9 @@ form {
 	}
 }
 	
-input[type="text"],
-input[type="password"] {
+[type="text"],
+[type="password"],
+select {
 	display:block;
 	margin:0.5em 0;
 	border:1px solid rgba(0, 0, 0, 0.2);
@@ -19,14 +20,14 @@ input[type="password"] {
 	background:white;
 }
 
-input[type="submit"] {
+[type="submit"] {
 	background:brandcolor;
 	color:white;
 	margin-right:0.8em;
-	margin-top:0.4em;
 	font-weight:900;
 	border:none
 	padding:0.5em 1em 0.6em;
+	margin-top:0.4em;
 	
 	box-shadow:
 		inset 0 -2px 1px rgba(0, 0, 0, 0.2),
@@ -41,6 +42,23 @@ input[type="submit"] {
 	}
 }
 
-input[type="checkbox"] {
+[type="checkbox"] {
+	appearance:none;
 	margin-right:0.5em;
+	border:2px solid rgba(0, 0, 0, 0.2);
+	background:white;
+	height:0.8em;
+	width:0.8em;
+	margin-left:1em;
+	border-radius:4px;
+	
+	&:checked {
+		background:brandcolor;
+		border:3px double white;
+	}
+	
+	&:active {
+		transform:scale(0.9);
+		outline:none;
+	}
 }

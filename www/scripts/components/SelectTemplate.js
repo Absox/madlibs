@@ -1,8 +1,10 @@
 import React from 'react';
+import { History } from 'react-router';
 import ReactDOM from 'react-dom';
 var h = require('../helpers');
 
 var SelectTemplate = React.createClass({
+	mixins: [History],
 
 	getInitialState: function(){
 		return {
@@ -20,7 +22,10 @@ var SelectTemplate = React.createClass({
 
 		var selectedTemplate = this.refs.selectedTemplate.value;
 
+		var self = this;
+
 		h.request("http://104.236.225.1:3000/madlibs/api/session", "GET", null, function(request) {
+			self.history.pushState(null, '/game/asdasd/');
 		});
 	},
 

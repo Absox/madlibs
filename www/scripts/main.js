@@ -1,11 +1,11 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var ReactRouter = require('react-router');
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var Navigation = ReactRouter.Navigation;
+import React  from 'react';
+import ReactDOM  from 'react-dom';
+import { Router, Route, Navigation, IndexRoute } from 'react-router';
+import { createHistory } from 'history';
+
 var createBrowserHistory = require('history/lib/createBrowserHistory');
 
+import App from './components/App';
 import GameIntro from './components/GameIntro';
 import Game from './components/Game';
 import SelectTemplate from './components/SelectTemplate';
@@ -18,18 +18,20 @@ import NotFound from './components/NotFound';
 
 var routes = (
 	<Router history={createBrowserHistory()}>
-		<Route path="/" component={GameIntro} />
-		<Route path="/select-template/" component={SelectTemplate} />
-		<Route path="/game/:gameID" component={Game} />
-		<Route path="/templates" component={TemplateList} />
-		<Route path="/templates/:templateID" component={TemplateEditor} />
-		<Route path="/account" component={Account} />
-		<Route path="/signup" component={SignUp} />
-		<Route path="/login" component={LogIn} />
-    	<Route path="*" component={NotFound}/>
+		<Route path="/" component={App}>
+			<IndexRoute component={GameIntro}/>
+			<Route path="/select-template/" components={SelectTemplate} />
+			<Route path="/game/:gameID" component={Game} />
+			<Route path="/templates" component={TemplateList} />
+			<Route path="/templates/:templateID" component={TemplateEditor} />
+			<Route path="/account" component={Account} />
+			<Route path="/signup" component={SignUp} />
+			<Route path="/login" component={LogIn} />
+	    	<Route path="*" component={NotFound}/>
+	    </Route>
 	</Router>
 );
 
 ReactDOM.render(
 	routes
-, document.getElementById('site-root'));
+, document.getElementById('app-root'));
