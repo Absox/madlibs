@@ -39,11 +39,8 @@ public class Bootstrap {
         put("/madlibs/api/template/:id", "application/json", (request, response) -> new TemplateUpdateController(request, response).getResponseBody());
         // Template delete call
         delete("/madlibs/api/template/:id", "application/json", (request, response) -> new TemplateDeleteController(request, response).getResponseBody());
-
         // Template body get call
-        get("/madlibs/api/template/:id", "application/json", (request, response) -> {
-            return ""; // TODO
-        });
+        get("/madlibs/api/template/:id", "application/json", (request, response) -> new TemplateGetController(request, response).getResponseBody());
 
         // Get list of templates for user
         get("/madlibs/api/template/user/:username", "application/json", (request, response) -> {

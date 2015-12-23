@@ -363,6 +363,23 @@ public class DatabaseService {
     }
 
     /**
+     * Gets the list of templates created by user.
+     * @param username Username of creator.
+     * @return List of templates.
+     */
+    public List<MadLibsTemplate> getListOfTemplatesForUser(String username) {
+        Connection connection = this.database.open();
+
+        String queryString = "select * from templates where creator = :username";
+        Query query = connection.createQuery(queryString);
+        query.addParameter("username", username);
+        List<MadLibsTemplate> result = query.executeAndFetch(MadLibsTemplate.class);
+        connection.close();
+
+        return result;
+    }
+
+    /**
      * Deletes the database.
      */
     public void delete() {
