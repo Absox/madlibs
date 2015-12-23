@@ -22,10 +22,20 @@ public class Bootstrap {
         before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 
         // Serve static files.
-        get("/game*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
-        get("/script*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
-        get("/template*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
-        get("/account*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/game", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/game/*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/script", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/script/*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/template", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/template/*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/account", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/account/*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/select-template", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/select-template/*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/signup", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/signup/*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/login", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/login/*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
 
         // User login call
         post("/madlibs/api/login", "application/json", (request, response) -> new UserLoginController(request, response).getResponseBody());
