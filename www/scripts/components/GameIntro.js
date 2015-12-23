@@ -18,7 +18,6 @@ var GameIntro = React.createClass({
 	startGame: function(e) {
 		e.preventDefault();
 	    
-	    //
 	    this.history.pushState(null, '/game/'+'asdasd');
 	},
 
@@ -28,6 +27,7 @@ var GameIntro = React.createClass({
 	* @return 
 	*/
 	joinRandomGame: function(e) {
+	    this.history.pushState(null, '/game/'+'asdasd');
 	},
 
 	render : function() {
