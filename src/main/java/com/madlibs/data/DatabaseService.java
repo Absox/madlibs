@@ -1,6 +1,7 @@
 package com.madlibs.data;
 
 
+import com.madlibs.config.ServerConfigs;
 import com.madlibs.model.RegisteredUser;
 import org.sql2o.Connection;
 import org.sql2o.Query;
@@ -9,6 +10,7 @@ import org.sqlite.SQLiteDataSource;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Database service. Handles SQLite database calls.
@@ -21,6 +23,7 @@ public class DatabaseService {
     private File databaseFile;
 
     private static DatabaseService instance;
+
     static {
         instance = new DatabaseService("data/madlibs.db");
         instance.initializeDatabase();
@@ -58,13 +61,37 @@ public class DatabaseService {
      */
     public void initializeDatabase() {
         Connection connection = this.database.open();
-
-        // Create users table
-        String queryString = "create table if not exists users(username TEXT, saltedHashedPassword TEXT, salt TEXT)";
-        Query query = connection.createQuery(queryString);
-        query.executeUpdate();
+        initializeServerConfigsTable(connection);
+        initializeUsersTable(connection);
 
         connection.close();
+    }
+
+    private void initializeServerConfigsTable(Connection connection) {
+        // Create server configuration table
+        String serverConfigTableQueryString = "create table if not exists serverConfig(templateId INTEGER, scriptId INTEGER)";
+        Query serverConfigTableQuery = connection.createQuery(serverConfigTableQueryString);
+        serverConfigTableQuery.executeUpdate();
+
+        // Check if configs are already there.
+        String checkForConfigsQueryString = "select * from serverConfig";
+        Query checkForConfigsQuery = connection.createQuery(checkForConfigsQueryString);
+        List<Map<String, Object>> result = checkForConfigsQuery.executeAndFetchTable().asList();
+        // If empty, add in default configs.
+        if (result.isEmpty()) {
+            String defaultConfigsQueryString = "insert into serverConfig values(:templateId, :scriptId)";
+            Query defaultConfigsQuery = connection.createQuery(defaultConfigsQueryString);
+            defaultConfigsQuery.addParameter("templateId", 0);
+            defaultConfigsQuery.addParameter("scriptId", 0);
+            defaultConfigsQuery.executeUpdate();
+        }
+    }
+
+    private void initializeUsersTable(Connection connection) {
+        // Create users table
+        String userTableQueryString = "create table if not exists users(username TEXT, saltedHashedPassword TEXT, salt TEXT)";
+        Query userTableQuery = connection.createQuery(userTableQueryString);
+        userTableQuery.executeUpdate();
     }
 
     /**
@@ -137,6 +164,19 @@ public class DatabaseService {
         } else {
             return result.get(0);
         }
+    }
+
+    /**
+     * Retrieves server configurations from database.
+     * @return Server configurations.
+     */
+    public ServerConfigs getServerConfigs() {
+        Connection connection = this.database.open();
+
+        String queryString = "select * from serverConfig";
+        Query query = connection.createQuery(queryString);
+        List<ServerConfigs> configs = query.executeAndFetch(ServerConfigs.class);
+        return configs.get(0);
     }
 
     /**

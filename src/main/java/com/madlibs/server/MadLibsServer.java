@@ -11,9 +11,16 @@ import java.util.List;
  */
 public class MadLibsServer {
 
+    private int templateIdCounter;
+    private int scriptIdCounter;
+
     private List<MadLibsSession> gameSessions;
 
-    private static MadLibsServer instance = new MadLibsServer();
+    private static MadLibsServer instance;
+
+    static {
+        instance = new MadLibsServer();
+    }
 
     public static MadLibsServer getInstance() {
         return instance;

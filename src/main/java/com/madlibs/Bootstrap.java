@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 import static spark.Spark.*;
 
 /**
+ * Bootstrap - main method for madlibs REST api.
  * Created by Ran on 12/20/2015.
  */
 public class Bootstrap {
@@ -21,20 +22,13 @@ public class Bootstrap {
         externalStaticFileLocation("www");
 
         // Set access origin header.
-        before((request, response) -> {
-            response.header("Access-Control-Allow-Origin", "*");
-        });
+        before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 
         // Serve static files.
-        get("/game*", (request, response) -> {
-            return new String(Files.readAllBytes(Paths.get("www/index.html")));
-        });
-        get("/script*", (request, response) -> {
-            return new String(Files.readAllBytes(Paths.get("www/index.html")));
-        });
-        get("/template*", (request, response) -> {
-            return new String(Files.readAllBytes(Paths.get("www/index.html")));
-        });
+        get("/game*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/script*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/template*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/account*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
 
         // User login call
         post("/madlibs/api/login", "application/json", (request, response) -> {

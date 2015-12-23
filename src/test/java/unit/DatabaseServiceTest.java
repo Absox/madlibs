@@ -1,5 +1,6 @@
 package unit;
 
+import com.madlibs.config.ServerConfigs;
 import com.madlibs.data.DatabaseService;
 import com.madlibs.model.RegisteredUser;
 import org.apache.commons.codec.DecoderException;
@@ -13,11 +14,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
+ * Unit tests for DatabaseService class.
  * Created by Ran on 12/20/2015.
  */
 public class DatabaseServiceTest {
@@ -79,6 +79,19 @@ public class DatabaseServiceTest {
         }
 
         new File("registeredUserTest.db").delete();
+    }
 
+    @Test
+    public void serverConfigsTest() {
+
+        File testDb = new File("serverConfigTest.db");
+        if (testDb.exists()) testDb.delete();
+
+        DatabaseService testDatabase = new DatabaseService("serverConfigTest.db");
+        testDatabase.initializeDatabase();
+
+        ServerConfigs testConfigs = testDatabase.getServerConfigs();
+        assertEquals(testConfigs.getScriptId(),0);
+        assertEquals(testConfigs.getTemplateId(), 0);
     }
 }
