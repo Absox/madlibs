@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router';
 
 var Account = React.createClass({
 
@@ -8,8 +9,8 @@ var Account = React.createClass({
 	},
 
 	render : function() {
-		var signup = <a href="/signup" className="branded-button">Sign up</a>;
-		var login = <a href="/login" className="branded-button">Log in</a>
+		var signup = <Link to="/signup" className="branded-button">Sign up</Link>;
+		var login = <Link to="/login" className="branded-button">Log in</Link>
 
 		return (
 			<div className="wrapper">

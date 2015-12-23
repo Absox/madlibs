@@ -38,14 +38,15 @@ var Game = React.createClass({
 	render : function() {
 		return (
 		  	<div className="game-wrapper">
-		  		<div className="game-ui">
 
+		  		<div className="game-ui">
 			  		<div className="give-me">Give me a <span></span></div>
 
 			  		<form onSubmit={this.submitWord}>
 			  			<input className="word-input" ref="wordInput" type="text" />
 			  		</form>
 		  		</div>
+
 		  		<div className="wrapper">
 		  			<div className="game-bar">
 			  			<PlayerInvite gameURL={this.state.gameURL} />
