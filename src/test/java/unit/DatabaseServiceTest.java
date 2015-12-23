@@ -120,7 +120,7 @@ public class DatabaseServiceTest {
         DatabaseService testDatabase = new DatabaseService("templateAddTest.db");
         testDatabase.initializeDatabase();
 
-        MadLibsTemplate testTemplate = new MadLibsTemplate("1f", "absox", 0, "I am a [adjective] potato");
+        MadLibsTemplate testTemplate = new MadLibsTemplate("1f", "Potato Template", "absox", 0, "I am a [adjective] potato");
         assertFalse(testDatabase.templateExists("1f"));
         testDatabase.addTemplate(testTemplate);
         assertTrue(testDatabase.templateExists("1f"));
@@ -128,11 +128,13 @@ public class DatabaseServiceTest {
         MadLibsTemplate retrievedTemplate = testDatabase.getTemplate("1f");
         assertEquals(retrievedTemplate.getNumBlanks(), 1);
 
+        retrievedTemplate.setTitle("Not a potato template");
         retrievedTemplate.setContent("I am no longer a potato");
         testDatabase.updateTemplate(retrievedTemplate);
 
         MadLibsTemplate reRetrievedTemplate = testDatabase.getTemplate("1f");
         assertEquals(reRetrievedTemplate.getContent(), "I am no longer a potato");
+        assertEquals(retrievedTemplate.getTitle(), "Not a potato template");
 
         testDb.delete();
     }

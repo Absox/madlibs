@@ -39,7 +39,6 @@ public class TemplateGetController implements RestEndpoint {
             responseBody.addProperty("status", "failure");
             responseBody.addProperty("why", "Template not found");
         }
-
     }
 
     /**
@@ -53,6 +52,7 @@ public class TemplateGetController implements RestEndpoint {
     private class TemplateBodyJson {
 
         private String status;
+        private String title;
         private String creator;
         private int rating;
         private String value;
@@ -60,6 +60,7 @@ public class TemplateGetController implements RestEndpoint {
 
         private TemplateBodyJson(MadLibsTemplate template, List<MadLibsTemplateComment> comments) {
             this.status = "success";
+            this.title = template.getTitle();
             this.creator = template.getCreator();
             this.rating = template.getRating();
             this.value = template.getContent();

@@ -24,7 +24,10 @@ public class TemplateUpdateController implements RestEndpoint {
         this.responseBody = new JsonObject();
         String username = request.cookie("loggedInUser");
         String templateId = request.params("id");
-        String content = parser.parse(request.body()).getAsJsonObject().get("value").getAsString();
+
+        JsonObject parsedRequest = parser.parse(request.body()).getAsJsonObject();
+        String content = parsedRequest.get("value").getAsString();
+        String title = parsedRequest.get("title").getAsString();
 
         // Check login cookie
         if (username != null) {
@@ -37,6 +40,7 @@ public class TemplateUpdateController implements RestEndpoint {
                     // Check if template is owned
                     if (template.getCreator().equals(username)) {
                         template.setContent(content);
+                        template.setTitle(title);
                         DatabaseService.getInstance().updateTemplate(template);
 
                         response.status(200);

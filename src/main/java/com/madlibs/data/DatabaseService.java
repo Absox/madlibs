@@ -85,7 +85,7 @@ public class DatabaseService {
      * @param connection Database connection.
      */
     private void initializeTemplateTable(Connection connection) {
-        String templateTableQueryString = "create table if not exists templates(id TEXT, creator TEXT, rating INTEGER, content TEXT)";
+        String templateTableQueryString = "create table if not exists templates(id TEXT, title TEXT, creator TEXT, rating INTEGER, content TEXT)";
         Query templateTableQuery = connection.createQuery(templateTableQueryString);
         templateTableQuery.executeUpdate();
     }
@@ -245,9 +245,10 @@ public class DatabaseService {
     public void addTemplate(MadLibsTemplate template) {
         Connection connection = this.database.open();
 
-        String queryString = "insert into templates values(:id, :creator, :rating, :content)";
+        String queryString = "insert into templates values(:id, :title, :creator, :rating, :content)";
         Query query = connection.createQuery(queryString);
         query.addParameter("id", template.getId());
+        query.addParameter("title", template.getTitle());
         query.addParameter("creator", template.getCreator());
         query.addParameter("rating", template.getRating());
         query.addParameter("content", template.getContent());
@@ -337,8 +338,9 @@ public class DatabaseService {
     public void updateTemplate(MadLibsTemplate template) {
         Connection connection = this.database.open();
 
-        String queryString = "update templates set content = :content, rating = :rating where id = :id";
+        String queryString = "update templates set title = :title, content = :content, rating = :rating where id = :id";
         Query query = connection.createQuery(queryString);
+        query.addParameter("title", template.getTitle());
         query.addParameter("content", template.getContent());
         query.addParameter("rating", template.getRating());
         query.addParameter("id", template.getId());

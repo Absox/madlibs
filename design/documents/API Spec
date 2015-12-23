@@ -70,6 +70,7 @@ Create Template:
     Request Content:
         // Username pulled from cookies.
         {
+            "title" <title>
             "value" : <value>
         }
     Response Cases:
@@ -78,7 +79,7 @@ Create Template:
             Content:
                 {
                     "status" : "success",
-                    "id" : <id> // uuid of template
+                    "id" : <id> // id of template
                 }
         Failure - User Does Not Exist/Not Logged In:
             Code: 401 UNAUTHORIZED
@@ -98,7 +99,7 @@ Get List of Templates For User:
             Content:
                 {
                     "status" : "success",
-                    "id" : [ids of templates]
+                    "templates" : [{"title" : <title>, "id" : <id>}]
                 }
         Failure - User Not Found:
             Code: 404 NOT FOUND
@@ -117,6 +118,7 @@ Get Template Body:
             Content:
                 {
                     "status" : "success",
+                    "title" : <title>,
                     "creator" : <creator>,
                     "rating" : <rating>,
                     "comments" : [comments],
@@ -136,6 +138,7 @@ Update Template:
     Path: /madlibs/api/template/<id>
     Request Content:
         {
+            "title" : <title>
             "value" : <value>
         }
     Response Cases:
