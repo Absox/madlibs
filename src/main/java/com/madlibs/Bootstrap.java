@@ -31,12 +31,13 @@ public class Bootstrap {
 
         // User login call
         post("/madlibs/api/login", "application/json", (request, response) -> new UserLoginController(request, response).getResponseBody());
-
         // User register call
         post("/madlibs/api/register", "application/json", (request, response) -> new UserRegisterController(request, response).getResponseBody());
-
         // Template create call
         post("/madlibs/api/template", "application/json", (request, response) -> new TemplateCreateController(request, response).getResponseBody());
+
+        // Template comment call
+        post("/madlibs/api/template/:id/comment", "application/json", (request, response) -> ""); // TODO
 
         // Template update call
         put("/madlibs/api/template/:id", "application/json", (request, response) -> {

@@ -64,8 +64,19 @@ public class DatabaseService {
         initializeServerConfigsTable(connection);
         initializeUsersTable(connection);
         initializeTemplateTable(connection);
+        initializeTemplateCommentsTable(connection);
 
         connection.close();
+    }
+
+    /**
+     * Initializes template comments table.
+     * @param connection
+     */
+    private void initializeTemplateCommentsTable(Connection connection) {
+        String templateCommentsTableQueryString = "create table if not exists templateComments(templateId TEXT, user TEXT, value TEXT, date INTEGER)";
+        Query templateCommentsTableQuery = connection.createQuery(templateCommentsTableQueryString);
+        templateCommentsTableQuery.executeUpdate();
     }
 
     /**
