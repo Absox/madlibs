@@ -10,6 +10,10 @@ var LogIn = React.createClass({
 		return {message: ""};
 	},
 
+	setMessage: function(message) {
+		this.setState({message: message});
+	},
+
 	login: function(e) {
 		e.preventDefault();
 
@@ -24,10 +28,16 @@ var LogIn = React.createClass({
 
 		h.request("http://104.236.225.1:3000/madlibs/api/login", "POST", post_body, function(request) {
 			if (request.status != 200) self.setState({message: "Server error."});
+
 		  	var data = JSON.parse(request.responseText);
+		  	
 		  	if(data.status == "success") {
 	    		self.history.pushState(null, '/account');
 		  	}
+
+			if(data.status == "failure") {
+				self.setMessage(data.why);
+			}
 		});
 	},
 

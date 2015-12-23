@@ -6,11 +6,8 @@ import { Link, History } from 'react-router';
 var Header = React.createClass({
 	mixins: [History],
 
-	isLoggedIn: function() {
-
-	},
-
 	render : function() {
+		var templates = <li><Link to="/templates/">Templates</Link></li>;
 
 		return (
 			<header className="site-header" id="site-header">
@@ -22,7 +19,7 @@ var Header = React.createClass({
 
 			        <nav className="site-nav">
 			            <ul>
-			                <li><Link to="/templates/">Templates</Link></li>
+			                {templates}
 			                <li><Link to="/account/"><img src="/css/images/member.svg"/></Link></li>
 			            </ul>
 			        </nav>

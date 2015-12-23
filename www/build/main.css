@@ -507,7 +507,7 @@ body {
   font-family: "freight-text-pro", sans-serif;
   font-size: 1.2em;
 }
-.home-options button {
+.home-options__option {
   color: inherit;
   text-decoration: none;
   display: inline-block;
@@ -520,8 +520,8 @@ body {
   font-weight: 300;
   position: relative;
 }
-.home-options button:before,
-.home-options button:after {
+.home-options__option:before,
+.home-options__option:after {
   display: none;
   font-size: 0.4em;
   position: absolute;
@@ -532,7 +532,7 @@ body {
   border-left: 0.5em solid transparent;
   border-right: 0.5em solid transparent;
 }
-.home-options button:before {
+.home-options__option:before {
   border-bottom: 1em solid #4cc88c;
   margin-top: -1em;
   -webkit-transform: skew(45deg);
@@ -540,7 +540,7 @@ body {
   -webkit-transform-origin: 0 100%;
           transform-origin: 0 100%;
 }
-.home-options button:after {
+.home-options__option:after {
   border-top: 1em solid #2f9965;
   margin-top: 0em;
   -webkit-transform: skew(-45deg);
@@ -548,18 +548,18 @@ body {
   -webkit-transform-origin: 0 0%;
           transform-origin: 0 0%;
 }
-.home-options button:hover,
-.home-options button:focus {
+.home-options__option:hover,
+.home-options__option:focus {
   outline: none;
 }
-.home-options button:hover:before,
-.home-options button:focus:before {
+.home-options__option:hover:before,
+.home-options__option:focus:before {
   display: block;
   -webkit-animation: pointerbounce-top 0.4s cubic-bezier(0.7, 0, 1, 1) alternate infinite;
           animation: pointerbounce-top 0.4s cubic-bezier(0.7, 0, 1, 1) alternate infinite;
 }
-.home-options button:hover:after,
-.home-options button:focus:after {
+.home-options__option:hover:after,
+.home-options__option:focus:after {
   display: block;
   -webkit-animation: pointerbounce-bottom 0.4s cubic-bezier(0.7, 0, 1, 1) alternate infinite;
           animation: pointerbounce-bottom 0.4s cubic-bezier(0.7, 0, 1, 1) alternate infinite;
