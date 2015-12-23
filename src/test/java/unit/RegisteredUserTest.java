@@ -10,6 +10,7 @@ import java.util.Random;
 import static org.junit.Assert.*;
 
 /**
+ * Unit tests for registered user class.
  * Created by Ran on 12/20/2015.
  */
 public class RegisteredUserTest {

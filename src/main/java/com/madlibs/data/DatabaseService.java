@@ -85,7 +85,7 @@ public class DatabaseService {
      * @param connection Database connection.
      */
     private void initializeTemplateTable(Connection connection) {
-        String templateTableQueryString = "create table if not exists templates(id TEXT, creator TEXT, rating INTEGER, content TEXT)";
+        String templateTableQueryString = "create table if not exists templates(id TEXT, title TEXT, creator TEXT, rating INTEGER, content TEXT)";
         Query templateTableQuery = connection.createQuery(templateTableQueryString);
         templateTableQuery.executeUpdate();
     }
@@ -96,7 +96,7 @@ public class DatabaseService {
      */
     private void initializeServerConfigsTable(Connection connection) {
         // Create server configuration table
-        String serverConfigTableQueryString = "create table if not exists serverConfig(templateId INTEGER, scriptId INTEGER)";
+        String serverConfigTableQueryString = "create table if not exists serverConfig(templateId INTEGER, scriptId INTEGER, commentId INTEGER)";
         Query serverConfigTableQuery = connection.createQuery(serverConfigTableQueryString);
         serverConfigTableQuery.executeUpdate();
 
@@ -106,10 +106,11 @@ public class DatabaseService {
         List<Map<String, Object>> result = checkForConfigsQuery.executeAndFetchTable().asList();
         // If empty, add in default configs.
         if (result.isEmpty()) {
-            String defaultConfigsQueryString = "insert into serverConfig values(:templateId, :scriptId)";
+            String defaultConfigsQueryString = "insert into serverConfig values(:templateId, :scriptId, :commentId)";
             Query defaultConfigsQuery = connection.createQuery(defaultConfigsQueryString);
             defaultConfigsQuery.addParameter("templateId", 0);
             defaultConfigsQuery.addParameter("scriptId", 0);
+            defaultConfigsQuery.addParameter("commentId", 0);
             defaultConfigsQuery.executeUpdate();
         }
     }
@@ -227,10 +228,11 @@ public class DatabaseService {
         query.executeUpdate();
 
         // Insert new ones.
-        String insertQueryString = "insert into serverConfig values(:templateId, :scriptId)";
+        String insertQueryString = "insert into serverConfig values(:templateId, :scriptId, :commentId)";
         Query insertQuery = connection.createQuery(insertQueryString);
         insertQuery.addParameter("templateId", configs.getTemplateId());
         insertQuery.addParameter("scriptId", configs.getScriptId());
+        insertQuery.addParameter("commentId", configs.getCommentId());
         insertQuery.executeUpdate();
 
         connection.close();
@@ -243,9 +245,10 @@ public class DatabaseService {
     public void addTemplate(MadLibsTemplate template) {
         Connection connection = this.database.open();
 
-        String queryString = "insert into templates values(:id, :creator, :rating, :content)";
+        String queryString = "insert into templates values(:id, :title, :creator, :rating, :content)";
         Query query = connection.createQuery(queryString);
         query.addParameter("id", template.getId());
+        query.addParameter("title", template.getTitle());
         query.addParameter("creator", template.getCreator());
         query.addParameter("rating", template.getRating());
         query.addParameter("content", template.getContent());
@@ -323,6 +326,56 @@ public class DatabaseService {
         Query query = connection.createQuery(queryString);
         query.addParameter("templateId", templateId);
         List<MadLibsTemplateComment> result = query.executeAndFetch(MadLibsTemplateComment.class);
+        connection.close();
+
+        return result;
+    }
+
+    /**
+     * Updates template.
+     * @param template Template object to update in the database.
+     */
+    public void updateTemplate(MadLibsTemplate template) {
+        Connection connection = this.database.open();
+
+        String queryString = "update templates set title = :title, content = :content, rating = :rating where id = :id";
+        Query query = connection.createQuery(queryString);
+        query.addParameter("title", template.getTitle());
+        query.addParameter("content", template.getContent());
+        query.addParameter("rating", template.getRating());
+        query.addParameter("id", template.getId());
+        query.executeUpdate();
+
+        connection.close();
+    }
+
+    /**
+     * Deletes a template.
+     * @param id Template object to delete.
+     */
+    public void deleteTemplate(String id) {
+        Connection connection = this.database.open();
+
+        String queryString = "delete from templates where id = :id";
+        Query query = connection.createQuery(queryString);
+        query.addParameter("id", id);
+        query.executeUpdate();
+
+        connection.close();
+    }
+
+    /**
+     * Gets the list of templates created by user.
+     * @param username Username of creator.
+     * @return List of templates.
+     */
+    public List<MadLibsTemplate> getListOfTemplatesForUser(String username) {
+        Connection connection = this.database.open();
+
+        String queryString = "select * from templates where creator = :username";
+        Query query = connection.createQuery(queryString);
+        query.addParameter("username", username);
+        List<MadLibsTemplate> result = query.executeAndFetch(MadLibsTemplate.class);
         connection.close();
 
         return result;

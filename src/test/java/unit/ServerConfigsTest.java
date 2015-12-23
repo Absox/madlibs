@@ -13,12 +13,12 @@ public class ServerConfigsTest {
 
     @Test
     public void testCounters() {
-
-        ServerConfigs testConfigs = new ServerConfigs(0, 0);
+        ServerConfigs testConfigs = new ServerConfigs(0, 0, 0);
         assertEquals(testConfigs.getNextScriptId(), 0);
         assertEquals(testConfigs.getScriptId(), 1);
         assertEquals(testConfigs.getNextTemplateId(), 0);
         assertEquals(testConfigs.getTemplateId(), 1);
-
+        assertEquals(testConfigs.getNextCommentId(), 0);
+        assertEquals(testConfigs.getCommentId(), 1);
     }
 }
