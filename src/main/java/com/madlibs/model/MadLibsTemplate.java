@@ -1,5 +1,8 @@
 package com.madlibs.model;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * A mad libs template.
  * Created by Ran on 12/20/2015.
@@ -19,8 +22,8 @@ public class MadLibsTemplate {
      * @param id Integer id of object.
      * @param creator Username of creator.
      */
-    public MadLibsTemplate(int id, String creator) {
-        this(Integer.toHexString(id), creator, 0, "");
+    public MadLibsTemplate(int id, String creator, String content) {
+        this(Integer.toHexString(id), creator, 0, content);
     }
 
     /**
@@ -69,5 +72,20 @@ public class MadLibsTemplate {
         return this.content;
     }
 
+    /**
+     * Returns the number of blanks in this template.
+     * @return Number of blanks in the template.
+     */
+    public int getNumBlanks() {
+        Pattern pattern = Pattern.compile("\\[[^\\[]*\\]");
+        Matcher matcher = pattern.matcher(this.content);
+
+        int numBlanks = 0;
+
+        while (matcher.find()) {
+            numBlanks++;
+        }
+        return numBlanks;
+    }
 
 }

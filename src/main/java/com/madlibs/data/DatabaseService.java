@@ -224,9 +224,61 @@ public class DatabaseService {
         connection.close();
     }
 
-
+    /**
+     * Adds template to database.
+     * @param template Template to add to database.
+     */
     public void addTemplate(MadLibsTemplate template) {
+        Connection connection = this.database.open();
 
+        String queryString = "insert into templates values(:id, :creator, :rating, :content)";
+        Query query = connection.createQuery(queryString);
+        query.addParameter("id", template.getId());
+        query.addParameter("creator", template.getCreator());
+        query.addParameter("rating", template.getRating());
+        query.addParameter("content", template.getContent());
+        query.executeUpdate();
+
+        connection.close();
+    }
+
+    /**
+     * Checks if a template exists.
+     * @param id Id of template.
+     * @return True if exists, else false.
+     */
+    public boolean templateExists(String id) {
+        Connection connection = this.database.open();
+
+        String queryString = "select * from templates where id = :id";
+        Query query = connection.createQuery(queryString);
+        query.addParameter("id", id);
+        List<MadLibsTemplate> results = query.executeAndFetch(MadLibsTemplate.class);
+
+        connection.close();
+        return !results.isEmpty();
+    }
+
+    /**
+     * Gets template from database.
+     * @param id Id of template.
+     * @return MadLibsTemplate object if it exists, else null.
+     */
+    public MadLibsTemplate getTemplate(String id) {
+        Connection connection = this.database.open();
+
+        String queryString = "select * from templates where id = :id";
+        Query query = connection.createQuery(queryString);
+        query.addParameter("id", id);
+        List<MadLibsTemplate> results = query.executeAndFetch(MadLibsTemplate.class);
+
+        connection.close();
+
+        if (results.isEmpty()) {
+            return null;
+        } else {
+            return results.get(0);
+        }
     }
 
     /**

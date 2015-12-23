@@ -2,6 +2,7 @@ package unit;
 
 import com.madlibs.config.ServerConfigs;
 import com.madlibs.data.DatabaseService;
+import com.madlibs.model.MadLibsTemplate;
 import com.madlibs.model.RegisteredUser;
 import org.apache.commons.codec.DecoderException;
 import org.junit.Test;
@@ -101,5 +102,28 @@ public class DatabaseServiceTest {
         ServerConfigs retrievedConfigs = testDatabase.getServerConfigs();
         assertEquals(retrievedConfigs.getScriptId(), 1);
         assertEquals(retrievedConfigs.getTemplateId(), 1);
+
+        testDb.delete();
+    }
+
+    @Test
+    public void addTemplateTest() {
+
+        File testDb = new File("templateAddTest.db");
+        if (testDb.exists()) testDb.delete();
+
+        DatabaseService testDatabase = new DatabaseService("templateAddTest.db");
+        testDatabase.initializeDatabase();
+
+        MadLibsTemplate testTemplate = new MadLibsTemplate("1f", "absox", 0, "I am a [adjective] potato");
+        assertFalse(testDatabase.templateExists("1f"));
+        testDatabase.addTemplate(testTemplate);
+        assertTrue(testDatabase.templateExists("1f"));
+
+        MadLibsTemplate retrievedTemplate = testDatabase.getTemplate("1f");
+        assertEquals(retrievedTemplate.getNumBlanks(), 1);
+
+        testDb.delete();
+
     }
 }

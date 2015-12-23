@@ -22,22 +22,21 @@ public class TemplateCreateController implements RestEndpoint {
     public TemplateCreateController(Request request, Response response) {
         this.responseBody = new JsonObject();
         String username = request.cookie("loggedInUser");
+        String content = parser.parse(request.body()).getAsJsonObject().get("content").getAsString();
         if (username != null) {
 
             // Check if user exists.
             if (DatabaseService.getInstance().userExists(username)) {
                 // Create template.
-                String id = Integer.toHexString(MadLibsServer.getInstance().getConfigs().getNextTemplateId());
-                MadLibsTemplate newTemplate = new MadLibsTemplate(id, username, 0, "");
+                MadLibsTemplate newTemplate = new MadLibsTemplate(MadLibsServer.getInstance().getConfigs().getNextTemplateId(), username, content);
                 // Add template to database.
-                // TODO
+                DatabaseService.getInstance().addTemplate(newTemplate);
                 // Update server configs in database.
                 DatabaseService.getInstance().updateServerConfigs(MadLibsServer.getInstance().getConfigs());
 
                 response.status(200);
                 responseBody.addProperty("status", "success");
                 responseBody.addProperty("id", newTemplate.getId());
-
 
             } else {
                 response.status(401);
