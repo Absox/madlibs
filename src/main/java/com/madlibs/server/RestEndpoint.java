@@ -48,8 +48,7 @@ public abstract class RestEndpoint {
      */
     protected void issueAuthToken(String username) {
         AuthToken token = MadLibsServer.getInstance().issueToken(username);
-        response.cookie("/", "loggedInUser", username, 86400, false);
-        response.cookie("/", "authToken", token.toJson(), 86400, false);
+        responseBody.addProperty("authToken", token.toJson());
     }
 
     /**
@@ -57,9 +56,10 @@ public abstract class RestEndpoint {
      * @return Logged in user object, else null.
      */
     protected RegisteredUser getLoggedInUser() {
-        String username = request.cookie("loggedInUser");
-        if (username != null) {
-            return DatabaseService.getInstance().getUser(username);
+        String tokenJson = request.cookie("authToken");
+        if (tokenJson != null) {
+            AuthToken authToken = AuthToken.fromJson(tokenJson);
+            return DatabaseService.getInstance().getUser(authToken.getUsername());
         }
         return null;
     }
@@ -75,14 +75,13 @@ public abstract class RestEndpoint {
             AuthToken newToken = MadLibsServer.getInstance().authenticate(currentToken);
 
             if (newToken != null) {
-                response.cookie("/", "authToken", newToken.toJson(), 86400, false);
-                //response.cookie("authToken", newToken.toJson());
+                responseBody.addProperty("authToken", newToken.toJson());
                 return true;
             }
         }
 
-        response.removeCookie("authToken");
-        response.removeCookie("loggedInUser");
+        //response.removeCookie("authToken");
+        response.cookie("/", "authToken", "", -1, false);
 
         return false;
     }
