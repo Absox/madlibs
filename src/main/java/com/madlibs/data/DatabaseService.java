@@ -72,7 +72,7 @@ public class DatabaseService {
 
     /**
      * Initializes template comments table.
-     * @param connection
+     * @param connection Database connection.
      */
     private void initializeTemplateCommentsTable(Connection connection) {
         String templateCommentsTableQueryString = "create table if not exists templateComments(templateId TEXT, user TEXT, value TEXT, date INTEGER)";

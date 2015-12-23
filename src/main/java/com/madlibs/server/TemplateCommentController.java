@@ -9,12 +9,18 @@ import spark.Response;
 import java.util.Date;
 
 /**
+ * Controller that handles commenting on templates.
  * Created by Ran on 12/22/2015.
  */
 public class TemplateCommentController implements RestEndpoint {
 
     private JsonObject responseBody;
 
+    /**
+     * Construct a new controller to handle a template comment request.
+     * @param request Spark request.
+     * @param response Spark response.
+     */
     public TemplateCommentController(Request request, Response response) {
 
         this.responseBody = new JsonObject();

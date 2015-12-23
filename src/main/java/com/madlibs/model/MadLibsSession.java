@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Mad libs game session.
  * Created by Ran on 12/22/2015.
  */
 public class MadLibsSession {

@@ -21,7 +21,7 @@ public class ServerConfigs {
 
     /**
      * Accessor for template id counter.
-     * @return Tempate id counter.
+     * @return Template id counter.
      */
     public int getTemplateId() {
         return this.templateId;

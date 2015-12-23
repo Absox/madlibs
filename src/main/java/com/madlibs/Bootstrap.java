@@ -50,7 +50,7 @@ public class Bootstrap {
         });
 
         // Template body get call
-        get("/madlibs/api/template/:id", "applicaton/json", (request, response) -> {
+        get("/madlibs/api/template/:id", "application/json", (request, response) -> {
             return ""; // TODO
         });
 

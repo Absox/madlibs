@@ -56,7 +56,7 @@ public class MadLibsServer {
 
     /**
      * Mutator for configs.
-     * @param configs New configs objectfor server.
+     * @param configs New configs object for server.
      */
     public void setConfigs(ServerConfigs configs) {
         this.configs = configs;
