@@ -59,6 +59,9 @@ public class TemplateGetController implements RestEndpoint {
         return new Gson().toJsonTree(json).getAsJsonObject();
     }
 
+    /**
+     * Container class for converting templates to json.
+     */
     private static class TemplateBodyJson {
 
         private String status;
@@ -68,6 +71,11 @@ public class TemplateGetController implements RestEndpoint {
         private String value;
         private List<MadLibsTemplateComment> comments;
 
+        /**
+         * Constructs object from template and list of comments.
+         * @param template Template.
+         * @param comments List of comments.
+         */
         private TemplateBodyJson(MadLibsTemplate template, List<MadLibsTemplateComment> comments) {
             this.status = "success";
             this.title = template.getTitle();
