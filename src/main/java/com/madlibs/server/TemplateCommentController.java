@@ -1,6 +1,5 @@
 package com.madlibs.server;
 
-import com.google.gson.JsonObject;
 import com.madlibs.data.DatabaseService;
 import com.madlibs.model.MadLibsTemplate;
 import com.madlibs.model.MadLibsTemplateComment;
