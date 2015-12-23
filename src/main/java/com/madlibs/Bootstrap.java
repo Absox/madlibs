@@ -1,6 +1,5 @@
 package com.madlibs;
 
-import com.madlibs.server.RestEndpoint;
 import com.madlibs.server.TemplateCreateController;
 import com.madlibs.server.UserLoginController;
 import com.madlibs.server.UserRegisterController;
@@ -31,22 +30,13 @@ public class Bootstrap {
         get("/account*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
 
         // User login call
-        post("/madlibs/api/login", "application/json", (request, response) -> {
-            RestEndpoint controller = new UserLoginController(request, response);
-            return controller.getResponseBody();
-        });
+        post("/madlibs/api/login", "application/json", (request, response) -> new UserLoginController(request, response).getResponseBody());
 
         // User register call
-        post("/madlibs/api/register", "application/json", (request, response) -> {
-            RestEndpoint controller = new UserRegisterController(request, response);
-            return controller.getResponseBody();
-        });
+        post("/madlibs/api/register", "application/json", (request, response) -> new UserRegisterController(request, response).getResponseBody());
 
         // Template create call
-        post("/madlibs/api/template", "application/json", (request, response) -> {
-            RestEndpoint controller = new TemplateCreateController(request, response);
-            return controller.getResponseBody();
-        });
+        post("/madlibs/api/template", "application/json", (request, response) -> new TemplateCreateController(request, response).getResponseBody());
 
         // Template update call
         put("/madlibs/api/template/:id", "application/json", (request, response) -> {

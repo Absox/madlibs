@@ -1,6 +1,8 @@
 package com.madlibs.server;
 
 import com.google.gson.JsonObject;
+import com.madlibs.data.DatabaseService;
+import com.madlibs.model.MadLibsTemplate;
 import spark.Request;
 import spark.Response;
 
@@ -10,11 +12,53 @@ import spark.Response;
  */
 public class TemplateCreateController implements RestEndpoint {
 
+    private JsonObject responseBody;
+
+    /**
+     * Creates a controller to handle a template creation request.
+     * @param request Spark request.
+     * @param response Spark response.
+     */
     public TemplateCreateController(Request request, Response response) {
+        this.responseBody = new JsonObject();
+        String username = request.cookie("loggedInUser");
+        if (username != null) {
+
+            // Check if user exists.
+            if (DatabaseService.getInstance().userExists(username)) {
+                // Create template.
+                String id = Integer.toHexString(MadLibsServer.getInstance().getConfigs().getNextTemplateId());
+                MadLibsTemplate newTemplate = new MadLibsTemplate(id, username, 0, "");
+                // Add template to database.
+                // TODO
+                // Update server configs in database.
+                DatabaseService.getInstance().updateServerConfigs(MadLibsServer.getInstance().getConfigs());
+
+                response.status(200);
+                responseBody.addProperty("status", "success");
+                responseBody.addProperty("id", newTemplate.getId());
+
+
+            } else {
+                response.status(401);
+                responseBody.addProperty("status", "failure");
+                responseBody.addProperty("why", "Unauthorized - user does not exist");
+            }
+
+        } else {
+            // Unauthorized - user not logged in
+            response.status(401);
+            responseBody.addProperty("status", "failure");
+            responseBody.addProperty("why", "Unauthorized - not logged in");
+        }
 
     }
 
+    /**
+     * Accessor to response body.
+     * @return Response body.
+     */
     public JsonObject getResponseBody() {
-        return null; // TODO
+        return this.responseBody;
     }
 }

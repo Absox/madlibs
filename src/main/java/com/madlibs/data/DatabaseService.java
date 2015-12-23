@@ -2,6 +2,7 @@ package com.madlibs.data;
 
 
 import com.madlibs.config.ServerConfigs;
+import com.madlibs.model.MadLibsTemplate;
 import com.madlibs.model.RegisteredUser;
 import org.sql2o.Connection;
 import org.sql2o.Query;
@@ -19,9 +20,7 @@ import java.util.Map;
 public class DatabaseService {
 
     private Sql2o database;
-
     private File databaseFile;
-
     private static DatabaseService instance;
 
     static {
@@ -64,8 +63,19 @@ public class DatabaseService {
 
         initializeServerConfigsTable(connection);
         initializeUsersTable(connection);
+        initializeTemplateTable(connection);
 
         connection.close();
+    }
+
+    /**
+     * Initializes the template table.
+     * @param connection Database connection.
+     */
+    private void initializeTemplateTable(Connection connection) {
+        String templateTableQueryString = "create table if not exists templates(id TEXT, creator TEXT, rating INTEGER, content TEXT)";
+        Query templateTableQuery = connection.createQuery(templateTableQueryString);
+        templateTableQuery.executeUpdate();
     }
 
     /**
@@ -191,6 +201,10 @@ public class DatabaseService {
         return configs.get(0);
     }
 
+    /**
+     * Updates server configurations.
+     * @param configs Server configurations.
+     */
     public void updateServerConfigs(ServerConfigs configs) {
 
         Connection connection = this.database.open();
@@ -208,6 +222,11 @@ public class DatabaseService {
         insertQuery.executeUpdate();
 
         connection.close();
+    }
+
+
+    public void addTemplate(MadLibsTemplate template) {
+
     }
 
     /**

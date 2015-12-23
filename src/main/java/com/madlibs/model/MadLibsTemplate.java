@@ -15,6 +15,15 @@ public class MadLibsTemplate {
     private String content;
 
     /**
+     * Initializes a blank template object.
+     * @param id Integer id of object.
+     * @param creator Username of creator.
+     */
+    public MadLibsTemplate(int id, String creator) {
+        this(Integer.toHexString(id), creator, 0, "");
+    }
+
+    /**
      * Creates a mad libs template object.
      * @param id Id of template.
      * @param creator Username of creator.

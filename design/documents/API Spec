@@ -70,6 +70,7 @@ Create Template:
     Request Content:
         // Username pulled from cookies.
         {
+            "content" : <content>
         }
     Response Cases:
         Success:
