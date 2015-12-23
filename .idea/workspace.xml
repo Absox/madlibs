@@ -1,83 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="60ab085f-66ab-4aa2-af29-d0a18158961a" name="Default" comment="Improved documentation. Generated javadoc.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/allclasses-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/allclasses-noframe.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/Bootstrap.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/config/ServerConfigs.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/config/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/config/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/config/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/data/DatabaseService.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/data/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/data/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/data/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/ChatMessage.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/MadLibsResponse.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/MadLibsScript.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/MadLibsSession.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/MadLibsTemplate.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/MadLibsTemplateComment.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/RegisteredUser.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/User.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/MadLibsServer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/RestEndpoint.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/TemplateCommentController.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/TemplateCreateController.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/UserLoginController.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/UserRegisterController.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/constant-values.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/deprecated-list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/help-doc.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/index-files/index-1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/index-files/index-10.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/index-files/index-11.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/index-files/index-12.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/index-files/index-13.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/index-files/index-14.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/index-files/index-2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/index-files/index-3.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/index-files/index-4.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/index-files/index-5.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/index-files/index-6.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/index-files/index-7.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/index-files/index-8.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/index-files/index-9.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/overview-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/overview-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/overview-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/package-list" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/script.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/stylesheet.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/unit/DatabaseServiceTest.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/unit/MadLibsTemplateTest.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/unit/RegisteredUserTest.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/unit/ServerConfigsTest.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/unit/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/unit/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadoc/unit/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="60ab085f-66ab-4aa2-af29-d0a18158961a" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javadoc/unit/DatabaseServiceTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javadoc/unit/MadLibsTemplateTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javadoc/unit/RegisteredUserTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javadoc/unit/ServerConfigsTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javadoc/unit/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javadoc/unit/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/javadoc/unit/package-tree.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/javadoc/index-files/index-14.html" afterPath="$PROJECT_DIR$/javadoc/index-files/index-13.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/Bootstrap.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/Bootstrap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/config/ServerConfigs.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/config/ServerConfigs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/data/DatabaseService.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/data/DatabaseService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/model/ChatMessage.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/ChatMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsScript.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsScript.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSession.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSession.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/model/RegisteredUser.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/RegisteredUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/server/MadLibsServer.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/server/MadLibsServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateCommentController.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateCommentController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/allclasses-frame.html" afterPath="$PROJECT_DIR$/javadoc/allclasses-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/allclasses-noframe.html" afterPath="$PROJECT_DIR$/javadoc/allclasses-noframe.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/Bootstrap.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/Bootstrap.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/config/ServerConfigs.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/config/ServerConfigs.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/config/package-frame.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/config/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/config/package-summary.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/config/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/config/package-tree.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/config/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/data/DatabaseService.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/data/DatabaseService.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/data/package-frame.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/data/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/data/package-summary.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/data/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/data/package-tree.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/data/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/model/ChatMessage.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/ChatMessage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/model/MadLibsResponse.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/MadLibsResponse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/model/MadLibsScript.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/MadLibsScript.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/model/MadLibsSession.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/MadLibsSession.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/model/MadLibsTemplate.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/MadLibsTemplate.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/model/MadLibsTemplateComment.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/MadLibsTemplateComment.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/model/RegisteredUser.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/RegisteredUser.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/model/User.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/User.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/model/package-frame.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/model/package-summary.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/model/package-tree.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/model/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/package-frame.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/package-summary.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/package-tree.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/server/MadLibsServer.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/MadLibsServer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/server/RestEndpoint.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/RestEndpoint.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/server/TemplateCommentController.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/TemplateCommentController.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/server/TemplateCreateController.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/TemplateCreateController.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/server/UserLoginController.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/UserLoginController.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/server/UserRegisterController.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/UserRegisterController.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/server/package-frame.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/server/package-summary.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/com/madlibs/server/package-tree.html" afterPath="$PROJECT_DIR$/javadoc/com/madlibs/server/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/constant-values.html" afterPath="$PROJECT_DIR$/javadoc/constant-values.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/deprecated-list.html" afterPath="$PROJECT_DIR$/javadoc/deprecated-list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/help-doc.html" afterPath="$PROJECT_DIR$/javadoc/help-doc.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/index-files/index-1.html" afterPath="$PROJECT_DIR$/javadoc/index-files/index-1.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/index-files/index-10.html" afterPath="$PROJECT_DIR$/javadoc/index-files/index-10.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/index-files/index-11.html" afterPath="$PROJECT_DIR$/javadoc/index-files/index-11.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/index-files/index-12.html" afterPath="$PROJECT_DIR$/javadoc/index-files/index-12.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/index-files/index-2.html" afterPath="$PROJECT_DIR$/javadoc/index-files/index-2.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/index-files/index-3.html" afterPath="$PROJECT_DIR$/javadoc/index-files/index-3.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/index-files/index-4.html" afterPath="$PROJECT_DIR$/javadoc/index-files/index-4.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/index-files/index-5.html" afterPath="$PROJECT_DIR$/javadoc/index-files/index-5.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/index-files/index-6.html" afterPath="$PROJECT_DIR$/javadoc/index-files/index-6.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/index-files/index-7.html" afterPath="$PROJECT_DIR$/javadoc/index-files/index-7.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/index-files/index-8.html" afterPath="$PROJECT_DIR$/javadoc/index-files/index-8.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/index-files/index-9.html" afterPath="$PROJECT_DIR$/javadoc/index-files/index-9.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/index.html" afterPath="$PROJECT_DIR$/javadoc/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/overview-frame.html" afterPath="$PROJECT_DIR$/javadoc/overview-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/overview-summary.html" afterPath="$PROJECT_DIR$/javadoc/overview-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/overview-tree.html" afterPath="$PROJECT_DIR$/javadoc/overview-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javadoc/package-list" afterPath="$PROJECT_DIR$/javadoc/package-list" />
     </list>
     <ignored path="MadLibs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1347,7 +1337,13 @@
       <option name="project" value="LOCAL" />
       <updated>1450844852486</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Improved documentation. Generated javadoc.">
+      <created>1450845434524</created>
+      <option name="number" value="00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1450845434524</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1456,7 +1452,8 @@
     <MESSAGE value="Updated API spec. Added more control code." />
     <MESSAGE value="Able to create templates." />
     <MESSAGE value="Added comments, unit tests. Updated API." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added comments, unit tests. Updated API." />
+    <MESSAGE value="Improved documentation. Generated javadoc." />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved documentation. Generated javadoc." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
