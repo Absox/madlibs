@@ -15,10 +15,12 @@ var SelectTemplate = React.createClass({
 		this.populateList();
 	},
 
-	startGame: function() {
+	startGame: function(e) {
+		e.preventDefault();
+
 		var selectedTemplate = this.refs.selectedTemplate.value;
 
-		h.request("http://104.236.225.1:3000/madlibs/api/template/user/sam", "GET", null, function(request) {
+		h.request("http://104.236.225.1:3000/madlibs/api/session", "GET", null, function(request) {
 		});
 	},
 
@@ -56,7 +58,7 @@ var SelectTemplate = React.createClass({
 				<div className="template-select">
 			  		<h1>Select a template</h1>
 			  		
-			  		<form>
+			  		<form onSubmit={this.startGame}>
 				  		<select ref="selectedTemplate" className="template-select__select">
 				  			<optgroup label="Public templates">
 					  			{

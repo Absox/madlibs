@@ -266,6 +266,9 @@ body:before {
 .site-footer a {
   color: inherit;
 }
+form {
+  font-family: "Lato", sans-serif;
+}
 form label {
   display: block;
 }
@@ -595,6 +598,12 @@ body {
             transform: scale(1);
     opacity: 1;
   }
+}
+.template-select {
+  font-family: "freight-text-pro", sans-serif;
+}
+.template-select h1 {
+  font-weight: lighter;
 }
 .template-select__select {
   padding: 1em;
