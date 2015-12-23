@@ -10,7 +10,7 @@ import spark.Response;
  * A controller for handling template deletion requests.
  * Created by Ran on 12/23/2015.
  */
-public class TemplateDeleteController implements RestEndpoint {
+public class TemplateDeleteController extends RestEndpoint {
 
     private JsonObject responseBody;
 

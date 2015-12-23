@@ -1,5 +1,6 @@
 package com.madlibs.authentication;
 
+import com.google.gson.Gson;
 import org.apache.commons.codec.binary.Hex;
 
 import java.security.SecureRandom;
@@ -33,6 +34,25 @@ public class AuthToken {
     }
 
     /**
+     * Returns json string.
+     * @return Json string.
+     */
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    /**
+     * Constructs authtoken from json.
+     * @param json Json authtoken.
+     * @return AuthToken object.
+     */
+    public static AuthToken fromJson(String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, AuthToken.class);
+    }
+
+    /**
      * Accessor for username.
      * @return Username.
      */
@@ -54,6 +74,23 @@ public class AuthToken {
      */
     public long getExpiration() {
         return this.expiration;
+    }
+
+    /**
+     * Checks equality with another object.
+     * @param o Object we're checking equality with.
+     * @return True if equal, otherwise false.
+     */
+    public boolean equals(Object o) {
+        if (o instanceof AuthToken) {
+
+            AuthToken other = (AuthToken)o;
+            if (this.username.equals(other.username) && this.value.equals(other.value) && this.expiration == other.expiration) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }

@@ -1,8 +1,8 @@
 package com.madlibs.server;
 
-import com.google.gson.JsonObject;
 import com.madlibs.data.DatabaseService;
 import com.madlibs.model.MadLibsTemplate;
+import com.madlibs.model.RegisteredUser;
 import spark.Request;
 import spark.Response;
 
@@ -10,9 +10,7 @@ import spark.Response;
  * Controller for template update calls.
  * Created by Ran on 12/23/2015.
  */
-public class TemplateUpdateController implements RestEndpoint {
-
-    private JsonObject responseBody;
+public class TemplateUpdateController extends RestEndpoint {
 
     /**
      * Constructs an object to handle the request.
@@ -20,61 +18,40 @@ public class TemplateUpdateController implements RestEndpoint {
      * @param response Spark response
      */
     public TemplateUpdateController(Request request, Response response) {
+        super(request, response);
 
-        this.responseBody = new JsonObject();
-        String username = request.cookie("loggedInUser");
+        RegisteredUser user = getLoggedInUser();
         String templateId = request.params("id");
-
-        JsonObject parsedRequest = parser.parse(request.body()).getAsJsonObject();
-        String content = parsedRequest.get("value").getAsString();
+        String value = parsedRequest.get("value").getAsString();
         String title = parsedRequest.get("title").getAsString();
 
-        // Check login cookie
-        if (username != null) {
-            // Check if user exists
-            if (DatabaseService.getInstance().userExists(username)) {
-                if (DatabaseService.getInstance().templateExists(templateId)) {
-
-                    MadLibsTemplate template = DatabaseService.getInstance().getTemplate(templateId);
-
-                    // Check if template is owned
-                    if (template.getCreator().equals(username)) {
-                        template.setContent(content);
-                        template.setTitle(title);
-                        DatabaseService.getInstance().updateTemplate(template);
-
-                        response.status(200);
-                        responseBody.addProperty("status", "success");
-                        responseBody.addProperty("user", username);
-                        responseBody.addProperty("id", templateId);
-                    } else {
-                        response.status(401);
-                        responseBody.addProperty("status", "failure");
-                        responseBody.addProperty("why", "Unauthorized - template not owned");
-                    }
-                } else {
-                    response.status(404);
-                    responseBody.addProperty("status", "failure");
-                    responseBody.addProperty("why", "Template does not exist");
-                }
-            } else {
-                response.status(401);
-                responseBody.addProperty("status", "failure");
-                responseBody.addProperty("why", "Unauthorized - user does not exist");
-            }
-        } else {
-            response.status(401);
-            responseBody.addProperty("status", "failure");
-            responseBody.addProperty("why", "Unauthorized - not logged in");
+        // Check authentication.
+        if (!authenticate() || user == null) {
+            invalidCredentialFailure();
+            return;
         }
-    }
 
-    /**
-     * Accessor for response body.
-     * @return Body of response.
-     */
-    public JsonObject getResponseBody() {
-        return this.responseBody;
-    }
+        MadLibsTemplate template = DatabaseService.getInstance().getTemplate(templateId);
 
+        // Check if template exists
+        if (template == null) {
+            nullResourceFailure();
+            return;
+        }
+        // Check ownership.
+        if (!template.getCreator().equals(user.getUsername())) {
+            resourceNotOwnedFailure();
+            return;
+        }
+
+        // Update template, success response
+        template.setContent(value);
+        template.setTitle(title);
+        DatabaseService.getInstance().updateTemplate(template);
+
+        response.status(200);
+        responseBody.addProperty("status", "success");
+        responseBody.addProperty("user", user.getUsername());
+        responseBody.addProperty("id", templateId);
+    }
 }

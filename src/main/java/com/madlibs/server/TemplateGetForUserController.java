@@ -1,6 +1,5 @@
 package com.madlibs.server;
 
-import com.google.gson.JsonObject;
 import spark.Request;
 import spark.Response;
 
@@ -8,15 +7,16 @@ import spark.Response;
  * Controller for get requests for templates created by user.
  * Created by Ran on 12/23/2015.
  */
-public class TemplateGetForUserController implements RestEndpoint {
+public class TemplateGetForUserController extends RestEndpoint {
 
-    private JsonObject responseBody;
-
+    /**
+     * Constructs a controller to handle request.
+     * @param request Spark request.
+     * @param response Spark response.
+     */
     public TemplateGetForUserController(Request request, Response response) {
+        super(request, response);
+        // TODO
 
-    }
-
-    public JsonObject getResponseBody() {
-        return this.responseBody;
     }
 }

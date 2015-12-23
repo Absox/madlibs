@@ -12,7 +12,7 @@ import java.util.Date;
  * Controller that handles commenting on templates.
  * Created by Ran on 12/22/2015.
  */
-public class TemplateCommentController implements RestEndpoint {
+public class TemplateCommentController extends RestEndpoint {
 
     private JsonObject responseBody;
 

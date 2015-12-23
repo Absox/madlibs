@@ -10,7 +10,7 @@ import spark.Response;
  * Endpoint controller for template creation.
  * Created by Ran on 12/22/2015.
  */
-public class TemplateCreateController implements RestEndpoint {
+public class TemplateCreateController extends RestEndpoint {
 
     private JsonObject responseBody;
 

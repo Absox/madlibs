@@ -14,9 +14,7 @@ import java.util.List;
  * Controller to handle template get requests.
  * Created by Ran on 12/23/2015.
  */
-public class TemplateGetController implements RestEndpoint {
-
-    private JsonObject responseBody;
+public class TemplateGetController extends RestEndpoint {
 
     /**
      * Constructs a controller to handle the request.
@@ -24,28 +22,19 @@ public class TemplateGetController implements RestEndpoint {
      * @param response Spark response.
      */
     public TemplateGetController(Request request, Response response) {
+        super(request, response);
         String templateId = request.params("id");
 
-        if (DatabaseService.getInstance().templateExists(templateId)) {
-            MadLibsTemplate template = DatabaseService.getInstance().getTemplate(templateId);
-            List<MadLibsTemplateComment> comments = DatabaseService.getInstance().getCommentsOnTemplate(template.getId());
+        MadLibsTemplate template = DatabaseService.getInstance().getTemplate(templateId);
 
-            response.status(200);
-            responseBody = templateToJson(template, comments);
-        } else {
-            this.responseBody = new JsonObject();
-            response.status(404);
-            responseBody.addProperty("status", "failure");
-            responseBody.addProperty("why", "Template not found");
+        if (template == null) {
+            nullResourceFailure();
+            return;
         }
-    }
 
-    /**
-     * Accessor for response body.
-     * @return Response body.
-     */
-    public JsonObject getResponseBody() {
-        return this.responseBody;
+        List<MadLibsTemplateComment> comments = DatabaseService.getInstance().getCommentsOnTemplate(template.getId());
+        response.status(200);
+        responseBody = templateToJson(template, comments);
     }
 
     /**
