@@ -70,7 +70,7 @@ Create Template:
     Request Content:
         // Username pulled from cookies.
         {
-            "content" : <content>
+            "value" : <value>
         }
     Response Cases:
         Success:
@@ -121,7 +121,7 @@ Get Template Body:
                     "creator" : <creator>,
                     "rating" : <rating>,
                     "comments" : [comments],
-                    "content" : <content>
+                    "value" : <value>
 
                 }
         Failure - Template Not Found:
@@ -137,7 +137,7 @@ Update Template:
     Path: /madlibs/api/template/<id>
     Request Content:
         {
-            "content" : <content>
+            "value" : <value>
         }
     Response Cases:
         Success:
@@ -268,7 +268,7 @@ Comment on Template:
     Path: /madlibs/api/template/<id>/comment
     Request Content:
         {
-            "content" : <content>
+            "value" : <value>
         }
     Response Cases:
         Success:

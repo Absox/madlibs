@@ -3,6 +3,7 @@ package unit;
 import com.madlibs.config.ServerConfigs;
 import com.madlibs.data.DatabaseService;
 import com.madlibs.model.MadLibsTemplate;
+import com.madlibs.model.MadLibsTemplateComment;
 import com.madlibs.model.RegisteredUser;
 import org.apache.commons.codec.DecoderException;
 import org.junit.Test;
@@ -12,6 +13,7 @@ import org.sql2o.Sql2o;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -129,6 +131,24 @@ public class DatabaseServiceTest {
 
     @Test
     public void addTemplateCommentTest() {
+        File testDb = new File("templateCommentTest.db");
+        if (testDb.exists()) testDb.delete();
 
+        DatabaseService testDatabase = new DatabaseService("templateCommentTest.db");
+        testDatabase.initializeDatabase();
+
+        long time = new Date().getTime();
+        MadLibsTemplateComment comment = new MadLibsTemplateComment("1f", "absox", "comment comment", time);
+        testDatabase.addTemplateComment(comment);
+        List<MadLibsTemplateComment> retrievedComments = testDatabase.getCommentsOnTemplate("1f");
+
+        assertEquals(retrievedComments.size(), 1);
+        MadLibsTemplateComment retrievedComment = retrievedComments.get(0);
+        assertEquals(retrievedComment.getTemplateId(), "1f");
+        assertEquals(retrievedComment.getUser(), "absox");
+        assertEquals(retrievedComment.getValue(), "comment comment");
+        assertEquals(retrievedComment.getDate(), time);
+
+        testDb.delete();
     }
 }

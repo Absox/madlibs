@@ -304,7 +304,7 @@ public class DatabaseService {
         Query query = connection.createQuery(queryString);
         query.addParameter("templateId", comment.getTemplateId());
         query.addParameter("user", comment.getUser());
-        query.addParameter("content", comment.getContent());
+        query.addParameter("content", comment.getValue());
         query.addParameter("date", comment.getDate());
         query.executeUpdate();
 
