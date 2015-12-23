@@ -34,7 +34,7 @@ public class MadLibsServer {
      */
     public MadLibsServer() {
         this.gameSessions = new ArrayList<>();
-        this.configs = new ServerConfigs(0, 0);
+        this.configs = new ServerConfigs(0, 0, 0);
     }
 
     /**

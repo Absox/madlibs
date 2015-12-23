@@ -73,6 +73,14 @@ public class MadLibsTemplate {
     }
 
     /**
+     * Mutator for template content.
+     * @param content New content of template.
+     */
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    /**
      * Returns the number of blanks in this template.
      * @return Number of blanks in the template.
      */

@@ -8,15 +8,17 @@ public class ServerConfigs {
 
     private int templateId;
     private int scriptId;
+    private int commentId;
 
     /**
      * Initializes a server configs object.
      * @param templateId Template id counter.
      * @param scriptId Script id counter.
      */
-    public ServerConfigs(int templateId, int scriptId) {
+    public ServerConfigs(int templateId, int scriptId, int commentId) {
         this.templateId = templateId;
         this.scriptId = scriptId;
+        this.commentId = commentId;
     }
 
     /**
@@ -51,4 +53,19 @@ public class ServerConfigs {
         return this.scriptId++;
     }
 
+    /**
+     * Accessor for comment id counter.
+     * @return Comment id counter.
+     */
+    public int getCommentId() {
+        return this.commentId;
+    }
+
+    /**
+     * Returns, then increments comment id counter.
+     * @return Comment id counter.
+     */
+    public int getNextCommentId() {
+        return this.commentId++;
+    }
 }

@@ -1,9 +1,6 @@
 package com.madlibs;
 
-import com.madlibs.server.TemplateCommentController;
-import com.madlibs.server.TemplateCreateController;
-import com.madlibs.server.UserLoginController;
-import com.madlibs.server.UserRegisterController;
+import com.madlibs.server.*;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -37,17 +34,11 @@ public class Bootstrap {
         // Template create call
         post("/madlibs/api/template", "application/json", (request, response) -> new TemplateCreateController(request, response).getResponseBody());
         // Template comment call
-        post("/madlibs/api/template/:id/comment", "application/json", (request, response) -> new TemplateCommentController(request, response).getResponseBody()); // TODO
-
+        post("/madlibs/api/template/:id/comment", "application/json", (request, response) -> new TemplateCommentController(request, response).getResponseBody());
         // Template update call
-        put("/madlibs/api/template/:id", "application/json", (request, response) -> {
-            return ""; // TODO
-        });
-
+        put("/madlibs/api/template/:id", "application/json", (request, response) -> new TemplateUpdateController(request, response).getResponseBody());
         // Template delete call
-        delete("/madlibs/api/template/:id", "application/json", (request, response) -> {
-            return ""; // TODO
-        });
+        delete("/madlibs/api/template/:id", "application/json", (request, response) -> new TemplateDeleteController(request, response).getResponseBody());
 
         // Template body get call
         get("/madlibs/api/template/:id", "application/json", (request, response) -> {
