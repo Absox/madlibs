@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="60ab085f-66ab-4aa2-af29-d0a18158961a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/authentication/AuthToken.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/authentication/AuthToken.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/server/RestEndpoint.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/server/RestEndpoint.java" />
     </list>
     <ignored path="MadLibs.iws" />
@@ -96,9 +97,23 @@
       <file leaf-file-name="RestEndpoint.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/server/RestEndpoint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.9458483">
-              <caret line="31" column="51" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
-              <folding />
+            <state vertical-scroll-proportion="-0.8646209">
+              <caret line="56" column="7" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthToken.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/authentication/AuthToken.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -166,7 +181,6 @@
         <option value="$PROJECT_DIR$/src/test/java/unit/DatabaseServiceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/unit/TemplateGetControllerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/unit/MadLibsServerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/authentication/AuthToken.java" />
         <option value="$PROJECT_DIR$/src/test/java/unit/AuthTokenTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/server/UserLoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/server/UserRegisterController.java" />
@@ -179,6 +193,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/server/WebsocketController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateGetForUserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/Bootstrap.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/authentication/AuthToken.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/server/RestEndpoint.java" />
       </list>
     </option>
@@ -991,12 +1006,6 @@
       <option name="number" value="Default" />
       <updated>1450382699123</updated>
     </task>
-    <task id="LOCAL-00007" summary="Updated api spec.">
-      <created>1450568935333</created>
-      <option name="number" value="00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1450568935333</updated>
-    </task>
     <task id="LOCAL-00008" summary="Updated api spec.">
       <created>1450568975384</created>
       <option name="number" value="00008" />
@@ -1285,7 +1294,13 @@
       <option name="project" value="LOCAL" />
       <updated>1450911465481</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Updated cookie code.">
+      <created>1450913298384</created>
+      <option name="number" value="00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1450913298384</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1372,7 +1387,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Split tests into packages." />
     <MESSAGE value="Correct implementation of salting. Refactored, extracted concatenation method." />
     <MESSAGE value="Added skeleton classes for model." />
     <MESSAGE value="Documentation for mad libs component classes." />
@@ -1397,7 +1411,8 @@
     <MESSAGE value="Refactoring of control code. Added authentication." />
     <MESSAGE value="Changed path of auth cookies to &quot;/&quot;." />
     <MESSAGE value="Added control code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added control code." />
+    <MESSAGE value="Updated cookie code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated cookie code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1641,22 +1656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/authentication/AuthToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.028646">
-          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1409#1410#0" expanded="true" />
-            <element signature="e#1445#1446#0" expanded="true" />
-            <element signature="e#1542#1543#0" expanded="true" />
-            <element signature="e#1575#1576#0" expanded="true" />
-            <element signature="e#1695#1696#0" expanded="true" />
-            <element signature="e#1733#1734#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/unit/AuthTokenTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1742,26 +1741,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/design/documents/API Spec">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5862069">
-          <caret line="92" column="8" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateGetController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateGetForUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1782,11 +1765,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/authentication/AuthToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/design/documents/API Spec">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.5862069">
+          <caret line="92" column="8" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateGetForUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/server/RestEndpoint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9458483">
-          <caret line="31" column="51" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
-          <folding />
+        <state vertical-scroll-proportion="-0.8646209">
+          <caret line="56" column="7" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

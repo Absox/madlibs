@@ -1,6 +1,7 @@
 package com.madlibs.authentication;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import org.apache.commons.codec.binary.Hex;
 
 import java.security.SecureRandom;
@@ -40,6 +41,15 @@ public class AuthToken {
     public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
+    }
+
+    /**
+     * Returns json element.
+     * @return Json element.
+     */
+    public JsonElement toJsonElement() {
+        Gson gson = new Gson();
+        return gson.toJsonTree(this);
     }
 
     /**
@@ -92,5 +102,6 @@ public class AuthToken {
 
         return false;
     }
+
 
 }
