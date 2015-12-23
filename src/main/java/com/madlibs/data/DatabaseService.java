@@ -61,12 +61,17 @@ public class DatabaseService {
      */
     public void initializeDatabase() {
         Connection connection = this.database.open();
+
         initializeServerConfigsTable(connection);
         initializeUsersTable(connection);
 
         connection.close();
     }
 
+    /**
+     * Initializes the server configs table.
+     * @param connection Database connection.
+     */
     private void initializeServerConfigsTable(Connection connection) {
         // Create server configuration table
         String serverConfigTableQueryString = "create table if not exists serverConfig(templateId INTEGER, scriptId INTEGER)";
@@ -87,6 +92,10 @@ public class DatabaseService {
         }
     }
 
+    /**
+     * Initializes the users table.
+     * @param connection Database connection.
+     */
     private void initializeUsersTable(Connection connection) {
         // Create users table
         String userTableQueryString = "create table if not exists users(username TEXT, saltedHashedPassword TEXT, salt TEXT)";
@@ -176,7 +185,29 @@ public class DatabaseService {
         String queryString = "select * from serverConfig";
         Query query = connection.createQuery(queryString);
         List<ServerConfigs> configs = query.executeAndFetch(ServerConfigs.class);
+
+        connection.close();
+
         return configs.get(0);
+    }
+
+    public void updateServerConfigs(ServerConfigs configs) {
+
+        Connection connection = this.database.open();
+
+        // Clear current configs
+        String queryString = "delete from serverConfig";
+        Query query = connection.createQuery(queryString);
+        query.executeUpdate();
+
+        // Insert new ones.
+        String insertQueryString = "insert into serverConfig values(:templateId, :scriptId)";
+        Query insertQuery = connection.createQuery(insertQueryString);
+        insertQuery.addParameter("templateId", configs.getTemplateId());
+        insertQuery.addParameter("scriptId", configs.getScriptId());
+        insertQuery.executeUpdate();
+
+        connection.close();
     }
 
     /**

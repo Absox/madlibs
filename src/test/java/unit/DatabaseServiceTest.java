@@ -93,5 +93,13 @@ public class DatabaseServiceTest {
         ServerConfigs testConfigs = testDatabase.getServerConfigs();
         assertEquals(testConfigs.getScriptId(),0);
         assertEquals(testConfigs.getTemplateId(), 0);
+
+        testConfigs.getNextScriptId();
+        testConfigs.getNextTemplateId();
+        testDatabase.updateServerConfigs(testConfigs);
+
+        ServerConfigs retrievedConfigs = testDatabase.getServerConfigs();
+        assertEquals(retrievedConfigs.getScriptId(), 1);
+        assertEquals(retrievedConfigs.getTemplateId(), 1);
     }
 }
