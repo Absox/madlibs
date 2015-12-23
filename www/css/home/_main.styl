@@ -18,12 +18,8 @@
 }
 
 .home-screen {
-	height:100%;
-	min-height:400px;
-	display:flex;
-	align-items: center
+	@extend .site-content__centered-wrapper;
 	text-align:center;
-    justify-content: center;
     transform:scale(0.8);
     opacity:0;
 	animation:home-screen 1s ease-out forwards;

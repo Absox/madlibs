@@ -18,7 +18,7 @@ var GameIntro = React.createClass({
 	startGame: function(e) {
 		e.preventDefault();
 	    
-	    this.history.pushState(null, '/game/'+'asdasd');
+	    this.history.pushState(null, '/select-template/');
 	},
 
 	/**

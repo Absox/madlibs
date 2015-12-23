@@ -8,12 +8,16 @@ var Account = React.createClass({
 	},
 
 	render : function() {
+		var signup = <a href="/signup" className="branded-button">Sign up</a>;
+		var login = <a href="/login" className="branded-button">Log in</a>
+
 		return (
 			<div className="wrapper">
 		  		<h1>Account</h1>
 		  		
-		  		<a href="/signup">Sign up</a>
-		  		<a href="/login">Log in</a>
+		  		{login}
+		  		{signup}
+
 		  		<form>
 		  			
 		  		</form>

@@ -6,6 +6,10 @@ var h = require('../helpers');
 var LogIn = React.createClass({
 	mixins: [History],
 
+	getInitialState: function() {
+		return {message: ""};
+	},
+
 	login: function(e) {
 		e.preventDefault();
 

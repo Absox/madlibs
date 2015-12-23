@@ -8,6 +8,7 @@ var createBrowserHistory = require('history/lib/createBrowserHistory');
 
 import GameIntro from './components/GameIntro';
 import Game from './components/Game';
+import SelectTemplate from './components/SelectTemplate';
 import TemplateList from './components/TemplateList';
 import TemplateEditor from './components/TemplateEditor';
 import Account from './components/Account';
@@ -18,6 +19,7 @@ import NotFound from './components/NotFound';
 var routes = (
 	<Router history={createBrowserHistory()}>
 		<Route path="/" component={GameIntro} />
+		<Route path="/select-template/" component={SelectTemplate} />
 		<Route path="/game/:gameID" component={Game} />
 		<Route path="/templates" component={TemplateList} />
 		<Route path="/templates/:templateID" component={TemplateEditor} />

@@ -240,6 +240,24 @@ body:before {
   overflow: hidden;
   min-height: 400px;
 }
+.site-content__centered-wrapper,
+.home-screen,
+.template-select-wrapper,
+.login-wrapper {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
 .site-footer {
   line-height: 4.6rem;
   background: #4cc88c;
@@ -307,6 +325,9 @@ form .message {
 .site-logo-link:hover {
   background: #f8f8f8;
 }
+.site-logo-link:active {
+  background: #f3f3f3;
+}
 .site-logo {
   margin-top: -0.1em;
   line-height: 4.6rem;
@@ -326,14 +347,14 @@ form .message {
   box-shadow: inset 0 -2px #298558;
   color: rgba(0,0,0,0.4);
 }
-.site-logo-link:hover .site-logo {
+.site-logo:hover {
   background: -webkit-linear-gradient(bottom, #37b478, #6bd2a0), #4cc88c;
   background: linear-gradient(0deg, #37b478, #6bd2a0), #4cc88c;
   box-shadow: inset 0 -2px #298558, 0 2px 6px -1px rgba(0,0,0,0.3);
 }
-.site-logo-link:active .site-logo {
+.site-logo:active {
   background: #35ac72;
-  box-shadow: none;
+  box-shadow: inset 0 1px 10px rgba(0,0,0,0.3);
 }
 @media all and (min-width: 30em) {
   .site-logo {
@@ -358,7 +379,6 @@ body {
   overflow-y: scroll;
 }
 .wrapper,
-.login-wrapper,
 .signup-wrapper {
   max-width: 80em;
   padding: 0 1.5em;
@@ -400,7 +420,7 @@ body {
 }
 .site-nav a:active {
   background: #37b478;
-  box-shadow: none;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
 }
 .site-nav img {
   height: 1.2em;
@@ -445,21 +465,7 @@ body {
   text-shadow: 0 -2px #008000, 2px 2px #f00, -2px 2px #00f, 0 0 1em #000;
 }
 .home-screen {
-  height: 100%;
-  min-height: 400px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
   text-align: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
   opacity: 0;
@@ -609,22 +615,6 @@ body {
 }
 .game-ui {
   height: calc(100% - 6em);
-}
-.login-wrapper {
-  height: 100%;
-  min-height: 400px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 .login-content h2 {
   margin-top: 0;
