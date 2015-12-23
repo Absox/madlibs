@@ -1,8 +1,8 @@
 package com.madlibs.server;
 
-import com.google.gson.JsonObject;
 import com.madlibs.data.DatabaseService;
 import com.madlibs.model.MadLibsTemplate;
+import com.madlibs.model.RegisteredUser;
 import spark.Request;
 import spark.Response;
 
@@ -12,58 +12,41 @@ import spark.Response;
  */
 public class TemplateDeleteController extends RestEndpoint {
 
-    private JsonObject responseBody;
-
     /**
      * Constructs a controller to handle the template deletion request.
      * @param request Spark request.
      * @param response Spark response.
      */
     public TemplateDeleteController(Request request, Response response) {
+        super(request, response);
 
-        this.responseBody = new JsonObject();
-        String username = request.cookie("loggedInUser");
+        RegisteredUser user = getLoggedInUser();
         String templateId = request.params("id");
 
-        // Check login cookie
-        if (username != null) {
-            // Check if user exists
-            if (DatabaseService.getInstance().userExists(username)) {
-                if (DatabaseService.getInstance().templateExists(templateId)) {
-
-                    MadLibsTemplate template = DatabaseService.getInstance().getTemplate(templateId);
-
-                    // Check if template is owned
-                    if (template.getCreator().equals(username)) {
-                       DatabaseService.getInstance().deleteTemplate(templateId);
-
-                        response.status(200);
-                        responseBody.addProperty("status", "success");
-                        responseBody.addProperty("user", username);
-                        responseBody.addProperty("id", templateId);
-                    } else {
-                        response.status(401);
-                        responseBody.addProperty("status", "failure");
-                        responseBody.addProperty("why", "Unauthorized - template not owned");
-                    }
-                } else {
-                    response.status(404);
-                    responseBody.addProperty("status", "failure");
-                    responseBody.addProperty("why", "Template does not exist");
-                }
-            } else {
-                response.status(401);
-                responseBody.addProperty("status", "failure");
-                responseBody.addProperty("why", "Unauthorized - user does not exist");
-            }
-        } else {
-            response.status(401);
-            responseBody.addProperty("status", "failure");
-            responseBody.addProperty("why", "Unauthorized - not logged in");
+        // Check authentication
+        if (!authenticate() || user == null) {
+            invalidCredentialFailure();
+            return;
         }
-    }
 
-    public JsonObject getResponseBody() {
-        return this.responseBody;
+        MadLibsTemplate template = DatabaseService.getInstance().getTemplate(templateId);
+
+        // Check that template exists
+        if (template == null) {
+            nullResourceFailure();
+            return;
+        }
+
+        // Check ownership
+        if (template.getCreator() != user.getUsername()) {
+            resourceNotOwnedFailure();
+            return;
+        }
+
+        // Delete template.
+        DatabaseService.getInstance().deleteTemplate(templateId);
+        response.status(200);
+        responseBody.addProperty("status", "success");
+        responseBody.addProperty("user", user.getUsername());
     }
 }
