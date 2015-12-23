@@ -286,6 +286,13 @@ Comment on Template:
                     "status" : "failure",
                     "why" : "User does not exist/Not logged in"
                 }
+        Failure - Template Does Not Exist:
+            Code: 404 NOT FOUND
+            Content:
+                {
+                    "status" : "failure",
+                    "why" : "Template does not exist"
+                }
 
 Get List Of Scripts For User:
     Method: GET

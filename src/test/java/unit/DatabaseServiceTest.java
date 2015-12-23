@@ -126,4 +126,9 @@ public class DatabaseServiceTest {
         testDb.delete();
 
     }
+
+    @Test
+    public void addTemplateCommentTest() {
+
+    }
 }

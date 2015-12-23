@@ -8,19 +8,19 @@ public class MadLibsTemplateComment {
 
     private String templateId;
     private String user;
-    private String value;
+    private String content;
     private long date;
 
     /**
      * Constructs a comment.
      * @param templateId Id of template commented on.
      * @param user User commenting.
-     * @param value Value of comment.
+     * @param content Value of comment.
      */
-    public MadLibsTemplateComment(String templateId, String user, String value, long date) {
+    public MadLibsTemplateComment(String templateId, String user, String content, long date) {
         this.templateId = templateId;
         this.user = user;
-        this.value = value;
+        this.content = content;
         this.date = date;
     }
 
@@ -41,11 +41,11 @@ public class MadLibsTemplateComment {
     }
 
     /**
-     * Accessor for value of comment.
+     * Accessor for content of comment.
      * @return Value of comment.
      */
-    public String getValue() {
-        return this.value;
+    public String getContent() {
+        return this.content;
     }
 
     /**

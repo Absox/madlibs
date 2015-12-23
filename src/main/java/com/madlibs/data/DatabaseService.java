@@ -3,6 +3,7 @@ package com.madlibs.data;
 
 import com.madlibs.config.ServerConfigs;
 import com.madlibs.model.MadLibsTemplate;
+import com.madlibs.model.MadLibsTemplateComment;
 import com.madlibs.model.RegisteredUser;
 import org.sql2o.Connection;
 import org.sql2o.Query;
@@ -290,6 +291,41 @@ public class DatabaseService {
         } else {
             return results.get(0);
         }
+    }
+
+    /**
+     * Adds a comment to a template.
+     * @param comment Comment to add.
+     */
+    public void addTemplateComment(MadLibsTemplateComment comment) {
+        Connection connection = this.database.open();
+
+        String queryString = "insert into templateComments values(:templateId, :user, :content, :date)";
+        Query query = connection.createQuery(queryString);
+        query.addParameter("templateId", comment.getTemplateId());
+        query.addParameter("user", comment.getUser());
+        query.addParameter("content", comment.getContent());
+        query.addParameter("date", comment.getDate());
+        query.executeUpdate();
+
+        connection.close();
+    }
+
+    /**
+     * Retrieves a list of comments for a template.
+     * @param templateId Id of template to get comments for.
+     * @return List of comments.
+     */
+    public List<MadLibsTemplateComment> getCommentsOnTemplate(String templateId) {
+        Connection connection = this.database.open();
+
+        String queryString = "select * from templateComments where templateId = :templateId";
+        Query query = connection.createQuery(queryString);
+        query.addParameter("templateId", templateId);
+        List<MadLibsTemplateComment> result = query.executeAndFetch(MadLibsTemplateComment.class);
+        connection.close();
+
+        return result;
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.madlibs;
 
+import com.madlibs.server.TemplateCommentController;
 import com.madlibs.server.TemplateCreateController;
 import com.madlibs.server.UserLoginController;
 import com.madlibs.server.UserRegisterController;
@@ -35,9 +36,8 @@ public class Bootstrap {
         post("/madlibs/api/register", "application/json", (request, response) -> new UserRegisterController(request, response).getResponseBody());
         // Template create call
         post("/madlibs/api/template", "application/json", (request, response) -> new TemplateCreateController(request, response).getResponseBody());
-
         // Template comment call
-        post("/madlibs/api/template/:id/comment", "application/json", (request, response) -> ""); // TODO
+        post("/madlibs/api/template/:id/comment", "application/json", (request, response) -> new TemplateCommentController(request, response).getResponseBody()); // TODO
 
         // Template update call
         put("/madlibs/api/template/:id", "application/json", (request, response) -> {
