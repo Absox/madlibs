@@ -48,6 +48,7 @@ public abstract class RestEndpoint {
      */
     protected void issueAuthToken(String username) {
         AuthToken token = MadLibsServer.getInstance().issueToken(username);
+        response.cookie("authToken", token.toJson());
         responseBody.add("authToken", token.toJsonElement());
     }
 
@@ -76,7 +77,7 @@ public abstract class RestEndpoint {
 
             if (newToken != null) {
                 responseBody.add("authToken", newToken.toJsonElement());
-                responseBody.addProperty("authToken", newToken.toJson());
+                response.cookie("authToken", newToken.toJson());
                 return true;
             }
         }
