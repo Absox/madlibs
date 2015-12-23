@@ -47,7 +47,7 @@ public class MadLibsServer {
      * @param configs Configs.
      */
     public MadLibsServer(ServerConfigs configs) {
-        this.gameSessions = new ArrayList<>();
+        this();
         this.configs = configs;
     }
 

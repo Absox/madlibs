@@ -28,7 +28,9 @@ public abstract class RestEndpoint {
     protected RestEndpoint(Request request, Response response) {
         this.request = request;
         this.response = response;
-        this.parsedRequest = parser.parse(request.body()).getAsJsonObject();
+        if (!request.requestMethod().equals("GET") && !request.requestMethod().equals("DELETE")) {
+            this.parsedRequest = parser.parse(request.body()).getAsJsonObject();
+        }
         this.responseBody = new JsonObject();
     }
 
