@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60ab085f-66ab-4aa2-af29-d0a18158961a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/unit/TemplateGetControllerTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design/documents/API Spec" afterPath="$PROJECT_DIR$/design/documents/API Spec" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/data/DatabaseService.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/data/DatabaseService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsTemplate.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsTemplate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateCreateController.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateCreateController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateGetController.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateGetController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateUpdateController.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateUpdateController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/unit/DatabaseServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/unit/DatabaseServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/unit/MadLibsTemplateTest.java" afterPath="$PROJECT_DIR$/src/test/java/unit/MadLibsTemplateTest.java" />
     </list>
     <ignored path="MadLibs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,24 +54,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TemplateGetForUserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateGetForUserController.java">
+      <file leaf-file-name="Bootstrap.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/Bootstrap.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="API Spec" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/design/documents/API Spec">
+      <file leaf-file-name="TemplateGetForUserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateGetForUserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33212996">
-              <caret line="135" column="15" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="15" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,11 +92,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TemplateGetController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TemplateGetController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateGetController.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.2135416">
+              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TemplateGetControllerTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/unit/TemplateGetControllerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <caret line="26" column="50" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -128,18 +134,6 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="46" column="20" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/data/DatabaseService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="6.5172415">
-              <caret line="342" column="57" selection-start-line="342" selection-start-column="57" selection-end-line="342" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -235,8 +229,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateCreateController.java" />
         <option value="$PROJECT_DIR$/src/test/java/unit/MadLibsTemplateTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/unit/DatabaseServiceTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateGetController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateUpdateController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateGetController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/unit/TemplateGetControllerTest.java" />
       </list>
     </option>
   </component>
@@ -601,7 +596,7 @@
       <recent name="C:\Users\Ran\IdeaProjects\madlibs\design\ui sketches" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.unit in madlibs">
+  <component name="RunManager" selected="JUnit.TemplateGetControllerTest.testJsonConversion">
     <configuration default="false" name="All in madlibs" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="madlibs" />
@@ -643,32 +638,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="DatabaseServiceTest.addTemplateCommentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="unit.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="madlibs" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="unit" />
-      <option name="MAIN_CLASS_NAME" value="unit.DatabaseServiceTest" />
-      <option name="METHOD_NAME" value="addTemplateCommentTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="false" name="unit in madlibs" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -708,6 +677,32 @@
       <option name="PACKAGE_NAME" value="unit" />
       <option name="MAIN_CLASS_NAME" value="unit.DatabaseServiceTest" />
       <option name="METHOD_NAME" value="addUpdateTemplateTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="TemplateGetControllerTest.testJsonConversion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="unit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="madlibs" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="unit" />
+      <option name="MAIN_CLASS_NAME" value="unit.TemplateGetControllerTest" />
+      <option name="METHOD_NAME" value="testJsonConversion" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -994,17 +989,17 @@
       <item index="0" class="java.lang.String" itemvalue="JUnit.com.madlibs.data in madlibs" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.All in madlibs" />
       <item index="2" class="java.lang.String" itemvalue="Application.Bootstrap" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.DatabaseServiceTest.addTemplateCommentTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.unit in madlibs" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.DatabaseServiceTest.addUpdateTemplateTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.unit in madlibs" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.DatabaseServiceTest.addUpdateTemplateTest" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.TemplateGetControllerTest.testJsonConversion" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.unit in madlibs" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.All in madlibs" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.DatabaseServiceTest.addUpdateTemplateTest" />
-        <item index="3" class="java.lang.String" itemvalue="Application.Bootstrap" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.DatabaseServiceTest.addTemplateCommentTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TemplateGetControllerTest.testJsonConversion" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.unit in madlibs" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.All in madlibs" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.DatabaseServiceTest.addUpdateTemplateTest" />
+        <item index="4" class="java.lang.String" itemvalue="Application.Bootstrap" />
       </list>
     </recent_temporary>
   </component>
@@ -1304,27 +1299,33 @@
       <option name="project" value="LOCAL" />
       <updated>1450880462062</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Updated control code, spec.">
+      <created>1450882573679</created>
+      <option name="number" value="00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1450882573679</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_madlibs - 2015.12.23 at 08h 40m 02s.xml">
-      <configuration name="All in madlibs" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_madlibs - 2015.12.23 at 08h 47m 19s.xml">
-      <configuration name="All in madlibs" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_madlibs - 2015.12.23 at 09h 05m 21s.xml">
-      <configuration name="All in madlibs" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DatabaseServiceTest_addTemplateTest - 2015.12.22 at 22h 01m 02s.xml">
-      <configuration name="DatabaseServiceTest.addTemplateTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="DatabaseServiceTest_addTemplateTest - 2015.12.22 at 22h 01m 47s.xml">
       <configuration name="DatabaseServiceTest.addTemplateTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="DatabaseServiceTest_addUpdateTemplateTest - 2015.12.23 at 08h 39m 21s.xml">
       <configuration name="DatabaseServiceTest.addUpdateTemplateTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TemplateGetControllerTest_testJsonConversion - 2015.12.23 at 10h 07m 25s.xml">
+      <configuration name="TemplateGetControllerTest.testJsonConversion" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TemplateGetControllerTest_testJsonConversion - 2015.12.23 at 10h 07m 35s.xml">
+      <configuration name="TemplateGetControllerTest.testJsonConversion" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TemplateGetControllerTest_testJsonConversion - 2015.12.23 at 10h 08m 26s.xml">
+      <configuration name="TemplateGetControllerTest.testJsonConversion" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TemplateGetControllerTest_testJsonConversion - 2015.12.23 at 10h 08m 50s.xml">
+      <configuration name="TemplateGetControllerTest.testJsonConversion" configurationId="JUnit" />
     </history-entry>
     <history-entry file="unit_in_madlibs - 2015.12.23 at 08h 36m 50s.xml">
       <configuration name="unit in madlibs" configurationId="JUnit" />
@@ -1359,7 +1360,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39770868" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48772505" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.49092284" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32569557" sideWeight="0.49092284" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26701966" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1391,7 +1392,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Initial commit." />
     <MESSAGE value="UML class diagram push." />
     <MESSAGE value="Restructuring of design directories, added API spec." />
     <MESSAGE value="Updated api spec." />
@@ -1416,7 +1416,8 @@
     <MESSAGE value="Improved documentation. Generated javadoc." />
     <MESSAGE value="Reverted www after refactoring error." />
     <MESSAGE value="Added control code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added control code." />
+    <MESSAGE value="Updated control code, spec." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated control code, spec." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1429,11 +1430,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/design/uml/classDiagram.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/xerial/sqlite-jdbc/3.8.11.2/sqlite-jdbc-3.8.11.2.jar!/org/sqlite/SQLiteDataSource.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3967684">
@@ -1733,14 +1729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/Bootstrap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/data/DatabaseService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="6.5172415">
@@ -1789,31 +1777,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateGetController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateCommentController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="46" column="20" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateGetForUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1829,9 +1797,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/design/documents/API Spec">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33212996">
+        <state vertical-scroll-proportion="-0.036101084">
           <caret line="135" column="15" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="15" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/Bootstrap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateGetForUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/unit/TemplateGetControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="50" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/server/TemplateGetController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.2135416">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

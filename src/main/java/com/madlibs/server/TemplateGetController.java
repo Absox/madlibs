@@ -29,10 +29,9 @@ public class TemplateGetController implements RestEndpoint {
         if (DatabaseService.getInstance().templateExists(templateId)) {
             MadLibsTemplate template = DatabaseService.getInstance().getTemplate(templateId);
             List<MadLibsTemplateComment> comments = DatabaseService.getInstance().getCommentsOnTemplate(template.getId());
-            TemplateBodyJson json = new TemplateBodyJson(template, comments);
-            Gson gson = new Gson();
-            responseBody = gson.toJsonTree(json).getAsJsonObject();
 
+            response.status(200);
+            responseBody = templateToJson(template, comments);
         } else {
             this.responseBody = new JsonObject();
             response.status(404);
@@ -49,7 +48,18 @@ public class TemplateGetController implements RestEndpoint {
         return this.responseBody;
     }
 
-    private class TemplateBodyJson {
+    /**
+     * Converts a template and list of comments to json.
+     * @param template Template.
+     * @param comments Comments.
+     * @return Json object.
+     */
+    public static JsonObject templateToJson(MadLibsTemplate template, List<MadLibsTemplateComment> comments) {
+        TemplateBodyJson json = new TemplateBodyJson(template, comments);
+        return new Gson().toJsonTree(json).getAsJsonObject();
+    }
+
+    private static class TemplateBodyJson {
 
         private String status;
         private String title;
