@@ -22,7 +22,7 @@ public class TemplateCreateController implements RestEndpoint {
     public TemplateCreateController(Request request, Response response) {
         this.responseBody = new JsonObject();
         String username = request.cookie("loggedInUser");
-        String content = parser.parse(request.body()).getAsJsonObject().get("content").getAsString();
+        String content = parser.parse(request.body()).getAsJsonObject().get("value").getAsString();
         if (username != null) {
 
             // Check if user exists.
