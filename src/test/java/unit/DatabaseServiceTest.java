@@ -1,6 +1,9 @@
 package unit;
 
+import com.madlibs.config.ServerConfigs;
 import com.madlibs.data.DatabaseService;
+import com.madlibs.model.MadLibsTemplate;
+import com.madlibs.model.MadLibsTemplateComment;
 import com.madlibs.model.RegisteredUser;
 import org.apache.commons.codec.DecoderException;
 import org.junit.Test;
@@ -10,14 +13,14 @@ import org.sql2o.Sql2o;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
+ * Unit tests for DatabaseService class.
  * Created by Ran on 12/20/2015.
  */
 public class DatabaseServiceTest {
@@ -79,6 +82,73 @@ public class DatabaseServiceTest {
         }
 
         new File("registeredUserTest.db").delete();
+    }
 
+    @Test
+    public void serverConfigsTest() {
+
+        File testDb = new File("serverConfigTest.db");
+        if (testDb.exists()) testDb.delete();
+
+        DatabaseService testDatabase = new DatabaseService("serverConfigTest.db");
+        testDatabase.initializeDatabase();
+
+        ServerConfigs testConfigs = testDatabase.getServerConfigs();
+        assertEquals(testConfigs.getScriptId(),0);
+        assertEquals(testConfigs.getTemplateId(), 0);
+
+        testConfigs.getNextScriptId();
+        testConfigs.getNextTemplateId();
+        testDatabase.updateServerConfigs(testConfigs);
+
+        ServerConfigs retrievedConfigs = testDatabase.getServerConfigs();
+        assertEquals(retrievedConfigs.getScriptId(), 1);
+        assertEquals(retrievedConfigs.getTemplateId(), 1);
+
+        testDb.delete();
+    }
+
+    @Test
+    public void addTemplateTest() {
+
+        File testDb = new File("templateAddTest.db");
+        if (testDb.exists()) testDb.delete();
+
+        DatabaseService testDatabase = new DatabaseService("templateAddTest.db");
+        testDatabase.initializeDatabase();
+
+        MadLibsTemplate testTemplate = new MadLibsTemplate("1f", "absox", 0, "I am a [adjective] potato");
+        assertFalse(testDatabase.templateExists("1f"));
+        testDatabase.addTemplate(testTemplate);
+        assertTrue(testDatabase.templateExists("1f"));
+
+        MadLibsTemplate retrievedTemplate = testDatabase.getTemplate("1f");
+        assertEquals(retrievedTemplate.getNumBlanks(), 1);
+
+        testDb.delete();
+
+    }
+
+    @Test
+    public void addTemplateCommentTest() {
+        File testDb = new File("templateCommentTest.db");
+        if (testDb.exists()) testDb.delete();
+
+        DatabaseService testDatabase = new DatabaseService("templateCommentTest.db");
+        testDatabase.initializeDatabase();
+
+        long time = new Date().getTime();
+        MadLibsTemplateComment comment = new MadLibsTemplateComment("1f", "absox", "comment comment", time);
+        testDatabase.addTemplateComment(comment);
+        List<MadLibsTemplateComment> retrievedComments = testDatabase.getCommentsOnTemplate("1f");
+
+        assertEquals(retrievedComments.size(), 1);
+        MadLibsTemplateComment retrievedComment = retrievedComments.get(0);
+        assertEquals(retrievedComment.getTemplateId(), "1f");
+        assertEquals(retrievedComment.getUser(), "absox");
+        assertEquals(retrievedComment.getValue(), "comment comment");
+        assertEquals(retrievedComment.getDate(), time);
+
+        testDb.delete();
     }
 }

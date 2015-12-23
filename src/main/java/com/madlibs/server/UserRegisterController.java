@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.madlibs.data.DatabaseService;
 import com.madlibs.model.RegisteredUser;
 import spark.Request;
+import spark.Response;
 
 import java.io.IOException;
 
@@ -13,7 +14,6 @@ import java.io.IOException;
  */
 public class UserRegisterController implements RestEndpoint {
 
-    private int responseCode = 200;
     private JsonObject responseBody;
 
     /**
@@ -21,8 +21,11 @@ public class UserRegisterController implements RestEndpoint {
      * @param request Spark request.
      * @throws IOException
      */
-    public UserRegisterController(Request request) throws IOException {
+    public UserRegisterController(Request request, Response response) throws IOException {
+        response.status(200);
+
         this.responseBody = new JsonObject();
+
         JsonObject requestObject = parser.parse(request.body()).getAsJsonObject();
         String username = requestObject.get("user").getAsString().toLowerCase();
         String password = requestObject.get("password").getAsString();
@@ -38,15 +41,9 @@ public class UserRegisterController implements RestEndpoint {
 
             responseBody.addProperty("status", "success");
             responseBody.addProperty("user", username);
+            // Set login cookie.
+            response.cookie("loggedInUser", username);
         }
-    }
-
-    /**
-     * Accessor for response code.
-     * @return Response code.
-     */
-    public int getResponseCode() {
-        return this.responseCode;
     }
 
     /**

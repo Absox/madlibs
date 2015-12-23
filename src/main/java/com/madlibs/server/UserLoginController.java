@@ -5,6 +5,7 @@ import com.madlibs.data.DatabaseService;
 import com.madlibs.model.RegisteredUser;
 import org.apache.commons.codec.DecoderException;
 import spark.Request;
+import spark.Response;
 
 import java.io.IOException;
 
@@ -14,14 +15,15 @@ import java.io.IOException;
  */
 public class UserLoginController implements RestEndpoint {
 
-    private int responseCode = 200;
     private JsonObject responseBody;
 
     /**
      * Creates a controller to handle the request.
      * @param request Spark request.
      */
-    public UserLoginController(Request request) throws IOException, DecoderException {
+    public UserLoginController(Request request, Response response) throws IOException, DecoderException {
+        response.status(200);
+
         this.responseBody = new JsonObject();
         JsonObject requestObject = parser.parse(request.body()).getAsJsonObject();
         String username = requestObject.get("user").getAsString().toLowerCase();
@@ -33,6 +35,8 @@ public class UserLoginController implements RestEndpoint {
                 // Valid login.
                 responseBody.addProperty("status", "success");
                 responseBody.addProperty("user", username);
+                // Set login cookie.
+                response.cookie("loggedInUser", username);
             } else {
                 // Invalid password
                 responseBody.addProperty("status", "failure");
@@ -43,14 +47,6 @@ public class UserLoginController implements RestEndpoint {
             responseBody.addProperty("status", "failure");
             responseBody.addProperty("why", "User doesn't exist");
         }
-    }
-
-    /**
-     * Accessor for response code that should be given.
-     * @return Response code.
-     */
-    public int getResponseCode() {
-        return this.responseCode;
     }
 
     /**

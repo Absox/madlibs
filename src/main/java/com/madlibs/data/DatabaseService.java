@@ -1,6 +1,9 @@
 package com.madlibs.data;
 
 
+import com.madlibs.config.ServerConfigs;
+import com.madlibs.model.MadLibsTemplate;
+import com.madlibs.model.MadLibsTemplateComment;
 import com.madlibs.model.RegisteredUser;
 import org.sql2o.Connection;
 import org.sql2o.Query;
@@ -9,6 +12,7 @@ import org.sqlite.SQLiteDataSource;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Database service. Handles SQLite database calls.
@@ -17,10 +21,9 @@ import java.util.List;
 public class DatabaseService {
 
     private Sql2o database;
-
     private File databaseFile;
-
     private static DatabaseService instance;
+
     static {
         instance = new DatabaseService("data/madlibs.db");
         instance.initializeDatabase();
@@ -59,12 +62,67 @@ public class DatabaseService {
     public void initializeDatabase() {
         Connection connection = this.database.open();
 
-        // Create users table
-        String queryString = "create table if not exists users(username TEXT, saltedHashedPassword TEXT, salt TEXT)";
-        Query query = connection.createQuery(queryString);
-        query.executeUpdate();
+        initializeServerConfigsTable(connection);
+        initializeUsersTable(connection);
+        initializeTemplateTable(connection);
+        initializeTemplateCommentsTable(connection);
 
         connection.close();
+    }
+
+    /**
+     * Initializes template comments table.
+     * @param connection Database connection.
+     */
+    private void initializeTemplateCommentsTable(Connection connection) {
+        String templateCommentsTableQueryString = "create table if not exists templateComments(templateId TEXT, user TEXT, value TEXT, date INTEGER)";
+        Query templateCommentsTableQuery = connection.createQuery(templateCommentsTableQueryString);
+        templateCommentsTableQuery.executeUpdate();
+    }
+
+    /**
+     * Initializes the template table.
+     * @param connection Database connection.
+     */
+    private void initializeTemplateTable(Connection connection) {
+        String templateTableQueryString = "create table if not exists templates(id TEXT, creator TEXT, rating INTEGER, content TEXT)";
+        Query templateTableQuery = connection.createQuery(templateTableQueryString);
+        templateTableQuery.executeUpdate();
+    }
+
+    /**
+     * Initializes the server configs table.
+     * @param connection Database connection.
+     */
+    private void initializeServerConfigsTable(Connection connection) {
+        // Create server configuration table
+        String serverConfigTableQueryString = "create table if not exists serverConfig(templateId INTEGER, scriptId INTEGER)";
+        Query serverConfigTableQuery = connection.createQuery(serverConfigTableQueryString);
+        serverConfigTableQuery.executeUpdate();
+
+        // Check if configs are already there.
+        String checkForConfigsQueryString = "select * from serverConfig";
+        Query checkForConfigsQuery = connection.createQuery(checkForConfigsQueryString);
+        List<Map<String, Object>> result = checkForConfigsQuery.executeAndFetchTable().asList();
+        // If empty, add in default configs.
+        if (result.isEmpty()) {
+            String defaultConfigsQueryString = "insert into serverConfig values(:templateId, :scriptId)";
+            Query defaultConfigsQuery = connection.createQuery(defaultConfigsQueryString);
+            defaultConfigsQuery.addParameter("templateId", 0);
+            defaultConfigsQuery.addParameter("scriptId", 0);
+            defaultConfigsQuery.executeUpdate();
+        }
+    }
+
+    /**
+     * Initializes the users table.
+     * @param connection Database connection.
+     */
+    private void initializeUsersTable(Connection connection) {
+        // Create users table
+        String userTableQueryString = "create table if not exists users(username TEXT, saltedHashedPassword TEXT, salt TEXT)";
+        Query userTableQuery = connection.createQuery(userTableQueryString);
+        userTableQuery.executeUpdate();
     }
 
     /**
@@ -137,6 +195,137 @@ public class DatabaseService {
         } else {
             return result.get(0);
         }
+    }
+
+    /**
+     * Retrieves server configurations from database.
+     * @return Server configurations.
+     */
+    public ServerConfigs getServerConfigs() {
+        Connection connection = this.database.open();
+
+        String queryString = "select * from serverConfig";
+        Query query = connection.createQuery(queryString);
+        List<ServerConfigs> configs = query.executeAndFetch(ServerConfigs.class);
+
+        connection.close();
+
+        return configs.get(0);
+    }
+
+    /**
+     * Updates server configurations.
+     * @param configs Server configurations.
+     */
+    public void updateServerConfigs(ServerConfigs configs) {
+
+        Connection connection = this.database.open();
+
+        // Clear current configs
+        String queryString = "delete from serverConfig";
+        Query query = connection.createQuery(queryString);
+        query.executeUpdate();
+
+        // Insert new ones.
+        String insertQueryString = "insert into serverConfig values(:templateId, :scriptId)";
+        Query insertQuery = connection.createQuery(insertQueryString);
+        insertQuery.addParameter("templateId", configs.getTemplateId());
+        insertQuery.addParameter("scriptId", configs.getScriptId());
+        insertQuery.executeUpdate();
+
+        connection.close();
+    }
+
+    /**
+     * Adds template to database.
+     * @param template Template to add to database.
+     */
+    public void addTemplate(MadLibsTemplate template) {
+        Connection connection = this.database.open();
+
+        String queryString = "insert into templates values(:id, :creator, :rating, :content)";
+        Query query = connection.createQuery(queryString);
+        query.addParameter("id", template.getId());
+        query.addParameter("creator", template.getCreator());
+        query.addParameter("rating", template.getRating());
+        query.addParameter("content", template.getContent());
+        query.executeUpdate();
+
+        connection.close();
+    }
+
+    /**
+     * Checks if a template exists.
+     * @param id Id of template.
+     * @return True if exists, else false.
+     */
+    public boolean templateExists(String id) {
+        Connection connection = this.database.open();
+
+        String queryString = "select * from templates where id = :id";
+        Query query = connection.createQuery(queryString);
+        query.addParameter("id", id);
+        List<MadLibsTemplate> results = query.executeAndFetch(MadLibsTemplate.class);
+
+        connection.close();
+        return !results.isEmpty();
+    }
+
+    /**
+     * Gets template from database.
+     * @param id Id of template.
+     * @return MadLibsTemplate object if it exists, else null.
+     */
+    public MadLibsTemplate getTemplate(String id) {
+        Connection connection = this.database.open();
+
+        String queryString = "select * from templates where id = :id";
+        Query query = connection.createQuery(queryString);
+        query.addParameter("id", id);
+        List<MadLibsTemplate> results = query.executeAndFetch(MadLibsTemplate.class);
+
+        connection.close();
+
+        if (results.isEmpty()) {
+            return null;
+        } else {
+            return results.get(0);
+        }
+    }
+
+    /**
+     * Adds a comment to a template.
+     * @param comment Comment to add.
+     */
+    public void addTemplateComment(MadLibsTemplateComment comment) {
+        Connection connection = this.database.open();
+
+        String queryString = "insert into templateComments values(:templateId, :user, :content, :date)";
+        Query query = connection.createQuery(queryString);
+        query.addParameter("templateId", comment.getTemplateId());
+        query.addParameter("user", comment.getUser());
+        query.addParameter("content", comment.getValue());
+        query.addParameter("date", comment.getDate());
+        query.executeUpdate();
+
+        connection.close();
+    }
+
+    /**
+     * Retrieves a list of comments for a template.
+     * @param templateId Id of template to get comments for.
+     * @return List of comments.
+     */
+    public List<MadLibsTemplateComment> getCommentsOnTemplate(String templateId) {
+        Connection connection = this.database.open();
+
+        String queryString = "select * from templateComments where templateId = :templateId";
+        Query query = connection.createQuery(queryString);
+        query.addParameter("templateId", templateId);
+        List<MadLibsTemplateComment> result = query.executeAndFetch(MadLibsTemplateComment.class);
+        connection.close();
+
+        return result;
     }
 
     /**

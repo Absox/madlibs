@@ -1,5 +1,7 @@
 package com.madlibs.server;
 
+import com.madlibs.config.ServerConfigs;
+import com.madlibs.data.DatabaseService;
 import com.madlibs.model.MadLibsSession;
 
 import java.util.ArrayList;
@@ -11,10 +13,18 @@ import java.util.List;
  */
 public class MadLibsServer {
 
+    private ServerConfigs configs;
     private List<MadLibsSession> gameSessions;
+    private static MadLibsServer instance;
 
-    private static MadLibsServer instance = new MadLibsServer();
+    static {
+        instance = new MadLibsServer(DatabaseService.getInstance().getServerConfigs());
+    }
 
+    /**
+     * Accessor for singleton instance.
+     * @return Singleton instance of server.
+     */
     public static MadLibsServer getInstance() {
         return instance;
     }
@@ -24,5 +34,32 @@ public class MadLibsServer {
      */
     public MadLibsServer() {
         this.gameSessions = new ArrayList<>();
+        this.configs = new ServerConfigs(0, 0);
     }
+
+    /**
+     * Initializes a new server with configs.
+     * @param configs Configs.
+     */
+    public MadLibsServer(ServerConfigs configs) {
+        this.gameSessions = new ArrayList<>();
+        this.configs = configs;
+    }
+
+    /**
+     * Accessor for configs.
+     * @return Configurations of this server.
+     */
+    public ServerConfigs getConfigs() {
+        return this.configs;
+    }
+
+    /**
+     * Mutator for configs.
+     * @param configs New configs object for server.
+     */
+    public void setConfigs(ServerConfigs configs) {
+        this.configs = configs;
+    }
+
 }

@@ -13,7 +13,7 @@
 }
 
 body:before
-	content:"0";
+	value:"0";
 	background:black;
 	color:white;
 	position:fixed;
@@ -31,7 +31,7 @@ body:before
 		i = (i) + 1
 		
 		+bp(i)
-			content \"i\"
+			value \"i\"
 			
 			if i%2
 				animation breakpoint-fader-odd 2s forwards ease-in

@@ -70,6 +70,7 @@ Create Template:
     Request Content:
         // Username pulled from cookies.
         {
+            "value" : <value>
         }
     Response Cases:
         Success:
@@ -120,7 +121,7 @@ Get Template Body:
                     "creator" : <creator>,
                     "rating" : <rating>,
                     "comments" : [comments],
-                    "content" : <content>
+                    "value" : <value>
 
                 }
         Failure - Template Not Found:
@@ -136,7 +137,7 @@ Update Template:
     Path: /madlibs/api/template/<id>
     Request Content:
         {
-            "content" : <content>
+            "value" : <value>
         }
     Response Cases:
         Success:
@@ -267,7 +268,7 @@ Comment on Template:
     Path: /madlibs/api/template/<id>/comment
     Request Content:
         {
-            "content" : <content>
+            "value" : <value>
         }
     Response Cases:
         Success:
@@ -284,6 +285,13 @@ Comment on Template:
                 {
                     "status" : "failure",
                     "why" : "User does not exist/Not logged in"
+                }
+        Failure - Template Does Not Exist:
+            Code: 404 NOT FOUND
+            Content:
+                {
+                    "status" : "failure",
+                    "why" : "Template does not exist"
                 }
 
 Get List Of Scripts For User:
@@ -321,5 +329,14 @@ Get Finished Script:
                     "status" : "failure",
                     "why" : "Script does not exist!"
                 }
+Start Game Session:
+    Method: POST
+    Path: /madlibs/api/session
+    Request Content:
+        {
+            // TODO
+        }
+    Response Cases:
+        // TODO
 
 --- WEBSOCKET ---

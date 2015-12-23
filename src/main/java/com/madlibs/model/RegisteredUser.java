@@ -42,7 +42,7 @@ public class RegisteredUser extends User {
 
     /**
      * Generates a new salt, and hashes password.
-     * @param password
+     * @param password Plaintext password.
      */
     public void setPassword(String password) throws IOException {
         // Generate salt.

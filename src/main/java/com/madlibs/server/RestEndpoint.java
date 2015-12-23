@@ -12,12 +12,6 @@ public interface RestEndpoint {
     JsonParser parser = new JsonParser();
 
     /**
-     * Gets response code.
-     * @return Response code.
-     */
-    int getResponseCode();
-
-    /**
      * Gets response body.
      * @return Response body.
      */

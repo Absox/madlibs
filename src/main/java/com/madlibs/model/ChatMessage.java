@@ -2,6 +2,7 @@ package com.madlibs.model;
 
 
 /**
+ * Chat message.
  * Created by Ran on 12/22/2015.
  */
 public class ChatMessage {

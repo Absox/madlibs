@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * A completed mad libs script.
  * Created by Ran on 12/22/2015.
  */
 public class MadLibsScript {
@@ -15,7 +16,7 @@ public class MadLibsScript {
 
     /**
      * Creates a new blank mad libs script.
-     * @param template
+     * @param template Template which we're making a script for.
      */
     public MadLibsScript(MadLibsTemplate template, String owner, String id) {
         this.id = id;
