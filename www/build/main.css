@@ -647,11 +647,22 @@ body {
 .template-select {
   font-family: "freight-text-pro", sans-serif;
   min-width: 300px;
+  font-size: 0.8em;
 }
 .template-select h1 {
   font-weight: lighter;
   margin-top: 0;
   margin-bottom: 0.5em;
+}
+@media all and (min-width: 30em) {
+  .template-select {
+    font-size: 0.9em;
+  }
+}
+@media all and (min-width: 46em) {
+  .template-select {
+    font-size: 1em;
+  }
 }
 .template-select__select {
   padding: 1em;
