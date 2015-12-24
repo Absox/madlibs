@@ -29,7 +29,7 @@ public class Bootstrap {
         get("/script", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
         get("/script/*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
         get("/templates", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
-        get("/templates/*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/template/*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
         get("/account", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
         get("/account/*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
         get("/select-template", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
