@@ -19,15 +19,17 @@ public class Bootstrap {
         externalStaticFileLocation("www");
 
         // Set access origin header.
-        before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
+        before((request, response) -> {
+            response.header("Access-Control-Allow-Origin", "*");
+        });
 
         // Serve static files.
         get("/game", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
         get("/game/*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
         get("/script", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
         get("/script/*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
-        get("/template", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
-        get("/template/*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/templates", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
+        get("/templates/*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
         get("/account", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
         get("/account/*", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
         get("/select-template", (request, response) -> new String(Files.readAllBytes(Paths.get("www/index.html"))));
