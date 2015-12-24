@@ -3,20 +3,21 @@ body {
 	font-size:font-size;
 	font-family:base-font-family;
 	background:#F5F3F0;
-	overflow-y:hidden;
+	overflow-y:scroll;
 }
 
 
 .wrapper {
 	max-width:80em;
+	width:100%;
 	padding:0 1.5em;
 	margin:0 auto;
 }
 
-#app-root {
-	min-height: "calc(100vh - %s)" % (footer_height);
+#app-root > div {
+	display:flex;
+	flex-direction:column;
 }
-
 
 ::-webkit-selection,
 ::selection {

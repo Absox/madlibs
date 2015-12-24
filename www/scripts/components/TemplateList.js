@@ -12,11 +12,21 @@ var TemplateList = React.createClass({
 		};
 	},
 
-	getTemplates: function() {
-		h.request("http://104.236.225.1:3000/madlibs/templates/user/"+sam, "GET", null, function(request) {
+	componentDidMount: function() {
+		this.updateTemplateList();
+	},
+
+	updateTemplateList: function() {
+
+		var self = this;
+		h.request("http://104.236.225.1:3000/madlibs/api/template/user/sam", "GET", null, function(request) {
 			var data = JSON.parse(request.responseText);
 
-			this.setState({templates: data});
+			for (var i = 0; i < data.templates.length; i++) { 
+			    data.templates[i].templatelink = "/template/"+data.templates[i].id;
+			}
+
+			self.setState({templates: data.templates});
 		});
 	},
 
@@ -29,22 +39,23 @@ var TemplateList = React.createClass({
 
 		post_data = JSON.stringify(post_data);
 
+		var self = this;
+
 		h.request("http://104.236.225.1:3000/madlibs/api/template", "POST", post_data, function(request) {
 
 			var data = JSON.parse(request.responseText);
 
-			if(request.statusCode != 200) return false;
+			if(request.status != 200) return false;
 
-			if(request.data.status=="success") {
-				this.context.history.pushState(null, '/template/'+data.id);
-			} else {
+			if(data.status=="success") {
+				self.history.pushState(null, '/template/'+data.id);
 			}
+
+			self.updateTemplateList();
 		});
-		
 	},
 
 	render : function() {
-		console.log(this.props);
 
 		return (
 			<div className="wrapper">
@@ -55,7 +66,11 @@ var TemplateList = React.createClass({
 		  		<ul>
 		  			{
 						this.state.templates.map(function(template) {
-							return <li key={template.id}>{template.title}</li>;
+							return <li key={template.id}>
+									<Link to={template.templatelink}>
+										{template.title ? template.title : "No title specified"}
+									</Link>
+								</li>;
 						})
 					} 
 		  		</ul>

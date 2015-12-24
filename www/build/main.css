@@ -236,16 +236,23 @@ body:before {
   }
 }
 .site-content {
-  height: calc(100vh - 4.6rem - 4.6rem);
-  overflow: hidden;
-  min-height: 400px;
+  min-height: calc(100vh - 4.6rem - 4.6rem);
   position: relative;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .site-content__centered-wrapper,
 .home-screen,
 .template-select-wrapper,
 .login-wrapper {
-  height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -258,6 +265,11 @@ body:before {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 2em 0;
 }
 .site-footer {
   line-height: 4.6rem;
@@ -278,7 +290,8 @@ form .message {
 }
 [type="text"],
 [type="password"],
-select {
+select,
+textarea {
   display: block;
   margin: 0.5em 0;
   border: 1px solid rgba(0,0,0,0.2);
@@ -404,16 +417,25 @@ body {
   font-size: 16px;
   font-family: "Lato", sans-serif;
   background: #f5f3f0;
-  overflow-y: hidden;
+  overflow-y: scroll;
 }
 .wrapper,
 .signup-wrapper {
   max-width: 80em;
+  width: 100%;
   padding: 0 1.5em;
   margin: 0 auto;
 }
-#app-root {
-  min-height: calc(100vh - 4.6rem);
+#app-root > div {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 ::-webkit-selection,
 ::selection {
@@ -665,11 +687,34 @@ body {
   float: right;
 }
 .game-wrapper {
-  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .game-ui {
-  height: calc(100% - 6em);
-  clear: both;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .login-content h2 {
   margin-top: 0;

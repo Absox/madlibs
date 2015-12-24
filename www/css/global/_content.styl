@@ -1,13 +1,16 @@
 .site-content {
-	height: "calc(100vh - %s - %s)" % (footer_height header_height);
-	overflow:hidden;
-	min-height:400px;
+	min-height: "calc(100vh - %s - %s)" % (footer_height header_height);
 	position:relative;
+	overflow:hidden;
+	display:flex;
+	flex-direction:column;
 }
+	
 
 .site-content__centered-wrapper {
-	height:100%;
 	display:flex;
 	align-items: center;
     justify-content: center;
+    flex:1;
+    padding:2em 0;
 }

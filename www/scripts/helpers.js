@@ -7,6 +7,7 @@ let helpers = {
 				callback(r)
 			}
 		};
+		r.withCredentials = true;
 		r.send(body);
 		return r;
 	},
@@ -22,6 +23,13 @@ let helpers = {
 		}
 
 		return "";
+	},
+
+	setCookie(cname, cvalue, expiry) {
+	    var d = new Date();
+	    d.setTime(expiry);
+	    var expires = "expires="+d.toUTCString();
+	    document.cookie = cname + "=" + cvalue + "; " + expires;
 	}
 }
 

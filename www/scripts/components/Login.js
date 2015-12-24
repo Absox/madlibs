@@ -33,6 +33,7 @@ var LogIn = React.createClass({
 		  	
 		  	if(data.status == "success") {
 	    		self.history.pushState(null, '/account');
+	    		//h.setCookie("authtoken", JSON.stringify(data.authToken), data.authToken.expiration);
 		  	}
 
 			if(data.status == "failure") {

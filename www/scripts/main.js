@@ -23,7 +23,7 @@ var routes = (
 			<Route path="/select-template/" components={SelectTemplate} />
 			<Route path="/game/:gameID" component={Game} />
 			<Route path="/templates" component={TemplateList} />
-			<Route path="/templates/:templateID" component={TemplateEditor} />
+			<Route path="/template/:templateID" component={TemplateEditor} />
 			<Route path="/account" component={Account} />
 			<Route path="/signup" component={SignUp} />
 			<Route path="/login" component={LogIn} />
