@@ -92,11 +92,27 @@ public class MadLibsSession {
     }
 
     /**
+     * Adds message to chat log.
+     * @param message Message to add to chatlog.
+     */
+    public void addChatMessage(ChatMessage message) {
+        this.chat.add(message);
+    }
+
+    /**
      * Gets the number of participants in the session.
      * @return Number of participants in the session.
      */
     public int getNumParticipants() {
         return this.participants.size();
+    }
+
+    /**
+     * Accessor for participants.
+     * @return Participants in the session.
+     */
+    public List<MadLibsSessionParticipant> getParticipants() {
+        return this.participants;
     }
 
     /**

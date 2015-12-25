@@ -1,5 +1,8 @@
 com.madlibs
+com.madlibs.authentication
 com.madlibs.config
 com.madlibs.data
 com.madlibs.model
+com.madlibs.restcontroller
 com.madlibs.server
+com.madlibs.websocketcontroller

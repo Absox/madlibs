@@ -1,6 +1,7 @@
 package unit;
 
 import com.madlibs.model.MadLibsSession;
+import com.madlibs.model.MadLibsSessionParticipant;
 import com.madlibs.model.MadLibsTemplate;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,8 +35,25 @@ public class MadLibsSessionTest {
     public void testBasic() {
         assertEquals(testSession.getHost(), "absox");
         assertEquals(testSession.getCurrentPrompt(), "[noun]");
+    }
 
+    @Test
+    public void testJoin() {
         testSession.participantJoin("absox", null);
+        testSession.participantJoin("sam", null);
+
+        MadLibsSessionParticipant absox = testSession.getParticipantByIdentifier("absox");
+        assertEquals(absox.getIdentifier(), "absox");
+
+        assertEquals(testSession.getNumParticipants(), 2);
         assertEquals(testSession.getCurrentParticipant().getIdentifier(), "absox");
+
+        testSession.participantLeave("absox");
+        assertEquals(testSession.getCurrentParticipant().getIdentifier(), "sam");
+    }
+
+    @Test
+    public void testResponses() {
+
     }
 }
