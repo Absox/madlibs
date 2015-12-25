@@ -34,6 +34,22 @@ Game Messages:
             "currentPrompt" : <currentPrompt>,
             "currentTurn" : <currentTurn> // Identifier of user whose turn it is
         }
+    GAME END MESSAGE | SERVER
+        {
+            "type" : "gameEnd",
+            "id" : <sessionID>,
+            "users" : [usernames],
+            "template" : <template>,
+            "responses" : [response]
+
+            /*
+            response = {
+                "user" : <user>
+                "value" : <value>,
+            }
+            */
+        }
+
     RESPONSE SUBMISSION | USER
         {
             "type" : "responseSubmit",
