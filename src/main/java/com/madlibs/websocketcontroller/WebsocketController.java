@@ -19,12 +19,12 @@ public class WebsocketController {
     }
 
     @OnWebSocketMessage
-    public void onMessage(Session session) {
+    public void onMessage(Session session, String message) {
 
     }
 
     @OnWebSocketClose
-    public void onClose(Session session) {
+    public void onClose(Session session, int statusCode, String reason) {
 
     }
 

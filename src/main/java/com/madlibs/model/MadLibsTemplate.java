@@ -1,5 +1,7 @@
 package com.madlibs.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -113,6 +115,23 @@ public class MadLibsTemplate {
             numBlanks++;
         }
         return numBlanks;
+    }
+
+    /**
+     * Returns a list of the prompts in this template.
+     * @return List of prompts in this template.
+     */
+    public List<String> getPrompts() {
+        Pattern pattern = Pattern.compile("\\[[^\\[]*\\]");
+        Matcher matcher = pattern.matcher(this.content);
+
+        ArrayList<String> result = new ArrayList<>();
+
+        while (matcher.find()) {
+            result.add(matcher.group());
+        }
+
+        return result;
     }
 
 }
