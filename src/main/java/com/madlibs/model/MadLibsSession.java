@@ -3,6 +3,7 @@ package com.madlibs.model;
 import org.eclipse.jetty.websocket.api.Session;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -91,12 +92,83 @@ public class MadLibsSession {
     }
 
     /**
+     * Gets the number of participants in the session.
+     * @return Number of participants in the session.
+     */
+    public int getNumParticipants() {
+        return this.participants.size();
+    }
+
+    /**
+     * Gets the participant whose turn it is.
+     * @return Participant whose turn it is
+     */
+    public MadLibsSessionParticipant getCurrentParticipant() {
+        if (queueHeadPosition < participants.size()) {
+            return participants.get(queueHeadPosition);
+        }
+        return null;
+    }
+
+    /**
+     * Adds a response.
+     * @param value Value of response.
+     */
+    public void addResponse(String value) {
+        MadLibsSessionParticipant currentParticipant = this.getCurrentParticipant();
+        this.responses.add(new MadLibsResponse(currentParticipant.getIdentifier(), value));
+        this.currentPromptIndex++;
+        this.queueHeadPosition++;
+        if (this.queueHeadPosition >= this.participants.size()) {
+            this.queueHeadPosition = 0;
+        }
+    }
+
+    /**
      * Adds a participant to the session.
      * @param identifier Identifier of the participant.
      * @param session Websocket session.
      */
     public void participantJoin(String identifier, Session session) {
         this.participants.add(new MadLibsSessionParticipant(identifier, session));
+    }
+
+    /**
+     * Removes a participant from session.
+     * @param identifier Identifier of participant
+     * @return True if found, else false.
+     */
+    public boolean participantLeave(String identifier) {
+        return this.removeParticipant((participant) -> participant.getIdentifier().equals(identifier));
+    }
+
+    /**
+     * Removes a participant from session.
+     * @param session Websocket session associated with participant.
+     * @return True if found, else false.
+     */
+    public boolean participantLeave(Session session) {
+        return this.removeParticipant((participant) -> participant.getSession().equals(session));
+    }
+
+    /**
+     * Removes a participant from the session.
+     * @param criterion Functional interface containing the removal criterion.
+     * @return True if removed, else false.
+     */
+    private boolean removeParticipant(SelectionCriterion criterion) {
+        Iterator<MadLibsSessionParticipant> iterator = this.participants.iterator();
+        while (iterator.hasNext()) {
+            MadLibsSessionParticipant currentParticipant = iterator.next();
+            if (criterion.shouldSelect(currentParticipant)) {
+                iterator.remove();
+                if (queueHeadPosition >= this.participants.size()) {
+                    queueHeadPosition = 0;
+                }
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -120,10 +192,7 @@ public class MadLibsSession {
      * @return MadLibsSessionParticipant object if one exists, else null.
      */
     public MadLibsSessionParticipant getParticipantByIdentifier(String identifier) {
-        for (MadLibsSessionParticipant p : participants) {
-            if (p.getIdentifier().equals(identifier)) return p;
-        }
-        return null;
+        return this.getParticipant((participant) -> participant.getIdentifier().equals(identifier));
     }
 
     /**
@@ -132,9 +201,25 @@ public class MadLibsSession {
      * @return MadLibsSessionParticipant if match found, else null.
      */
     public MadLibsSessionParticipant getParticipantBySession(Session session) {
+        return this.getParticipant((participant) -> participant.getSession().equals(session));
+    }
+
+    /**
+     * Gets a participant based on the criterion passed.
+     * @param criterion Criterion for selecting a participant.
+     * @return Participant if match found, else null.
+     */
+    private MadLibsSessionParticipant getParticipant(SelectionCriterion criterion) {
         for (MadLibsSessionParticipant p : participants) {
-            if (p.getSession().equals(session)) return p;
+            if (criterion.shouldSelect(p)) return p;
         }
         return null;
+    }
+
+    /**
+     * Functional interface containing the criterion for a participant's selection.
+     */
+    private interface SelectionCriterion {
+        boolean shouldSelect(MadLibsSessionParticipant p);
     }
 }
