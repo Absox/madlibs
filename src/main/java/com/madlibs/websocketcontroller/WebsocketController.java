@@ -9,7 +9,7 @@ import org.eclipse.jetty.websocket.api.annotations.WebSocket;
 import java.io.IOException;
 
 /**
- * Main websocket controller.
+ * Main websocket controller. Delegates calls toother controllers.
  * Created by Ran on 12/23/2015.
  */
 @WebSocket
