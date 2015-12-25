@@ -1,4 +1,4 @@
-package com.madlibs.server;
+package com.madlibs.restcontroller;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;

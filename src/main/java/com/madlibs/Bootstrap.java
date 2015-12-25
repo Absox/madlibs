@@ -1,6 +1,7 @@
 package com.madlibs;
 
-import com.madlibs.server.*;
+import com.madlibs.restcontroller.*;
+import com.madlibs.websocketcontroller.WebsocketController;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -16,6 +17,11 @@ public class Bootstrap {
     public static void main(String[] args) {
 
         port(80);
+
+        // Bind websocket route
+        webSocket("/madlibs/api/websocket", WebsocketController.class);
+
+        // Set static file base.
         externalStaticFileLocation("www");
 
         // Set access origin header.

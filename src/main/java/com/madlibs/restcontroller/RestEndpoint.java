@@ -1,10 +1,11 @@
-package com.madlibs.server;
+package com.madlibs.restcontroller;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.madlibs.authentication.AuthToken;
 import com.madlibs.data.DatabaseService;
 import com.madlibs.model.RegisteredUser;
+import com.madlibs.server.MadLibsServer;
 import spark.Request;
 import spark.Response;
 
@@ -49,7 +50,6 @@ public abstract class RestEndpoint {
     protected void issueAuthToken(String username) {
         AuthToken token = MadLibsServer.getInstance().issueToken(username);
         response.cookie("authToken", token.toJson());
-        responseBody.add("authToken", token.toJsonElement());
     }
 
     /**
@@ -76,7 +76,6 @@ public abstract class RestEndpoint {
             AuthToken newToken = MadLibsServer.getInstance().authenticate(currentToken);
 
             if (newToken != null) {
-                responseBody.add("authToken", newToken.toJsonElement());
                 response.cookie("authToken", newToken.toJson());
                 return true;
             }

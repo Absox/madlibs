@@ -34,6 +34,12 @@ Game Messages:
             "currentPrompt" : <currentPrompt>,
             "currentTurn" : <currentTurn> // Identifier of user whose turn it is
         }
+    RESPONSE SUBMISSION | USER
+        {
+            "type" : "responseSubmit",
+            "id" : <sessionID>,
+            "user" : <userIdentifier>
+        }
 
 Chat Messages:
 

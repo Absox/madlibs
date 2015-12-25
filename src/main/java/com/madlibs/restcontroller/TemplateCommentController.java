@@ -1,4 +1,4 @@
-package com.madlibs.server;
+package com.madlibs.restcontroller;
 
 import com.madlibs.data.DatabaseService;
 import com.madlibs.model.MadLibsTemplate;
