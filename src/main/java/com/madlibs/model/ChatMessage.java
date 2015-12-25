@@ -7,7 +7,7 @@ package com.madlibs.model;
  */
 public class ChatMessage {
 
-    private String dateStamp;
+    private long dateStamp;
     private String user;
     private String value;
 
@@ -17,7 +17,7 @@ public class ChatMessage {
      * @param user User who sent message.
      * @param value Value of message.
      */
-    public ChatMessage(String dateStamp, String user, String value) {
+    public ChatMessage(long dateStamp, String user, String value) {
         this.dateStamp = dateStamp;
         this.user = user;
         this.value = value;

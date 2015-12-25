@@ -11,9 +11,14 @@ public class MadLibsSession {
 
     private String host;
     private String id;
-    private MadLibsScript script;
-    private List<String> participants;
+    private List<String> participants; // Circular queue of participants
+    private int queueHeadPosition;
+
     private List<ChatMessage> chat;
+    private MadLibsTemplate template;
+
+    private List<String> prompts;
+    private int currentPromptIndex;
 
     /**
      * Creates a new mad libs session.
@@ -24,8 +29,9 @@ public class MadLibsSession {
     public MadLibsSession(String id, String host, MadLibsTemplate template) {
         this.host = host;
         this.id = id;
-        this.script = new MadLibsScript(template, host, id);
         this.participants = new ArrayList<>();
         this.chat = new ArrayList<>();
+        this.template = template;
+        this.prompts = template.getPrompts();
     }
 }
