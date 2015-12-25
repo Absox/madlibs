@@ -15,7 +15,7 @@ public class Bootstrap {
 
     public static void main(String[] args) {
 
-        port(3000);
+        port(80);
         externalStaticFileLocation("www");
 
         // Set access origin header.

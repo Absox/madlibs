@@ -1,0 +1,55 @@
+Websocket Spec
+
+Path:
+/madlibs/api/websocket
+
+Game Messages:
+
+    JOIN | USER
+        {
+            "type" : "gameJoin",
+            "id" : <sessionID>,
+            "user" : <userIdentifier> // Null if anonymous
+        }
+    JOIN RESPONSE SUCCESS | SERVER
+        {
+            "type" : "gameJoinResponse",
+            "status" : "success",
+            "id" : <sessionID>,
+            "user" : <userIdentifier>
+        }
+    JOIN RESPONSE FAILURE | SERVER
+        {
+            "type" : "gameJoinResponse",
+            "status" : "failure",
+            "id" : <sessionID>,
+            "why" : "<reason>"
+        }
+
+    GAME STATE UPDATE | SERVER
+        {
+            "type" : "gameStateUpdate",
+            "id" : <sessionID>,
+            "users" : [usernames],
+            "currentPrompt" : <currentPrompt>,
+            "currentTurn" : <currentTurn> // Identifier of user whose turn it is
+        }
+
+Chat Messages:
+
+    SEND CHAT MESSAGE | USER
+        {
+            "type" : "chatSend",
+            "id" : <sessionID>,
+            "user" : <userIdentifier>,
+            "message" : <message>
+        }
+
+    CHAT MESSAGE RECEIVED | SERVER
+        {
+            "type" : "chatReceive",
+            "id" : <sessionID>,
+            "user" : <userIdentifier>,
+            "message" : <message>,
+            "time" : <time>
+        }
