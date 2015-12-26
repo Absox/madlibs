@@ -336,7 +336,7 @@ Start Game Session:
     Path: /madlibs/api/session
     Request Content:
         {
-            // TODO
+            "templateId" : <templateId>
         }
     Response Cases:
         // TODO

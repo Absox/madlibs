@@ -1,7 +1,5 @@
 package com.madlibs.websocketcontroller;
 
-import com.madlibs.model.MadLibsSession;
-import com.madlibs.server.MadLibsServer;
 import org.eclipse.jetty.websocket.api.Session;
 
 /**
@@ -27,6 +25,7 @@ public class WebsocketCloseController {
     }
 
     public void handle() {
+        // TODO
     }
 
 }
