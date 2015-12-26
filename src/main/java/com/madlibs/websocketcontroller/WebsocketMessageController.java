@@ -8,7 +8,17 @@ import org.eclipse.jetty.websocket.api.Session;
  */
 public class WebsocketMessageController {
 
-    public static void handleMessage(Session sesion, String message) {
+    /**
+     * Constructs a controller to handle the message.
+     * @param session
+     * @param message
+     */
+    public WebsocketMessageController(Session session, String message) {
+
+    }
+
+
+    public void handle() {
 
     }
 }

@@ -23,4 +23,28 @@ public class ChatMessage {
         this.value = value;
     }
 
+    /**
+     * Accessor for datestamp.
+     * @return Date stamp.
+     */
+    public long getDateStamp() {
+        return this.dateStamp;
+    }
+
+    /**
+     * Accessor for user.
+     * @return User.
+     */
+    public String getUser() {
+        return this.user;
+    }
+
+    /**
+     * Accessor for value.
+     * @return Value of chat message.
+     */
+    public String getValue() {
+        return this.value;
+    }
+
 }

@@ -4,11 +4,10 @@ import com.madlibs.authentication.AuthToken;
 import com.madlibs.config.ServerConfigs;
 import com.madlibs.data.DatabaseService;
 import com.madlibs.model.MadLibsSession;
+import com.madlibs.model.MadLibsTemplate;
+import org.eclipse.jetty.websocket.api.Session;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Mad libs server object.
@@ -16,10 +15,12 @@ import java.util.List;
  */
 public class MadLibsServer {
 
-    private ServerConfigs configs;
-    private List<MadLibsSession> gameSessions;
-    private List<AuthToken> authTokens;
     private static MadLibsServer instance;
+
+    private ServerConfigs configs;
+    private List<AuthToken> authTokens;
+    private HashMap<String, MadLibsSession> gameSessions;
+    private HashMap<Session, MadLibsSession> sessionMap;
 
     static {
         instance = new MadLibsServer(DatabaseService.getInstance().getServerConfigs());
@@ -37,8 +38,9 @@ public class MadLibsServer {
      * Creates a new server for handling games.
      */
     public MadLibsServer() {
-        this.gameSessions = new ArrayList<>();
         this.authTokens = new ArrayList<>();
+        this.gameSessions = new HashMap<>();
+        this.sessionMap = new HashMap<>();
         this.configs = new ServerConfigs(0, 0, 0);
     }
 
@@ -106,6 +108,57 @@ public class MadLibsServer {
      */
     public void setConfigs(ServerConfigs configs) {
         this.configs = configs;
+    }
+
+    /**
+     * Creates a game session.
+     * @param id Id of game session.
+     */
+    public void createSession(String id, String host, MadLibsTemplate template) {
+        MadLibsSession newSession = new MadLibsSession(id, host, template);
+        this.gameSessions.put(id, newSession);
+    }
+
+    /**
+     * Gets the game session with corresponding id.
+     * @param id Id of game session.
+     * @return MadLibsSession if there exists one; else null.
+     */
+    public MadLibsSession getSessionById(String id) {
+        if (this.gameSessions.containsKey(id)) {
+            return this.gameSessions.get(id);
+        }
+        return null;
+    }
+
+    /**
+     * Adds participant to session.
+     * @param id Id of session.
+     * @param identifier Identifier, if the user is logged in. Else, null.
+     * @param session Websocket session.
+     */
+    public void addParticipantToSession(String id, Session session, String identifier) {
+        MadLibsSession gameSession = this.getSessionById(id);
+        gameSession.participantJoin(identifier, session);
+        this.sessionMap.put(session, gameSession);
+    }
+
+    /**
+     * Disconnects a participant.
+     * @param session Websocket session.
+     */
+    public void disconnectParticipant(Session session) {
+        MadLibsSession gameSession = this.sessionMap.get(session);
+        gameSession.participantLeave(session);
+        this.sessionMap.remove(session);
+    }
+
+    /**
+     * Ends a game session, stores to db.
+     * @param id Id of game session.
+     */
+    public void finalizeSession(String id) {
+        // TODO
     }
 
 }

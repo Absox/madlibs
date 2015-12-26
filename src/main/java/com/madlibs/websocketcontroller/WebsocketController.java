@@ -17,19 +17,17 @@ public class WebsocketController {
 
     @OnWebSocketConnect
     public void onConnect(Session session) {
-        System.out.println("Session " + session.getLocalAddress() + " connected");
+        // Do nothing.
     }
 
     @OnWebSocketMessage
     public void onMessage(Session session, String message) throws IOException {
-        System.out.println("Message received: " + message);
-        System.out.println("Source: " + session.getRemoteAddress());
-        session.getRemote().sendString("Message received!");
+        new WebsocketMessageController(session, message).handle();
     }
 
     @OnWebSocketClose
     public void onClose(Session session, int statusCode, String reason) {
-        System.out.println("Session " + session.getLocalAddress() + " disconnected with status " + statusCode + " reason " + reason);
+        new WebsocketCloseController(session, statusCode, reason).handle();
     }
 
 }
