@@ -41,6 +41,16 @@ public class MadLibsSession {
     }
 
     /**
+     * Alternate constructor, takes integer id.
+     * @param id Id of session.
+     * @param host Host of session.
+     * @param template Template being used for session.
+     */
+    public MadLibsSession(int id, String host, MadLibsTemplate template) {
+        this(Integer.toHexString(id), host, template);
+    }
+
+    /**
      * Accessor for id.
      * @return Id of session.
      */

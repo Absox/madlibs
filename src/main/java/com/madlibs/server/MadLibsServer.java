@@ -113,10 +113,24 @@ public class MadLibsServer {
     /**
      * Creates a game session.
      * @param id Id of game session.
+     * @param host Host username.
+     * @param template Template being used.
      */
     public void createSession(String id, String host, MadLibsTemplate template) {
         MadLibsSession newSession = new MadLibsSession(id, host, template);
         this.gameSessions.put(id, newSession);
+    }
+
+    /**
+     * Alternate create method, takes integer parameters.
+     * @param id Id of game session.
+     * @param host Host username.
+     * @param template Template.
+     */
+    public void createSession(int id, String host, MadLibsTemplate template) {
+        String hexId = Integer.toHexString(id);
+        MadLibsSession newSession = new MadLibsSession(hexId, host, template);
+        this.gameSessions.put(hexId, newSession);
     }
 
     /**

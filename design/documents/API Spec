@@ -339,6 +339,11 @@ Start Game Session:
             "templateId" : <templateId>
         }
     Response Cases:
-        // TODO
+        Success:
+            Code: 200 OK
+            {
+                "status" : "success",
+                "sessionId" : <sessionId>
+            }
 
 --- WEBSOCKET ---
