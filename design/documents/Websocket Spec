@@ -23,7 +23,7 @@ Game Messages:
             "type" : "gameJoinResponse",
             "status" : "failure",
             "id" : <sessionID>,
-            "why" : "<reason>"
+            "why" : "<reason>" // Already in a game
         }
 
     GAME STATE UPDATE | SERVER

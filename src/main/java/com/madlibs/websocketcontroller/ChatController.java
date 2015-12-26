@@ -1,5 +1,6 @@
 package com.madlibs.websocketcontroller;
 
+import com.google.gson.JsonObject;
 import com.madlibs.model.MadLibsSession;
 import com.madlibs.server.MadLibsServer;
 import org.eclipse.jetty.websocket.api.Session;
@@ -11,18 +12,21 @@ import org.eclipse.jetty.websocket.api.Session;
 public class ChatController {
 
     private Session session;
-    private String message;
+    private JsonObject parsedMessage;
 
     /**
-     * Constructs a controller to handle it.
+     * Constructs a controller to handle incoming chat messages.
      * @param session Websocket session.
-     * @param message Message received
+     * @param parsedMessage Message received
      */
-    public ChatController(Session session, String message) {
+    public ChatController(JsonObject parsedMessage, Session session) {
         this.session = session;
-        this.message = message;
+        this.parsedMessage = parsedMessage;
     }
 
+    /**
+     * Handles the request.
+     */
     public void handle() {
         MadLibsSession gameSession = MadLibsServer.getInstance().getSessionBySession(session);
 
