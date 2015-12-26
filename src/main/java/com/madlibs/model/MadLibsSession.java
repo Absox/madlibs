@@ -2,6 +2,7 @@ package com.madlibs.model;
 
 import org.eclipse.jetty.websocket.api.Session;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -240,6 +241,19 @@ public class MadLibsSession {
             if (criterion.shouldSelect(p)) return p;
         }
         return null;
+    }
+
+    /**
+     * Sends a message to all participants via websocket.
+     * @param message Message to send.
+     */
+    public void sendMessageToAllParticipants(String message) throws IOException {
+        for (MadLibsSessionParticipant p : participants) {
+            Session session = p.getSession();
+            if (session.isOpen()) {
+                session.getRemote().sendString(message);
+            }
+        }
     }
 
     /**

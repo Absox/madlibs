@@ -146,6 +146,18 @@ public class MadLibsServer {
     }
 
     /**
+     * Gets the game session associated with the corresponding websocket session.
+     * @param session Websocket session.
+     * @return MadLibsSession if there exists one; else null.
+     */
+    public MadLibsSession getSessionBySession(Session session) {
+        if (this.sessionMap.containsKey(session)) {
+            return this.sessionMap.get(session);
+        }
+        return null;
+    }
+
+    /**
      * Adds participant to session.
      * @param id Id of session.
      * @param identifier Identifier, if the user is logged in. Else, null.
