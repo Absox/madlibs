@@ -38,7 +38,9 @@ public class TemplateDeleteController extends RestEndpoint {
         }
 
         // Check ownership
-        if (template.getCreator() != user.getUsername()) {
+        if (!template.getCreator().equals(user.getUsername())) {
+            System.out.println("Failure: resource owned by " + template.getCreator());
+            System.out.println("Logged in as " + user.getUsername());
             resourceNotOwnedFailure();
             return;
         }
