@@ -28,6 +28,8 @@ public class Bootstrap {
         // Set access origin header.
         before((request, response) -> {
             response.header("Access-Control-Allow-Origin", "*");
+            response.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
+            response.header("Access-Control-Allow-Headers", "Content-Type");
         });
 
         // Serve static files.
