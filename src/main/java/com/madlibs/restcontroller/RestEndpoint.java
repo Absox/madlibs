@@ -1,5 +1,7 @@
 package com.madlibs.restcontroller;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.madlibs.authentication.AuthToken;
@@ -16,6 +18,7 @@ import spark.Response;
 public abstract class RestEndpoint {
 
     protected JsonParser parser = new JsonParser();
+    protected Gson gson = new Gson();
     protected JsonObject parsedRequest;
     protected JsonObject responseBody;
     protected Request request;
@@ -49,7 +52,7 @@ public abstract class RestEndpoint {
      */
     protected void issueAuthToken(String username) {
         AuthToken token = MadLibsServer.getInstance().issueToken(username);
-        responseBody.addProperty("authToken", token.toJson());
+        responseBody.add("authToken", gson.toJsonTree(token));
     }
 
     /**
@@ -57,9 +60,9 @@ public abstract class RestEndpoint {
      * @return Logged in user object, else null.
      */
     protected RegisteredUser getLoggedInUser() {
-        String tokenJson = parsedRequest.get("authToken").getAsString();
-        if (tokenJson != null) {
-            AuthToken authToken = AuthToken.fromJson(tokenJson);
+        JsonElement authTokenJson = parsedRequest.get("authToken");
+        if (authTokenJson != null) {
+            AuthToken authToken = gson.fromJson(authTokenJson, AuthToken.class);
             return DatabaseService.getInstance().getUser(authToken.getUsername());
         }
         return null;
@@ -70,14 +73,14 @@ public abstract class RestEndpoint {
      * @return True on successful authentication. False on failure.
      */
     protected boolean authenticate() {
-        String tokenJson = parsedRequest.get("authToken").getAsString();
+        JsonElement authTokenJson = parsedRequest.get("authToken");
 
-        if (tokenJson != null) {
-            AuthToken currentToken = AuthToken.fromJson(tokenJson);
-            AuthToken newToken = MadLibsServer.getInstance().authenticate(currentToken);
+        if (authTokenJson != null) {
+            AuthToken authToken = gson.fromJson(authTokenJson, AuthToken.class);
+            AuthToken newToken = MadLibsServer.getInstance().authenticate(authToken);
 
             if (newToken != null) {
-                responseBody.addProperty("authToken", newToken.toJson());
+                responseBody.add("authToken", gson.toJsonTree(newToken));
                 return true;
             }
         }
