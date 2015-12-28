@@ -15,7 +15,9 @@ var Account = React.createClass({
 		  		<h1>Account</h1>
 
 		  		<form>
-		  			
+		  			<input ref="user" />
+
+		  			<input ref="password" />
 		  		</form>
 		  	</div>
 		)

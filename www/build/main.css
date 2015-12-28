@@ -235,6 +235,60 @@ body:before {
             transform: scale(0.5);
   }
 }
+body {
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+  background: #f5f3f0;
+  overflow-y: scroll;
+}
+.wrapper,
+.site-content__standard-wrapper,
+.template-editor-wrapper,
+.template-list-wrapper {
+  max-width: 80em;
+  width: 100%;
+  padding: 0 1.5em;
+  margin: 0 auto;
+}
+#app-root > div {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+::-webkit-selection,
+::selection {
+  background: #b3d4fd;
+  color: #000;
+  text-shadow: none;
+}
+.button,
+.warning-button,
+[type="submit"],
+.create-template-button {
+  background: #4cc88c;
+  color: #fff;
+  font-weight: 900;
+  border: none;
+  padding: 0.5em 1em 0.6em;
+  box-shadow: inset 0 -2px 1px rgba(0,0,0,0.2), 0 2px 10px -1px rgba(0,0,0,0.3);
+}
+.button:active,
+.warning-button:active,
+[type="submit"]:active,
+.create-template-button:active {
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.2), inset 0 0 100px rgba(0,0,0,0.2);
+  color: rgba(255,255,255,0.6);
+  outline: none;
+}
+.warning-button {
+  background: #db4159;
+}
 .site-content {
   min-height: calc(100vh - 4.6rem - 4.6rem);
   position: relative;
@@ -249,10 +303,17 @@ body:before {
       -ms-flex-direction: column;
           flex-direction: column;
 }
+.site-content__standard-wrapper,
+.template-editor-wrapper,
+.template-list-wrapper {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
 .site-content__centered-wrapper,
 .home-screen,
 .template-select-wrapper,
-.login-wrapper {
+.login-wrapper,
+.signup-wrapper {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -281,6 +342,7 @@ body:before {
 }
 form {
   font-family: "Lato", sans-serif;
+  margin-bottom: 1.5em;
 }
 form label {
   display: block;
@@ -299,20 +361,7 @@ textarea {
   background: #fff;
 }
 [type="submit"] {
-  background: #4cc88c;
-  color: #fff;
-  margin-right: 0.8em;
-  font-weight: 900;
-  border: none;
-  padding: 0.5em 1em 0.6em;
-  margin-top: 0.4em;
-  box-shadow: inset 0 -2px 1px rgba(0,0,0,0.2), 0 2px 10px -1px rgba(0,0,0,0.3);
-}
-[type="submit"]:active {
-  background: #37b478;
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
-  outline: none;
-  color: #a5e3c5;
+  margin-right: 0.5em;
 }
 [type="checkbox"] {
   -webkit-appearance: none;
@@ -387,6 +436,8 @@ textarea {
   background: linear-gradient(0deg, #37b478, #4cc88c), #4cc88c;
   box-shadow: inset 0 -2px #298558;
   color: rgba(0,0,0,0.4);
+  -webkit-transition: all 0.15s ease;
+  transition: all 0.15s ease;
 }
 .site-logo:hover {
   background: -webkit-linear-gradient(bottom, #37b478, #6bd2a0), #4cc88c;
@@ -396,6 +447,8 @@ textarea {
 .site-logo:active {
   background: #35ac72;
   box-shadow: inset 0 1px 10px rgba(0,0,0,0.3);
+  -webkit-transition: none;
+  transition: none;
 }
 @media all and (min-width: 30em) {
   .site-logo {
@@ -413,35 +466,13 @@ textarea {
     display: none;
   }
 }
-body {
-  font-size: 16px;
-  font-family: "Lato", sans-serif;
-  background: #f5f3f0;
-  overflow-y: scroll;
+a {
+  color: #4cc88c;
 }
-.wrapper,
-.signup-wrapper {
-  max-width: 80em;
-  width: 100%;
-  padding: 0 1.5em;
-  margin: 0 auto;
-}
-#app-root > div {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-::-webkit-selection,
-::selection {
-  background: #b3d4fd;
-  color: #000;
-  text-shadow: none;
+a > .icon {
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 0.4em;
 }
 .site-nav {
   display: block;
@@ -466,14 +497,18 @@ body {
   padding: 0 1em;
   border-right: 1px solid rgba(0,0,0,0.1);
   vertical-align: middle;
+  -webkit-transition: all 0.15s ease;
+  transition: all 0.15s ease;
 }
 .site-nav a:hover {
   background: #4cc88c;
   box-shadow: inset 0 -2px 1px rgba(0,0,0,0.2), 0 2px 10px -1px rgba(0,0,0,0.3);
 }
 .site-nav a:active {
-  background: #37b478;
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+  background: #35ac72;
+  box-shadow: inset 0 1px 10px rgba(0,0,0,0.3);
+  -webkit-transition: none;
+  transition: none;
 }
 .site-nav img {
   height: 1.2em;
@@ -727,6 +762,53 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
 }
+.template-editor-form {
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.create-template-button {
+  margin-bottom: 1.5em;
+}
+@media all and (min-width: 30em) {
+  .create-template-button {
+    float: right;
+    margin-top: 1.5em;
+  }
+}
+@media all and (min-width: 30em) {
+  .template-list-title {
+    float: left;
+  }
+}
+.template-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  clear: both;
+}
+.template-list__link {
+  display: block;
+  background: #fff;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,0.3);
+  margin-bottom: 1px;
+  padding: 0.75em 1.3em;
+  text-decoration: none;
+  position: relative;
+}
+.template-list__link:hover {
+  border-left: 2px solid;
+  padding-left: calc(1.3em - 2px);
+}
+.template-list__link:empty {
+  font-style: italic;
+}
+.template-list__link:empty:before {
+  content: "No title specified";
+}
+.template-list__link:active {
+  opacity: 0.5;
+  position: static;
+}
 .login-content h2 {
   margin-top: 0;
 }
@@ -734,26 +816,6 @@ body {
 .login-content [type="password"] {
   width: 100%;
   box-sizing: border-box;
-}
-.signup-wrapper {
-  height: 100%;
-  min-height: 400px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-align: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-.signup-content {
-  text-align: left;
 }
 .signup-content h2 {
   margin-top: 0;

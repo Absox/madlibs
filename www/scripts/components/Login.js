@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { History } from 'react-router';
-var h = require('../helpers');
+var API = require('../api');
 
 var LogIn = React.createClass({
 	mixins: [History],
@@ -22,18 +22,13 @@ var LogIn = React.createClass({
 			password: this.refs.password.value
 		};
 
-		var post_body = JSON.stringify(formdata);
-
 		var self = this;
 
-		h.request("http://104.236.225.1:3000/madlibs/api/login", "POST", post_body, function(request) {
+		API.request("/madlibs/api/login", "POST", formdata, function(request, data) {
 			if (request.status != 200) self.setState({message: "Server error."});
 
-		  	var data = JSON.parse(request.responseText);
-		  	
 		  	if(data.status == "success") {
 	    		self.history.pushState(null, '/account');
-	    		//h.setCookie("authtoken", JSON.stringify(data.authToken), data.authToken.expiration);
 		  	}
 
 			if(data.status == "failure") {

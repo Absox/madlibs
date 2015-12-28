@@ -26,7 +26,7 @@ var SignUp = React.createClass({
 
 		var self = this;
 
-		h.request("http://104.236.225.1:3000/madlibs/api/register", "POST", post_body, function(request) {
+		h.request("http://madlibs.samjarv.is/madlibs/api/register", "POST", post_body, function(request) {
 			var data = JSON.parse(request.responseText);
 
 			if(data.status == "failure") {

@@ -38,6 +38,7 @@ public class Bootstrap {
         get("/script", (request, response) -> getFileContentsAsString("www/index.html"));
         get("/script/*", (request, response) -> getFileContentsAsString("www/index.html"));
         get("/templates", (request, response) -> getFileContentsAsString("www/index.html"));
+        get("/templates/*", (request, response) -> getFileContentsAsString("www/index.html"));
         get("/template/*", (request, response) -> getFileContentsAsString("www/index.html"));
         get("/account", (request, response) -> getFileContentsAsString("www/index.html"));
         get("/account/*", (request, response) -> getFileContentsAsString("www/index.html"));

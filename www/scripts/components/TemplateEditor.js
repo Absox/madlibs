@@ -1,24 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-var h = require('../helpers');
+import { History, Link } from 'react-router';
+var API = require('../api');
 
 var TemplateEditor = React.createClass({
 
 	getInitialState: function() {
 		return {
-			hasLoadedData: false
+			hasLoadedData: false,
+			title: ""
 		}
 	},
 
 	componentDidMount: function() {
 		let { templateID } = this.props.params;
 		var self = this;
-		h.request("http://104.236.225.1:3000/madlibs/api/template/"+templateID, "GET", null, function(request) {
-			if (request.status != 200) self.setState({message: "Server error."});
-		  	var data = JSON.parse(request.responseText);
+		API.request("/madlibs/api/template/"+templateID, "GET", null, function(request, data) {
 			self.refs.templateTitle.value = data.title;
 			self.refs.templateContent.value = data.value;
-			self.setState({hasLoadedData: true });
+			self.setState({
+				title: data.title,
+				hasLoadedData: true
+			});
+		});
+	},
+
+	handleTitleChange: function(e) {
+		this.setState({
+			title: this.refs.templateTitle.value
 		});
 	},
 
@@ -34,27 +43,32 @@ var TemplateEditor = React.createClass({
 
 		let { templateID } = this.props.params;
 
-		var post_body = JSON.stringify(formdata);
-
 		var self = this;
 
-		h.request("http://104.236.225.1:3000/madlibs/api/template/"+templateID, "PUT", post_body, function(request) {
+		API.request("/madlibs/api/template/"+templateID, "PUT", formdata, function(request) {
 			if (request.status != 200) self.setState({message: "Server error."});
 		});
 	},
 
+	deleteTemplate: function(e) {
+
+	},
+
 	render : function() {
 		return (
-			<div className="wrapper">
-		  		<h1>Template editor</h1>
+			<div className="template-editor-wrapper">
+		  		<h1>{this.state.title != "" ? "Editing: "+this.state.title : "Editing template"}</h1>
 
-		  		<form onSubmit={this.saveTemplate}>
-			  		<input ref="templateTitle" type="text" placeholder="Specify a title" />
+		  		<form onSubmit={this.saveTemplate} className="template-editor-form">
+			  		<input ref="templateTitle" type="text" placeholder="Specify a title" onKeyUp={this.handleTitleChange} />
 
 			  		<textarea ref="templateContent" rows="30"></textarea>
 
 			  		<input type="submit" value="Save template" />
+			  		<input type="submit" className="warning-button" value="Delete template" />
 		  		</form>
+
+		  		<Link to="/templates/"><span className="icon">&larr;</span>Back to list</Link>
 		  	</div>
 		)
 	}
