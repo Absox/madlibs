@@ -20,9 +20,7 @@ var Header = React.createClass({
 			        <nav className="site-nav">
 			            <ul>
 			                {templates}
-			                <li><Link to="/account/"><img src="/css/images/member.svg"/></Link></li>
-			                <li><Link to="/login/">Login</Link></li>
-			                <li><Link to="/signup/">Signup</Link></li>
+			                <li><Link to="/account/"><img src="/images/member.svg"/></Link></li>
 			            </ul>
 			        </nav>
 			    </div>

@@ -1,0 +1,56 @@
+.template-list-wrapper {
+	@extend .site-content__standard-wrapper;
+}
+
+.create-template-button {
+	@extend .button;
+	margin-bottom:1.5em;
+	
+	+bp(1) {
+		float:right;
+		margin-top:1.5em;
+	}
+}
+
+.template-list-title {
+	
+	+bp(1) {
+		float:left;
+	}
+}
+
+.template-list {
+	list-style:none;
+	margin:0;
+	padding:0;
+	clear:both;
+	
+	&__link {
+		display:block;
+		background:white;
+		box-shadow:0 2px 4px -1px rgba(0, 0, 0, 0.3);
+		margin-bottom:1px;
+		padding:0.75em 1.3em;
+		text-decoration:none;
+		position:relative;
+		
+		&:hover {
+			border-left:2px solid;
+			padding-left:calc(1.3em - 2px);
+		}
+		
+		&:empty {
+			font-style:italic;
+			
+			&:before {
+				content:"No title specified";
+			}
+		}
+		
+		&:active {
+			opacity:0.5;
+			position:static;
+		}
+	}
+}
+

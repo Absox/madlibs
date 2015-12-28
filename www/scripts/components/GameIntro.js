@@ -24,7 +24,7 @@ var GameIntro = React.createClass({
 		  	<div className="home-screen">
 				<div className="home-options">
 					<Link to="/select-template/" ref="startButton" className="home-options__option">Start a new game</Link>
-
+					
 					<em>- or -</em>
 
 					<button onClick={this.joinRandomGame} className="home-options__option">Join a random game</button>

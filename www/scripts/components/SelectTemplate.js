@@ -24,7 +24,7 @@ var SelectTemplate = React.createClass({
 
 		var self = this;
 
-		h.request("http://104.236.225.1:3000/madlibs/api/session", "GET", null, function(request) {
+		h.request("http://madlibs.samjarv.is/madlibs/api/session", "GET", null, function(request) {
 			self.history.pushState(null, '/game/asdasd/');
 		});
 	},
@@ -32,7 +32,7 @@ var SelectTemplate = React.createClass({
 	populateList: function() {
 		var self = this;
 
-		h.request("http://104.236.225.1:3000/madlibs/api/template/user/sam", "GET", null, function(request) {
+		h.request("http://madlibs.samjarv.is/madlibs/api/template/user/sam", "GET", null, function(request) {
 
 			var templates = [
 				{

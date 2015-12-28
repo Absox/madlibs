@@ -3,11 +3,12 @@ let helpers = {
 		var r = new XMLHttpRequest();
 		r.open(method, url, true);
 		r.onreadystatechange = function() {
+			//response received state
 			if(r.readyState == 4) {
-				callback(r)
+				var data = r.responseText;
+				callback(r, data);
 			}
 		};
-		r.withCredentials = true;
 		r.send(body);
 		return r;
 	},
