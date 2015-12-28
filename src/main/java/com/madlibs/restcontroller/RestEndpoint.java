@@ -49,7 +49,7 @@ public abstract class RestEndpoint {
      */
     protected void issueAuthToken(String username) {
         AuthToken token = MadLibsServer.getInstance().issueToken(username);
-        response.cookie("/", "authToken", token.toJson(), (int)token.getExpiration(), false);
+        responseBody.addProperty("authToken", token.toJson());
     }
 
     /**
@@ -57,7 +57,7 @@ public abstract class RestEndpoint {
      * @return Logged in user object, else null.
      */
     protected RegisteredUser getLoggedInUser() {
-        String tokenJson = request.cookie("authToken");
+        String tokenJson = parsedRequest.get("authToken").getAsString();
         if (tokenJson != null) {
             AuthToken authToken = AuthToken.fromJson(tokenJson);
             return DatabaseService.getInstance().getUser(authToken.getUsername());
@@ -70,19 +70,19 @@ public abstract class RestEndpoint {
      * @return True on successful authentication. False on failure.
      */
     protected boolean authenticate() {
-        String tokenJson = request.cookie("authToken");
+        String tokenJson = parsedRequest.get("authToken").getAsString();
+
         if (tokenJson != null) {
             AuthToken currentToken = AuthToken.fromJson(tokenJson);
             AuthToken newToken = MadLibsServer.getInstance().authenticate(currentToken);
 
             if (newToken != null) {
-                response.cookie("/", "authToken", newToken.toJson(), (int)newToken.getExpiration(), false);
+                responseBody.addProperty("authToken", newToken.toJson());
                 return true;
             }
         }
 
         //response.removeCookie("authToken");
-        response.cookie("/", "authToken", "", -1, false);
 
         return false;
     }
