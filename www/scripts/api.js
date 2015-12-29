@@ -19,34 +19,37 @@ let API = {
 	* return XMLHTTPRequest r
 	*/
 
-	request: function(uri, method, body, callback) {
+	request: function(uri, method, body, success, failure) {
 		var url = this.ssl ? "https://" : "http://" + this.details.host + uri;
 
-		if(body != null) {
-			var authToken = localStorage.getItem('authToken');
-
-			if(authToken) {
-				body.authToken = authToken;
-			}
-
-			body = JSON.stringify(body);
+		if(body == null) {
+			body = {};
 		}
 
-		var r = h.request(url, method, body, function(r, data) {
+		var authToken = localStorage.getItem('authToken');
 
+		if(authToken) {
+			body.authToken = JSON.parse(authToken);
+		}
+
+		body = JSON.stringify(body);
+
+		var r = h.request(url, method, body, function(r, data) {
 			try {
-			   var json = JSON.parse(data);
+				var json = JSON.parse(data);
+
+				if(typeof json.authToken != 'undefined') {
+					localStorage.setItem('authToken', JSON.stringify(json.authToken));
+				}
+
+				success(r, json);
 			}
 			catch(e)
 			{
-			   alert('Invalid json received');
+				console.error(e);
 			}
-
-			if(typeof json.authToken != 'undefined') {
-				localStorage.setItem('authToken', json.authToken);
-			}
-
-			callback(r, json);
+		}, function(r) {
+			failure(r);
 		});
 
 		return r;

@@ -71,7 +71,7 @@ var PlayerInvite = React.createClass({
 	render : function() {
 		return (
 			<div className="game-bar__invite">
-  				Invite URL: <span ref="inviteURL" onClick={this.selectURL}>{this.props.gameURL}</span>
+  				Invite URL: <span ref="inviteURL" className="game-bar__invite-url" onClick={this.selectURL}>{this.props.gameURL}</span>
   			</div>
 		)
 	}

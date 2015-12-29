@@ -1,13 +1,14 @@
 let helpers = {
-	request: function(url, method, body, callback) {
+	request: function(url, method, body, success, failure) {
 		var r = new XMLHttpRequest();
 		r.open(method, url, true);
-		r.onreadystatechange = function() {
-			//response received state
-			if(r.readyState == 4) {
-				var data = r.responseText;
-				callback(r, data);
+		r.onload = function() {
+			if(r.readyState == 4 && r.status == 200 && success != null) {
+				success(r, r.responseText);
 			}
+		};
+		r.onerror = function (r) {
+			failure(r);
 		};
 		r.send(body);
 		return r;

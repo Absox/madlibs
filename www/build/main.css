@@ -272,22 +272,26 @@ body {
 [type="submit"],
 .create-template-button {
   background: #4cc88c;
+  background: -webkit-linear-gradient(bottom, rgba(0,0,0,0.1), rgba(255,255,255,0.1)), #4cc88c;
+  background: linear-gradient(0deg, rgba(0,0,0,0.1), rgba(255,255,255,0.1)), #4cc88c;
   color: #fff;
   font-weight: 900;
   border: none;
-  padding: 0.5em 1em 0.6em;
-  box-shadow: inset 0 -2px 1px rgba(0,0,0,0.2), 0 2px 10px -1px rgba(0,0,0,0.3);
+  padding: 0.7em 1.2em;
+  box-shadow: 0 2px 10px -1px rgba(0,0,0,0.3);
+  border-bottom: 2px solid rgba(0,0,0,0.2);
 }
 .button:active,
 .warning-button:active,
 [type="submit"]:active,
 .create-template-button:active {
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.2), inset 0 0 100px rgba(0,0,0,0.2);
+  box-shadow: inset 0 0 0.5em rgba(0,0,0,0.25), inset 0 0 100px rgba(0,0,0,0.2);
   color: rgba(255,255,255,0.6);
   outline: none;
 }
 .warning-button {
-  background: #db4159;
+  background: -webkit-linear-gradient(bottom, rgba(0,0,0,0.1), rgba(255,255,255,0.1)), #db4159;
+  background: linear-gradient(0deg, rgba(0,0,0,0.1), rgba(255,255,255,0.1)), #db4159;
 }
 .site-content {
   min-height: calc(100vh - 4.6rem - 4.6rem);
@@ -460,10 +464,11 @@ textarea {
   font-weight: 200;
   vertical-align: middle;
   line-height: 1;
+  display: none;
 }
-@media (max-width: 500px) {
+@media all and (min-width: 30em) {
   .site-title {
-    display: none;
+    display: inline;
   }
 }
 a {
@@ -502,19 +507,37 @@ a > .icon {
 }
 .site-nav a:hover {
   background: #4cc88c;
+  color: #fff;
   box-shadow: inset 0 -2px 1px rgba(0,0,0,0.2), 0 2px 10px -1px rgba(0,0,0,0.3);
+}
+.site-nav a:hover img {
+  -webkit-filter: invert(1);
+          filter: invert(1);
 }
 .site-nav a:active {
   background: #35ac72;
+  color: rgba(255,255,255,0.7);
   box-shadow: inset 0 1px 10px rgba(0,0,0,0.3);
+  -webkit-transition: none;
+  transition: none;
+}
+.site-nav a:active img {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+  opacity: 0.33;
   -webkit-transition: none;
   transition: none;
 }
 .site-nav img {
   height: 1.2em;
   vertical-align: middle;
-  opacity: 0.4;
+  opacity: 0.5;
   margin-top: -0.1em;
+  margin-left: 0.8em;
+  -webkit-transition: -webkit-filter 0.2s ease;
+  transition: -webkit-filter 0.2s ease;
+  transition: filter 0.2s ease;
+  transition: filter 0.2s ease, -webkit-filter 0.2s ease;
 }
 @media all and (min-width: 30em) {
   .site-nav {
@@ -722,10 +745,7 @@ a > .icon {
 .game-bar__invite {
   float: left;
 }
-.game-bar__invite input {
-  overflow: hidden;
-  background: none;
-  border: none;
+.game-bar__invite-url {
   color: #4cc88c;
   margin-left: 0.3em;
 }
@@ -785,19 +805,20 @@ a > .icon {
   margin: 0;
   padding: 0;
   clear: both;
+  border-top: 2px solid rgba(0,0,0,0.2);
 }
 .template-list__link {
   display: block;
-  background: #fff;
-  box-shadow: 0 2px 4px -1px rgba(0,0,0,0.3);
   margin-bottom: 1px;
-  padding: 0.75em 1.3em;
+  padding: 1em 1.5em;
   text-decoration: none;
   position: relative;
+  font-weight: bold;
+  font-size: 1.1em;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 .template-list__link:hover {
-  border-left: 2px solid;
-  padding-left: calc(1.3em - 2px);
+  background: #fff;
 }
 .template-list__link:empty {
   font-style: italic;
@@ -806,7 +827,7 @@ a > .icon {
   content: "No title specified";
 }
 .template-list__link:active {
-  opacity: 0.5;
+  opacity: 0.75;
   position: static;
 }
 .login-content h2 {

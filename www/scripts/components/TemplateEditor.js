@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { History, Link } from 'react-router';
+import { History, Link, Router } from 'react-router';
 var API = require('../api');
 
 var TemplateEditor = React.createClass({
+	mixins: [History],
 
 	getInitialState: function() {
 		return {
 			hasLoadedData: false,
-			title: ""
+			title: "",
+			message: ""
 		}
 	},
 
@@ -30,8 +32,8 @@ var TemplateEditor = React.createClass({
 			title: this.refs.templateTitle.value
 		});
 	},
-
-	saveTemplate: function(e) {
+	
+	handleSave: function(e) {
 		e.preventDefault();
 
 		if(!this.state.hasLoadedData) return false;
@@ -50,8 +52,22 @@ var TemplateEditor = React.createClass({
 		});
 	},
 
-	deleteTemplate: function(e) {
+	handleDelete: function(e) {
+		e.preventDefault();
 
+		let { templateID } = this.props.params;
+
+		var please_delete = confirm("Are you sure you want to delete this template?");
+
+		if(please_delete) {
+			var self = this;
+
+			API.request("/madlibs/api/template/"+templateID, "DELETE", null, function(request, data) {
+				self.history.pushState(null, "/templates/");
+			}, function(request) {
+				self.setState({message: "Server error."});
+			});
+		}
 	},
 
 	render : function() {
@@ -59,13 +75,14 @@ var TemplateEditor = React.createClass({
 			<div className="template-editor-wrapper">
 		  		<h1>{this.state.title != "" ? "Editing: "+this.state.title : "Editing template"}</h1>
 
-		  		<form onSubmit={this.saveTemplate} className="template-editor-form">
+		  		<form className="template-editor-form">
 			  		<input ref="templateTitle" type="text" placeholder="Specify a title" onKeyUp={this.handleTitleChange} />
 
 			  		<textarea ref="templateContent" rows="30"></textarea>
 
-			  		<input type="submit" value="Save template" />
-			  		<input type="submit" className="warning-button" value="Delete template" />
+			  		<input type="submit" value="Save template" onClick={this.handleSave}/>
+			  		<button type="submit" className="warning-button" onClick={this.handleDelete}>Delete template</button>
+			  		<span className="message">{this.state.message}</span>
 		  		</form>
 
 		  		<Link to="/templates/"><span className="icon">&larr;</span>Back to list</Link>

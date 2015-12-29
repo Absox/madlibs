@@ -87,7 +87,7 @@ var SelectTemplate = React.createClass({
 				  			Invite only?
 				  		</label>
 
-				  		<input type="submit" value="Start!" className="template-select__start"/>
+				  		<button type="submit" className="template-select__start">Start!</button>
 			  		</form>
 		  		</div>
 		  	</div>

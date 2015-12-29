@@ -12,6 +12,14 @@ var App = React.createClass({
 		return {};
 	},
 
+	/**
+	*	Get identity from server
+	*/
+
+	componentDidMount: function() {
+
+	},
+
 	isLoggedIn: function() {
 
 	},
