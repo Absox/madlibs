@@ -76,7 +76,7 @@ var TemplateEditor = React.createClass({
 		  		<h1>{this.state.title != "" ? "Editing: "+this.state.title : "Editing template"}</h1>
 
 		  		<form className="template-editor-form">
-			  		<input ref="templateTitle" type="text" placeholder="Specify a title" onKeyUp={this.handleTitleChange} />
+			  		<input ref="templateTitle" type="text" placeholder="Specify a title" onChange={this.handleTitleChange} />
 
 			  		<textarea ref="templateContent" rows="30"></textarea>
 

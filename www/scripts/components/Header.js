@@ -12,6 +12,13 @@ var Header = React.createClass({
 		};
 	},
 
+	handleAccountToggle: function(e) {
+		var button = e.currentTarget;
+		console.log(button);
+
+		button.classList.toggle('open');
+	},
+
 	render : function() {
 
 		return (
@@ -23,13 +30,29 @@ var Header = React.createClass({
 			        </Link>
 
 			        <nav className="site-nav">
-			            <ul>
-			                <li><Link to="/templates/">Templates</Link></li>
+			            <ul className="site-nav__list">
+			                <li className="site-nav__item"><Link className="site-nav__link" to="/templates/">Templates</Link></li>
 
-			                <li><Link to="/account/">
-			                	Welcome, <span class="current-user">{this.props.currentUser}</span>
-			                	<img src="/images/member.svg"/>
-			                </Link></li>
+			                <li className="site-nav__item">
+			                	<button className="site-nav__button" onClick={this.handleAccountToggle}>
+				                	Welcome <span className="current-user">{this.props.currentUser}</span>
+				                	<img src="/images/member.svg"/>
+			                	</button>
+
+			                	<ul className="site-nav-dropdown">
+			                		<li className="site-nav-dropdown__item">
+			                			<Link className="site-nav-dropdown__link" to="/signup/">Sign up</Link>
+			                		</li>
+
+			                		<li className="site-nav-dropdown__item">
+			                			<Link className="site-nav-dropdown__link" to="/login/">Log in</Link>
+			                		</li>
+
+			                		<li className="site-nav-dropdown__item">
+			                			<Link className="site-nav-dropdown__link" to="/account/">Your account</Link>
+			                		</li>
+			                	</ul>
+			                </li>
 			            </ul>
 			        </nav>
 			    </div>

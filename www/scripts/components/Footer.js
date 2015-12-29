@@ -9,7 +9,7 @@ var Footer = React.createClass({
 		return (
 			<footer className="site-footer">
 			    <div className="wrapper">
-			        Built by <a href="/">some people</a>.
+			        <Link to="/about/">About</Link>
 			    </div>
 			</footer>
 		)

@@ -68,9 +68,9 @@ var TemplateList = React.createClass({
 		  		<ul className="template-list">
 		  			{
 						this.state.templates.map(function(template) {
-							return <li key={template.id}>
-									<Link to={template.templatelink} className="template-list__link">
-										{template.title}
+							return <li key={template.id} className="template-list-item">
+									<Link to={template.templatelink} className="template-list-item__link">
+										<span className="template-list-item__title">{template.title}</span>
 									</Link>
 								</li>;
 						})
