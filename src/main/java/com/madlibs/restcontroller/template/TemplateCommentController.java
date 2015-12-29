@@ -1,29 +1,34 @@
-package com.madlibs.restcontroller;
+package com.madlibs.restcontroller.template;
 
 import com.madlibs.data.DatabaseService;
 import com.madlibs.model.MadLibsTemplate;
+import com.madlibs.model.MadLibsTemplateComment;
 import com.madlibs.model.RegisteredUser;
+import com.madlibs.restcontroller.RestEndpoint;
 import spark.Request;
 import spark.Response;
 
+import java.util.Date;
+
 /**
- * A controller for handling template deletion requests.
- * Created by Ran on 12/23/2015.
+ * Controller that handles commenting on templates.
+ * Created by Ran on 12/22/2015.
  */
-public class TemplateDeleteController extends RestEndpoint {
+public class TemplateCommentController extends RestEndpoint {
 
     /**
-     * Constructs a controller to handle the template deletion request.
+     * Construct a new controller to handle a template comment request.
      * @param request Spark request.
      * @param response Spark response.
      */
-    public TemplateDeleteController(Request request, Response response) {
+    public TemplateCommentController(Request request, Response response) {
         super(request, response);
 
         RegisteredUser user = getLoggedInUser();
         String templateId = request.params("id");
+        String value = parsedRequest.get("value").getAsString();
 
-        // Check authentication
+        // Check failure cases.
         if (!authenticate() || user == null) {
             invalidCredentialFailure();
             return;
@@ -31,24 +36,18 @@ public class TemplateDeleteController extends RestEndpoint {
 
         MadLibsTemplate template = DatabaseService.getInstance().getTemplate(templateId);
 
-        // Check that template exists
+        // Check template existence.
         if (template == null) {
             nullResourceFailure();
             return;
         }
 
-        // Check ownership
-        if (!template.getCreator().equals(user.getUsername())) {
-            System.out.println("Failure: resource owned by " + template.getCreator());
-            System.out.println("Logged in as " + user.getUsername());
-            resourceNotOwnedFailure();
-            return;
-        }
+        MadLibsTemplateComment newComment = new MadLibsTemplateComment(templateId, user.getUsername(), value, new Date().getTime());
+        DatabaseService.getInstance().addTemplateComment(newComment);
 
-        // Delete template.
-        DatabaseService.getInstance().deleteTemplate(templateId);
         response.status(200);
         responseBody.addProperty("status", "success");
         responseBody.addProperty("user", user.getUsername());
+        responseBody.addProperty("id", templateId);
     }
 }

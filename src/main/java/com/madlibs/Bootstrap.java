@@ -1,6 +1,9 @@
 package com.madlibs;
 
-import com.madlibs.restcontroller.*;
+import com.madlibs.restcontroller.session.SessionCreateController;
+import com.madlibs.restcontroller.template.*;
+import com.madlibs.restcontroller.user.UserLoginController;
+import com.madlibs.restcontroller.user.UserRegisterController;
 import com.madlibs.websocketcontroller.WebsocketController;
 
 import java.io.IOException;

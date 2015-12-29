@@ -1,9 +1,10 @@
-package com.madlibs.restcontroller;
+package com.madlibs.restcontroller.template;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.madlibs.data.DatabaseService;
 import com.madlibs.model.MadLibsTemplate;
+import com.madlibs.restcontroller.RestEndpoint;
 import spark.Request;
 import spark.Response;
 

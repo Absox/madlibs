@@ -3,7 +3,7 @@ package unit;
 import com.google.gson.JsonObject;
 import com.madlibs.model.MadLibsTemplate;
 import com.madlibs.model.MadLibsTemplateComment;
-import com.madlibs.restcontroller.TemplateGetController;
+import com.madlibs.restcontroller.template.TemplateGetController;
 import org.junit.Test;
 
 import java.util.ArrayList;

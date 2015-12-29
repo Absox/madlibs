@@ -1,7 +1,8 @@
-package com.madlibs.restcontroller;
+package com.madlibs.restcontroller.user;
 
 import com.madlibs.data.DatabaseService;
 import com.madlibs.model.RegisteredUser;
+import com.madlibs.restcontroller.RestEndpoint;
 import org.apache.commons.codec.DecoderException;
 import spark.Request;
 import spark.Response;

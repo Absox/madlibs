@@ -48,6 +48,7 @@ public class SessionJoinController {
                 } while(identifiers.contains(identifier));
             }
 
+            // Send all participants notification of user joining.
             MadLibsServer.getInstance().addParticipantToSession(sessionId, session, identifier);
 
             JsonObject response = new JsonObject();

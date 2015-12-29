@@ -1,8 +1,9 @@
-package com.madlibs.restcontroller;
+package com.madlibs.restcontroller.session;
 
 import com.madlibs.data.DatabaseService;
 import com.madlibs.model.MadLibsTemplate;
 import com.madlibs.model.RegisteredUser;
+import com.madlibs.restcontroller.RestEndpoint;
 import com.madlibs.server.MadLibsServer;
 import spark.Request;
 import spark.Response;

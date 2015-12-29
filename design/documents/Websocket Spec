@@ -34,6 +34,21 @@ Game Messages:
             "currentPrompt" : <currentPrompt>,
             "currentTurn" : <currentTurn> // Identifier of user whose turn it is
         }
+
+    USER JOINED UPDATE | SERVER
+        {
+            "type" : "userJoinedUpdate",
+            "id" : <sessionID>,
+            "user" : <identifier>
+        }
+
+    USER LEFT UPDATE | SERVER
+        {
+            "type" : "userLeftUpdate",
+            "id" : <sessionID>,
+            "user" : <identifier>
+        }
+
     GAME END MESSAGE | SERVER
         {
             "type" : "gameEnd",

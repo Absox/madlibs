@@ -1,33 +1,32 @@
-package com.madlibs.restcontroller;
+package com.madlibs.restcontroller.template;
 
 import com.madlibs.data.DatabaseService;
 import com.madlibs.model.MadLibsTemplate;
-import com.madlibs.model.MadLibsTemplateComment;
 import com.madlibs.model.RegisteredUser;
+import com.madlibs.restcontroller.RestEndpoint;
 import spark.Request;
 import spark.Response;
 
-import java.util.Date;
-
 /**
- * Controller that handles commenting on templates.
- * Created by Ran on 12/22/2015.
+ * Controller for template update calls.
+ * Created by Ran on 12/23/2015.
  */
-public class TemplateCommentController extends RestEndpoint {
+public class TemplateUpdateController extends RestEndpoint {
 
     /**
-     * Construct a new controller to handle a template comment request.
-     * @param request Spark request.
-     * @param response Spark response.
+     * Constructs an object to handle the request.
+     * @param request Spark request
+     * @param response Spark response
      */
-    public TemplateCommentController(Request request, Response response) {
+    public TemplateUpdateController(Request request, Response response) {
         super(request, response);
 
         RegisteredUser user = getLoggedInUser();
         String templateId = request.params("id");
         String value = parsedRequest.get("value").getAsString();
+        String title = parsedRequest.get("title").getAsString();
 
-        // Check failure cases.
+        // Check authentication.
         if (!authenticate() || user == null) {
             invalidCredentialFailure();
             return;
@@ -35,14 +34,21 @@ public class TemplateCommentController extends RestEndpoint {
 
         MadLibsTemplate template = DatabaseService.getInstance().getTemplate(templateId);
 
-        // Check template existence.
+        // Check if template exists
         if (template == null) {
             nullResourceFailure();
             return;
         }
+        // Check ownership.
+        if (!template.getCreator().equals(user.getUsername())) {
+            resourceNotOwnedFailure();
+            return;
+        }
 
-        MadLibsTemplateComment newComment = new MadLibsTemplateComment(templateId, user.getUsername(), value, new Date().getTime());
-        DatabaseService.getInstance().addTemplateComment(newComment);
+        // Update template, success response
+        template.setContent(value);
+        template.setTitle(title);
+        DatabaseService.getInstance().updateTemplate(template);
 
         response.status(200);
         responseBody.addProperty("status", "success");
