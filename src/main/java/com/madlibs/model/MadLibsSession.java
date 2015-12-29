@@ -127,6 +127,20 @@ public class MadLibsSession {
     }
 
     /**
+     * Accessor for the identifiers of the participants.
+     * @return List of identifiers
+     */
+    public List<String> getParticipantIdentifiers() {
+        List<String> result = new ArrayList<>();
+
+        for (MadLibsSessionParticipant p : participants) {
+            result.add(p.getIdentifier());
+        }
+
+        return result;
+    }
+
+    /**
      * Gets the participant whose turn it is.
      * @return Participant whose turn it is
      */

@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.eclipse.jetty.websocket.api.Session;
 
+import java.io.IOException;
+
 /**
  * Controller to handle incoming websocket messages.
  * Created by Ran on 12/25/2015.
@@ -29,7 +31,7 @@ public class WebsocketMessageController {
     /**
      * Handles the message.
      */
-    public void handle() {
+    public void handle() throws IOException {
         switch (this.parsedMessage.get("type").getAsString()) {
             case "gameJoin":
                 new SessionJoinController(parsedMessage, session).handle();

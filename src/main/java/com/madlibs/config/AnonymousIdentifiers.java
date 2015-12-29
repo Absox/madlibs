@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -59,5 +60,14 @@ public class AnonymousIdentifiers {
      */
     public List<String> getIdentifiers() {
         return this.identifiers;
+    }
+
+    /**
+     * Returns a random identifier.
+     * @return Random identifier.
+     */
+    public String getRandomIdentifier() {
+        Random random = new Random();
+        return identifiers.get(random.nextInt(identifiers.size()));
     }
 }
