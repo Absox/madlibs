@@ -5,4 +5,8 @@ package com.madlibs.websocketcontroller.messages;
  * Created by Ran on 12/29/2015.
  */
 public class JoinResponseFailureMessage extends WebsocketMessage {
+
+    public JoinResponseFailureMessage(String sessionId, String reason) {
+        // TODO
+    }
 }

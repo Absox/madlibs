@@ -171,6 +171,8 @@ public class MadLibsSession {
      * @param session Websocket session.
      */
     public void participantJoin(String identifier, Session session) {
+        System.out.println("Session " + this.getId() + " : participant " + identifier + " joined!");
+
         this.participants.add(new MadLibsSessionParticipant(identifier, session));
     }
 
@@ -202,6 +204,9 @@ public class MadLibsSession {
         while (iterator.hasNext()) {
             MadLibsSessionParticipant currentParticipant = iterator.next();
             if (criterion.shouldSelect(currentParticipant)) {
+
+                System.out.println("Session " + this.getId() + ": participant " + currentParticipant.getIdentifier() + " removed!");
+
                 iterator.remove();
                 if (queueHeadPosition >= this.participants.size()) {
                     queueHeadPosition = 0;

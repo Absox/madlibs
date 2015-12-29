@@ -4,6 +4,9 @@ import com.google.gson.JsonObject;
 import com.madlibs.config.AnonymousIdentifiers;
 import com.madlibs.model.MadLibsSession;
 import com.madlibs.server.MadLibsServer;
+import com.madlibs.websocketcontroller.messages.JoinResponseFailureMessage;
+import com.madlibs.websocketcontroller.messages.JoinResponseSuccessMessage;
+import com.madlibs.websocketcontroller.messages.UserJoinedGameMessage;
 import org.eclipse.jetty.websocket.api.Session;
 
 import java.io.IOException;
@@ -49,24 +52,14 @@ public class SessionJoinController {
             }
 
             // Send all participants notification of user joining.
+            gameSession.sendMessageToAllParticipants(new UserJoinedGameMessage(identifier, sessionId).getContent());
+            // Add user to session
             MadLibsServer.getInstance().addParticipantToSession(sessionId, session, identifier);
 
-            JsonObject response = new JsonObject();
-            response.addProperty("type", "gameJoinResponse");
-            response.addProperty("status", "success");
-            response.addProperty("id", sessionId);
-            response.addProperty("identifier", identifier);
-            session.getRemote().sendString(response.getAsString());
+            session.getRemote().sendString(new JoinResponseSuccessMessage(sessionId, identifier).getContent());
 
         } else {
-
-            JsonObject response = new JsonObject();
-            response.addProperty("type", "gameJoinResponse");
-            response.addProperty("status", "failure");
-            response.addProperty("id", sessionId);
-            response.addProperty("why", "Session doesn't exist or has concluded");
-            session.getRemote().sendString(response.getAsString());
-
+            session.getRemote().sendString(new JoinResponseFailureMessage(sessionId, "Session doesn't exist or has been removed").getContent());
         }
     }
 }

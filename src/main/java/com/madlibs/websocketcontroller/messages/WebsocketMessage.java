@@ -22,7 +22,7 @@ public abstract class WebsocketMessage {
      * @return String containing json message.
      */
     public String getContent() {
-        return this.content.getAsString();
+        return this.content.toString();
     }
 
 }

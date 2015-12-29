@@ -30,11 +30,11 @@ public class ChatController {
     public void handle() {
         MadLibsSession gameSession = MadLibsServer.getInstance().getSessionBySession(session);
 
-        if (gameSession == null) {
+        if (gameSession != null) {
+            // TODO
+        } else {
             // Issue failure message - not bound to session.
+
         }
-
-        // TODO
-
     }
 }
