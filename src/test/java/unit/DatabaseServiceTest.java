@@ -4,6 +4,7 @@ import com.madlibs.config.ServerConfigs;
 import com.madlibs.data.DatabaseService;
 import com.madlibs.model.MadLibsTemplate;
 import com.madlibs.model.MadLibsTemplateComment;
+import com.madlibs.model.MadLibsTemplateRating;
 import com.madlibs.model.RegisteredUser;
 import org.apache.commons.codec.DecoderException;
 import org.junit.Test;
@@ -158,6 +159,28 @@ public class DatabaseServiceTest {
         assertEquals(retrievedComment.getUser(), "absox");
         assertEquals(retrievedComment.getValue(), "comment comment");
         assertEquals(retrievedComment.getDate(), time);
+
+        testDb.delete();
+    }
+
+    @Test
+    public void votingTest() {
+        File testDb = new File("templateRatingTest.db");
+        if (testDb.exists()) testDb.delete();
+
+        DatabaseService testDatabase = new DatabaseService("templateRatingTest.db");
+        testDatabase.initializeDatabase();
+
+        MadLibsTemplateRating rating = new MadLibsTemplateRating("absox", "0", "UP");
+
+        testDatabase.updateRating(rating);
+
+        MadLibsTemplateRating retrievedRating = testDatabase.getRating("absox", "0");
+
+        assertNotNull(retrievedRating);
+        assertEquals(retrievedRating.getUser(), "absox");
+        assertEquals(retrievedRating.getTemplateId(), "0");
+        assertEquals(retrievedRating.getRating(), "up");
 
         testDb.delete();
     }

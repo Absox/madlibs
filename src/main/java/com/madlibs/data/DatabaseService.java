@@ -4,6 +4,7 @@ package com.madlibs.data;
 import com.madlibs.config.ServerConfigs;
 import com.madlibs.model.MadLibsTemplate;
 import com.madlibs.model.MadLibsTemplateComment;
+import com.madlibs.model.MadLibsTemplateRating;
 import com.madlibs.model.RegisteredUser;
 import org.sql2o.Connection;
 import org.sql2o.Query;
@@ -66,8 +67,19 @@ public class DatabaseService {
         initializeUsersTable(connection);
         initializeTemplateTable(connection);
         initializeTemplateCommentsTable(connection);
+        initializeTemplateRatingsTable(connection);
 
         connection.close();
+    }
+
+    /**
+     * Initializes table of template ratings.
+     * @param connection
+     */
+    private void initializeTemplateRatingsTable(Connection connection) {
+        String templateRatingTableQueryString = "create table if not exists templateRatings(templateId TEXT, user TEXT, value TEXT)";
+        Query templateRatingTableQuery = connection.createQuery(templateRatingTableQueryString);
+        templateRatingTableQuery.executeUpdate();
     }
 
     /**
@@ -380,6 +392,58 @@ public class DatabaseService {
 
         return result;
     }
+
+    /**
+     * Updates the rating.
+     * @param rating Rating object to update.
+     */
+    public void updateRating(MadLibsTemplateRating rating) {
+        Connection connection = this.database.open();
+
+        // Check if an entry already exists, if so, update it.
+        if (this.getRating(rating.getUser(), rating.getTemplateId()) != null) {
+            String updateQueryString = "update templateRatings set value = :value where user = :user and templateId = :templateId";
+            Query updateQuery = connection.createQuery(updateQueryString);
+            updateQuery.addParameter("value", rating.getRating());
+            updateQuery.addParameter("user", rating.getUser());
+            updateQuery.addParameter("templateId", rating.getTemplateId());
+            updateQuery.executeUpdate();
+
+        // Else we make a new entry
+        } else {
+            String newEntryQueryString = "insert into templateRatings values(:templateId, :user, :value)";
+            Query newEntryQuery = connection.createQuery(newEntryQueryString);
+            newEntryQuery.addParameter("templateId", rating.getTemplateId());
+            newEntryQuery.addParameter("user", rating.getUser());
+            newEntryQuery.addParameter("value", rating.getRating());
+            newEntryQuery.executeUpdate();
+        }
+
+        connection.close();
+    }
+
+    /**
+     * Gets a rating object from database.
+     * @param username User who's rating.
+     * @param templateId Template being rated.
+     * @return Rating object.
+     */
+    public MadLibsTemplateRating getRating(String username, String templateId) {
+        Connection connection = database.open();
+        String queryString = "select * from templateRatings where user = :user and templateId = :templateId";
+        Query query = connection.createQuery(queryString);
+        query.addParameter("user", username);
+        query.addParameter("templateId", templateId);
+        List<Map<String, Object>> results = query.executeAndFetchTable().asList();
+        connection.close();
+
+        if (!results.isEmpty()) {
+            Map<String, Object> currentResult = results.get(0);
+            return new MadLibsTemplateRating((String)currentResult.get("user"), (String)currentResult.get("templateid"), (String)currentResult.get("value"));
+        }
+        return null;
+    }
+
 
     /**
      * Deletes the database.
