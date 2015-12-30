@@ -1,8 +1,12 @@
 package com.madlibs.websocketcontroller;
 
 import com.madlibs.model.MadLibsSession;
+import com.madlibs.model.MadLibsSessionParticipant;
 import com.madlibs.server.MadLibsServer;
+import com.madlibs.websocketcontroller.messages.UserLeftGameMessage;
 import org.eclipse.jetty.websocket.api.Session;
+
+import java.io.IOException;
 
 /**
  * A controller to handle a websocket close event.
@@ -26,10 +30,13 @@ public class WebsocketCloseController {
         this.reason = reason;
     }
 
-    public void handle() {
+    public void handle() throws IOException {
         MadLibsSession gameSession = MadLibsServer.getInstance().getSessionBySession(this.session);
+
         if (gameSession != null) {
+            MadLibsSessionParticipant participant = gameSession.getParticipantBySession(session);
             MadLibsServer.getInstance().disconnectParticipant(this.session);
+            gameSession.sendMessageToAllParticipants(new UserLeftGameMessage(participant.getIdentifier(), gameSession.getId()).getContent());
         }
     }
 

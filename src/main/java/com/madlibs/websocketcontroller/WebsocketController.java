@@ -27,7 +27,11 @@ public class WebsocketController {
 
     @OnWebSocketClose
     public void onClose(Session session, int statusCode, String reason) {
-        new WebsocketCloseController(session, statusCode, reason).handle();
+        try {
+            new WebsocketCloseController(session, statusCode, reason).handle();
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
 }

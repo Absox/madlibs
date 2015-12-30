@@ -6,7 +6,15 @@ package com.madlibs.websocketcontroller.messages;
  */
 public class JoinResponseSuccessMessage extends WebsocketMessage {
 
+    /**
+     * Constructs message.
+     * @param sessionId Id of game session.
+     * @param identifier Identifier of user
+     */
     public JoinResponseSuccessMessage(String sessionId, String identifier) {
-        // TODO
+        content.addProperty("type", "gameJoinResponse");
+        content.addProperty("status", "success");
+        content.addProperty("id", sessionId);
+        content.addProperty("user", identifier);
     }
 }

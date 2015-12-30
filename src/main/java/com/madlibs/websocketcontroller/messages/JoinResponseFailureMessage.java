@@ -7,6 +7,9 @@ package com.madlibs.websocketcontroller.messages;
 public class JoinResponseFailureMessage extends WebsocketMessage {
 
     public JoinResponseFailureMessage(String sessionId, String reason) {
-        // TODO
+        content.addProperty("type", "gameJoinResponse");
+        content.addProperty("status", "failure");
+        content.addProperty("id", sessionId);
+        content.addProperty("why", reason);
     }
 }
