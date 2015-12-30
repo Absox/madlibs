@@ -77,8 +77,6 @@ Chat Messages:
     SEND CHAT MESSAGE | USER
         {
             "type" : "chatSend",
-            "id" : <sessionID>,
-            "user" : <userIdentifier>,
             "message" : <message>
         }
 

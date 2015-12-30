@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.madlibs.config.AnonymousIdentifiers;
 import com.madlibs.model.MadLibsSession;
 import com.madlibs.server.MadLibsServer;
+import com.madlibs.websocketcontroller.messages.GameStateUpdateMessage;
 import com.madlibs.websocketcontroller.messages.JoinResponseFailureMessage;
 import com.madlibs.websocketcontroller.messages.JoinResponseSuccessMessage;
 import com.madlibs.websocketcontroller.messages.UserJoinedGameMessage;
@@ -56,7 +57,9 @@ public class SessionJoinController {
             // Add user to session
             MadLibsServer.getInstance().addParticipantToSession(sessionId, session, identifier);
 
+            // Send success response, game state.
             session.getRemote().sendString(new JoinResponseSuccessMessage(sessionId, identifier).getContent());
+            session.getRemote().sendString(new GameStateUpdateMessage(gameSession).getContent());
 
         } else {
             session.getRemote().sendString(new JoinResponseFailureMessage(sessionId, "Session doesn't exist or has been removed").getContent());

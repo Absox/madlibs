@@ -205,7 +205,7 @@ public class MadLibsSession {
             MadLibsSessionParticipant currentParticipant = iterator.next();
             if (criterion.shouldSelect(currentParticipant)) {
 
-                System.out.println("Session " + this.getId() + ": participant " + currentParticipant.getIdentifier() + " removed!");
+                System.out.println("Session " + this.getId() + " : participant " + currentParticipant.getIdentifier() + " removed!");
 
                 iterator.remove();
                 if (queueHeadPosition >= this.participants.size()) {
