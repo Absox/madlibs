@@ -1,6 +1,9 @@
 package com.madlibs.websocketcontroller;
 
 import com.google.gson.JsonObject;
+import com.madlibs.model.MadLibsSession;
+import com.madlibs.model.MadLibsSessionParticipant;
+import com.madlibs.server.MadLibsServer;
 import org.eclipse.jetty.websocket.api.Session;
 
 /**
@@ -21,6 +24,17 @@ public class ResponseSubmitController {
      * Handles request.
      */
     public void handle() {
+
+        MadLibsSession gameSession = MadLibsServer.getInstance().getSessionBySession(session);
+        MadLibsSessionParticipant participant = gameSession.getParticipantBySession(session);
+
+        // It's our turn
+        if (gameSession.getCurrentParticipant().equals(participant)) {
+
+        } else {
+
+        }
+
         // TODO
     }
 }

@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60ab085f-66ab-4aa2-af29-d0a18158961a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateVoteGetController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateVoteUpdateController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design/documents/API Spec" afterPath="$PROJECT_DIR$/design/documents/API Spec" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/Bootstrap.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/Bootstrap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSessionParticipant.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSessionParticipant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateVoteGetController.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateVoteGetController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/ResponseSubmitController.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/ResponseSubmitController.java" />
     </list>
     <ignored path="MadLibs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,34 +68,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TemplateVoteUpdateController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateVoteUpdateController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53424656">
-              <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TemplateUpdateController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateUpdateController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="39" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Bootstrap.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/Bootstrap.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="76" column="5" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
+              <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TemplateVoteUpdateController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateVoteUpdateController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="39" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -105,7 +94,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateVoteGetController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <caret line="48" column="54" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -113,11 +102,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TemplateGetForUserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateGetForUserController.java">
+      <file leaf-file-name="ResponseSubmitController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/ResponseSubmitController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.65008575">
+              <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -161,7 +150,6 @@
         <option value="$PROJECT_DIR$/src/test/java/unit/MadLibsTemplateTest.java" />
         <option value="$PROJECT_DIR$/testResources/testCelebs" />
         <option value="$PROJECT_DIR$/src/test/java/unit/AnonymousIdentifiersTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSessionParticipant.java" />
         <option value="$PROJECT_DIR$/src/test/java/integration/WebSocketTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/integration/WebSocketTestController.java" />
         <option value="$PROJECT_DIR$/src/test/java/integration/ParticipantSessionMatchingTest/WebSocketTestController.java" />
@@ -170,7 +158,6 @@
         <option value="$PROJECT_DIR$/src/test/java/unit/MadLibsSessionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/SessionCreateController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/server/MadLibsServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/ResponseSubmitController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/TemplateDeleteController.java" />
         <option value="$PROJECT_DIR$/src/test/java/unit/JsonParseTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/RestEndpoint.java" />
@@ -197,10 +184,12 @@
         <option value="$PROJECT_DIR$/src/test/java/unit/DatabaseServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/data/DatabaseService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateVoteController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateVoteGetController.java" />
         <option value="$PROJECT_DIR$/design/documents/API Spec" />
-        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/Bootstrap.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateVoteUpdateController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/Bootstrap.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateVoteGetController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSessionParticipant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/ResponseSubmitController.java" />
       </list>
     </option>
   </component>
@@ -266,6 +255,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -770,8 +761,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -781,7 +770,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="132" />
@@ -1219,12 +1208,6 @@
       <option name="number" value="Default" />
       <updated>1450382699123</updated>
     </task>
-    <task id="LOCAL-00039" summary="Added comments, unit tests. Updated API.">
-      <created>1450844852486</created>
-      <option name="number" value="00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1450844852486</updated>
-    </task>
     <task id="LOCAL-00040" summary="Improved documentation. Generated javadoc.">
       <created>1450845434524</created>
       <option name="number" value="00040" />
@@ -1513,7 +1496,13 @@
       <option name="project" value="LOCAL" />
       <updated>1451514599840</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="Added template ratings.">
+      <created>1451578419589</created>
+      <option name="number" value="00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1451578419590</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1642,13 +1631,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7089041">
           <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSessionParticipant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2808219">
-          <caret line="48" column="33" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -1827,14 +1809,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/ResponseSubmitController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/server/MadLibsServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1862,14 +1836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/ChatController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1992,21 +1958,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateVoteGetController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateUpdateController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="39" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/Bootstrap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="5" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
+          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateVoteUpdateController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="39" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2018,21 +1992,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateUpdateController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateVoteGetController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="39" selection-end-column="19" />
+          <caret line="48" column="54" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSessionParticipant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50428814">
+          <caret line="57" column="92" selection-start-line="57" selection-start-column="92" selection-end-line="57" selection-end-column="92" />
+          <folding>
+            <element signature="e#1150#1151#0" expanded="true" />
+            <element signature="e#1185#1186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/ChatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5626072">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateVoteUpdateController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/ResponseSubmitController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53424656">
-          <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.65008575">
+          <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>

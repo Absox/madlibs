@@ -51,4 +51,18 @@ public class MadLibsSessionParticipant {
     public Session getSession() {
         return this.session;
     }
+
+    /**
+     * Checks if this object is equal to another object.
+     * @param o Object to compare to.
+     * @return True if also instance of participant, with equivalent identifier and session.
+     */
+    public boolean equals(Object o) {
+        if (o instanceof MadLibsSessionParticipant) {
+            MadLibsSessionParticipant other = (MadLibsSessionParticipant)o;
+            if (this.identifier.equals(other.identifier) && this.session.equals(other.session)) return true;
+        }
+
+        return false;
+    }
 }
