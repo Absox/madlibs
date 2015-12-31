@@ -70,6 +70,10 @@ public class Bootstrap {
         get("/madlibs/api/template/user/:username", "application/json", (request, response) -> new TemplateGetForUserController(request, response).getResponseBody());
         // Create new game session
         post("/madlibs/api/session", "application/json", (request, response) -> new SessionCreateController(request, response).getResponseBody());
+        // Update template vote
+        post("/madlibs/api/template/:id/vote", "application/json", (request, response) -> new TemplateVoteUpdateController(request, response).getResponseBody());
+        // Get template voting status
+        post("/madlibs/api/template/:id/votestatus", "application/json", (request, response) -> new TemplateVoteGetController(request, response).getResponseBody());
     }
 
     /**

@@ -209,8 +209,8 @@ Delete Template:
                 }
 
 Check Voting Status For Template:
-    Method: GET
-    Path: /madlibs/api/template/<id>/vote
+    Method: POST
+    Path: /madlibs/api/template/<id>/votestatus
     // Username pulled from cookies
     Response Cases:
         Success:
@@ -249,6 +249,7 @@ Update Vote For Template:
                     "status" : "success",
                     "user" : <username>,
                     "id" : <id>,
+                    "voted" : <up/down/none>
                 }
         Failure - User Does Not Exist/Not Logged In:
             Code: 401 UNAUTHORIZED
