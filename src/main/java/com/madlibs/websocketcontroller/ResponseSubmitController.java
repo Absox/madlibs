@@ -4,7 +4,11 @@ import com.google.gson.JsonObject;
 import com.madlibs.model.MadLibsSession;
 import com.madlibs.model.MadLibsSessionParticipant;
 import com.madlibs.server.MadLibsServer;
+import com.madlibs.websocketcontroller.messages.GameStateUpdateMessage;
+import com.madlibs.websocketcontroller.messages.ResponseSubmissionFailureMessage;
 import org.eclipse.jetty.websocket.api.Session;
+
+import java.io.IOException;
 
 /**
  * Controller to handle response submission messages.
@@ -23,18 +27,18 @@ public class ResponseSubmitController {
     /**
      * Handles request.
      */
-    public void handle() {
+    public void handle() throws IOException {
 
         MadLibsSession gameSession = MadLibsServer.getInstance().getSessionBySession(session);
         MadLibsSessionParticipant participant = gameSession.getParticipantBySession(session);
+        String responseValue = parsedMessage.get("value").getAsString();
 
         // It's our turn
         if (gameSession.getCurrentParticipant().equals(participant)) {
-
+            gameSession.addResponse(responseValue);
+            gameSession.sendMessageToAllParticipants(new GameStateUpdateMessage(gameSession).getContent());
         } else {
-
+            session.getRemote().sendString(new ResponseSubmissionFailureMessage("Not your turn!").getContent());
         }
-
-        // TODO
     }
 }

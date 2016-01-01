@@ -70,6 +70,13 @@ Game Messages:
             "type" : "responseSubmit",
             "id" : <sessionID>,
             "user" : <userIdentifier>
+            "value" : <value>
+        }
+
+    RESPONSE FAILURE MESSAGE | SERVER
+        {
+            "type" : "responseSubmitFailure",
+            "why" : "reason"
         }
 
 Chat Messages:
