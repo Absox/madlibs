@@ -97,6 +97,7 @@ var TemplateEditor = React.createClass({
 				          	text={this.state.content}
 				          	onChange={this.handleChange}
 				          	options={{toolbar: {buttons: ['bold', 'italic', 'underline']}}}
+				          	className="template-editor__content"
 				        />
 			  		</div>
 
