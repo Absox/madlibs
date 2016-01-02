@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-var h = require('../helpers');
 
 //components
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from './Header';
+import Footer from './Footer';
 
 var App = React.createClass({
 
@@ -16,23 +15,11 @@ var App = React.createClass({
 		};
 	},
 
-	/**
-	*	Get identity from server
-	*/
-
-	componentDidMount: function() {
-
-	},
-
-	isLoggedIn: function() {
-
-	},
-
 	render: function() {
 
 		return (
 			<div>
-			  	<Header currentUser={this.state.currentUser} />
+			  	<Header />
 
 			  	<div className="site-content">
 					{this.props.children}

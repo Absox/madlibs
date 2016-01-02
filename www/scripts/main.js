@@ -1,9 +1,7 @@
 import React  from 'react';
 import ReactDOM  from 'react-dom';
 import { Router, Route, Navigation, IndexRoute } from 'react-router';
-import { createHistory } from 'history';
-
-var createBrowserHistory = require('history/lib/createBrowserHistory');
+import history from './history'
 
 import App from './components/App';
 import GameIntro from './components/GameIntro';
@@ -17,7 +15,7 @@ import LogIn from './components/LogIn';
 import NotFound from './components/NotFound';
 
 var routes = (
-	<Router history={createBrowserHistory()}>
+	<Router history={history}>
 		<Route path="/" component={App}>
 			<IndexRoute component={GameIntro}/>
 			<Route path="/select-template/" components={SelectTemplate} />
