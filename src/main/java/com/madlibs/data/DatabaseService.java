@@ -1,6 +1,7 @@
 package com.madlibs.data;
 
 
+import com.google.gson.Gson;
 import com.madlibs.config.ServerConfigs;
 import com.madlibs.model.*;
 import org.sql2o.Connection;
@@ -9,6 +10,7 @@ import org.sql2o.Sql2o;
 import org.sqlite.SQLiteDataSource;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -459,11 +461,46 @@ public class DatabaseService {
      * @param script Script to add
      */
     public void addScript(MadLibsScript script) {
+        Connection connection = database.open();
+
         String sql = "insert into scripts values(:id, :user, :template, :responses, :chatlog)";
+        Query query = connection.createQuery(sql);
+        query.addParameter("id", script.getId());
+        query.addParameter("user", script.getUser());
+        query.addParameter("template", script.getTemplateContent());
+        query.addParameter("responses", script.getResponsesJson());
+        query.addParameter("chatlog", script.getChatlogJson());
+        query.executeUpdate();
+
+        connection.close();
     }
 
+    /**
+     * Retrieves a script from the database.
+     * @param id Id of script.
+     * @return Script object retrieved from database.
+     */
     public MadLibsScript getScript(String id) {
-        return null;
+        Connection connection = database.open();
+
+        String sql = "select * from scripts where id = :id";
+        Query query = connection.createQuery(sql);
+        List<Map<String, Object>> results = query.executeAndFetchTable().asList();
+        connection.close();
+
+        if (results.isEmpty()) return null;
+        Map<String, Object> result = results.get(0);
+
+        Gson gson = new Gson();
+
+        String user = (String)result.get("user");
+        String template = (String)result.get("template");
+        List<MadLibsResponse> responses = Arrays.asList(gson.fromJson((String)result.get("responses"), MadLibsResponse[].class));
+        List<ChatMessage> chatlog = Arrays.asList(gson.fromJson((String)result.get("chatlog"), ChatMessage[].class));
+
+        MadLibsScript retrievedScript = new MadLibsScript(id, user, template, responses, chatlog);
+
+        return retrievedScript;
     }
 
     /**
