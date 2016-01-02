@@ -56,8 +56,8 @@ public class Bootstrap {
         post("/madlibs/api/login", "application/json", (request, response) -> new UserLoginController(request, response).getResponseBody());
         // User register call
         post("/madlibs/api/register", "application/json", (request, response) -> new UserRegisterController(request, response).getResponseBody());
-        // TODO user update call
-        post("/madlibs/api/update", "application/json", (request, response) -> "");
+        // TODO password update call
+        post("/madlibs/api/accountupdate", "application/json", (request, response) -> "");
         // Template create call
         post("/madlibs/api/template", "application/json", (request, response) -> new TemplateCreateController(request, response).getResponseBody());
         // Template comment call

@@ -64,6 +64,15 @@ User Registration:
                     "why" : "Username taken"
                 }
 
+User Account Update:
+    Method: POST
+    Path: /madlibs/api/accountupdate
+    Request Content:
+        {
+            "authToken" : <authToken>
+            "password" : <newpassword>
+        }
+
 Create Template:
     Method: POST
     Path: /madlibs/api/template/
