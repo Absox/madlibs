@@ -2,6 +2,7 @@ package com.madlibs;
 
 import com.madlibs.restcontroller.session.SessionCreateController;
 import com.madlibs.restcontroller.template.*;
+import com.madlibs.restcontroller.user.UserAccountUpdateController;
 import com.madlibs.restcontroller.user.UserLoginController;
 import com.madlibs.restcontroller.user.UserRegisterController;
 import com.madlibs.websocketcontroller.WebsocketController;
@@ -56,8 +57,8 @@ public class Bootstrap {
         post("/madlibs/api/login", "application/json", (request, response) -> new UserLoginController(request, response).getResponseBody());
         // User register call
         post("/madlibs/api/register", "application/json", (request, response) -> new UserRegisterController(request, response).getResponseBody());
-        // TODO password update call
-        post("/madlibs/api/accountupdate", "application/json", (request, response) -> "");
+        // password update call
+        post("/madlibs/api/accountupdate", "application/json", (request, response) -> new UserAccountUpdateController(request, response).getResponseBody());
         // Template create call
         post("/madlibs/api/template", "application/json", (request, response) -> new TemplateCreateController(request, response).getResponseBody());
         // Template comment call

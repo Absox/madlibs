@@ -1,8 +1,6 @@
 package com.madlibs.websocketcontroller;
 
 import com.google.gson.JsonObject;
-import com.madlibs.data.DatabaseService;
-import com.madlibs.model.MadLibsScript;
 import com.madlibs.model.MadLibsSession;
 import com.madlibs.model.MadLibsSessionParticipant;
 import com.madlibs.server.MadLibsServer;
@@ -41,13 +39,10 @@ public class ResponseSubmitController {
 
             if (gameSession.isFinished()) {
 
-                MadLibsScript script = new MadLibsScript(gameSession);
-                DatabaseService.getInstance().addScript(script);
-
+                MadLibsServer.getInstance().finalizeSession(gameSession.getId());
                 // TODO update spec on session complete message
                 gameSession.sendMessageToAllParticipants("Session complete");
 
-                // TODO destroy session
             } else {
                 gameSession.sendMessageToAllParticipants(new GameStateUpdateMessage(gameSession).getContent());
             }

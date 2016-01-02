@@ -3,10 +3,13 @@ package com.madlibs.server;
 import com.madlibs.authentication.AuthToken;
 import com.madlibs.config.ServerConfigs;
 import com.madlibs.data.DatabaseService;
+import com.madlibs.model.MadLibsScript;
 import com.madlibs.model.MadLibsSession;
+import com.madlibs.model.MadLibsSessionParticipant;
 import com.madlibs.model.MadLibsTemplate;
 import org.eclipse.jetty.websocket.api.Session;
 
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -183,8 +186,18 @@ public class MadLibsServer {
      * Ends a game session, stores to db.
      * @param id Id of game session.
      */
-    public void finalizeSession(String id) {
-        // TODO
+    public void finalizeSession(String id) throws IOException {
+
+        MadLibsSession session = this.gameSessions.remove(id); // Remove game session from map
+        for (MadLibsSessionParticipant p : session.getParticipants()) { // Remove participant session from hashmap also
+            if (this.sessionMap.containsKey(p.getSession())) {
+                this.sessionMap.remove(p.getSession());
+                p.getSession().disconnect(); // Disconnects the remote
+            }
+        }
+
+        MadLibsScript script = new MadLibsScript(session);
+        DatabaseService.getInstance().addScript(script);
     }
 
 }
