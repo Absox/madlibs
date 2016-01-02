@@ -2,10 +2,7 @@ package com.madlibs.data;
 
 
 import com.madlibs.config.ServerConfigs;
-import com.madlibs.model.MadLibsTemplate;
-import com.madlibs.model.MadLibsTemplateComment;
-import com.madlibs.model.MadLibsTemplateRating;
-import com.madlibs.model.RegisteredUser;
+import com.madlibs.model.*;
 import org.sql2o.Connection;
 import org.sql2o.Query;
 import org.sql2o.Sql2o;
@@ -14,6 +11,8 @@ import org.sqlite.SQLiteDataSource;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
+
+// TODO refactor into DAO pattern
 
 /**
  * Database service. Handles SQLite database calls.
@@ -68,8 +67,19 @@ public class DatabaseService {
         initializeTemplateTable(connection);
         initializeTemplateCommentsTable(connection);
         initializeTemplateRatingsTable(connection);
+        initializeScriptTable(connection);
 
         connection.close();
+    }
+
+    /**
+     * Initializes table of scripts.
+     * @param connection
+     */
+    private void initializeScriptTable(Connection connection) {
+        String scriptTableQueryString = "create table if not exists scripts(id TEXT, user TEXT, template TEXT, responses TEXT, chatlog TEXT";
+        Query scriptTableQuery = connection.createQuery(scriptTableQueryString);
+        scriptTableQuery.executeUpdate();
     }
 
     /**
@@ -444,6 +454,17 @@ public class DatabaseService {
         return null;
     }
 
+    /**
+     * Adds a script to the database.
+     * @param script Script to add
+     */
+    public void addScript(MadLibsScript script) {
+        String sql = "insert into scripts values(:id, :user, :template, :responses, :chatlog)";
+    }
+
+    public MadLibsScript getScript(String id) {
+        return null;
+    }
 
     /**
      * Deletes the database.
