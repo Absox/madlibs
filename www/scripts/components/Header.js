@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link, History } from 'react-router';
+var Auth = require('../auth');
 
 
 var Header = React.createClass({
 	mixins: [History],
 
-	getDefaultProps: function() {
-		
+	getInitialState: function() {
+		return {
+			username: Auth.getCurrentUser()
+		}
 	},
 
 	handleAccountToggle: function(e) {
@@ -35,7 +38,7 @@ var Header = React.createClass({
 
 			                <li className="site-nav__item">
 			                	<Link className="site-nav__link" to="/account/">
-			                		Welcome <span className="current-user">{this.props.currentUser.username}</span>
+			                		Welcome <span className="current-user">{this.state.username}</span>
 				                	<img src="/images/member.svg"/>
 			                	</Link>
 			                </li>

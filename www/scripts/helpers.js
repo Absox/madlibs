@@ -6,10 +6,12 @@ let helpers = {
 			if(r.readyState == 4 && r.status == 200 && success != null) {
 				success(r, r.responseText);
 			}
+
+			if(r.readyState == 4 && r.status != 200 && failure != null) {
+				failure(r);
+			}
 		};
-		r.onerror = function (r) {
-			failure(r);
-		};
+
 		r.send(body);
 		return r;
 	},

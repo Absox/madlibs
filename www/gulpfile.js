@@ -26,7 +26,9 @@ gulp.task('styles',function() {
 
 	// Compiles CSS
 	gulp.src('styles/main.styl')
-		.pipe(stylus())
+		.pipe(stylus({
+			'include css': true
+			}))
 		.pipe(autoprefixer())
 		.pipe(gulp.dest('./build/'))
 		.pipe(reload({stream:true}))

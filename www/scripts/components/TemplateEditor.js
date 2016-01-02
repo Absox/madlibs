@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { History, Link, Router } from 'react-router';
-import Editor from 'react-medium-editor';
+import MediumEditor from 'react-medium-editor';
 
 var API = require('../api');
 
@@ -14,21 +14,45 @@ var TemplateEditor = React.createClass({
 			hasLoadedData: false,
 			title: "",
 			content: "",
-			message: ""
+			message: "",
+			editorOptions: {
+				toolbar: {
+					buttons: [
+						'bold',
+						'italic',
+						'underline',
+						{
+			                name: 'h1',
+			                action: 'append-h2',
+			                aria: 'header type 1',
+			                tagNames: ['h2'],
+			                contentDefault: '<b>H</b>',
+			                classList: ['custom-class-h1'],
+			                attrs: {
+			                    'data-custom-attr': 'attr-value-h1'
+			                }
+			            }
+					]
+				},
+				placeholder: false
+			}
 		}
 	},
 
 	componentDidMount: function() {
 		let { templateID } = this.props.params;
 		var self = this;
+
+		console.log(this.refs.content.props.options);
+
 		API.request("/madlibs/api/template/"+templateID, "GET", null, function(request, data) {
-			
 			self.setState({
 				title: data.title,
 				content: data.value,
 				hasLoadedData: true
 			});
 		});
+
 	},
 
 	handleTitleChange: function(e) {
@@ -39,9 +63,13 @@ var TemplateEditor = React.createClass({
 
 	handleChange(text, medium) {
 
+		//text = text.replace(/\[(.*)\]/g,"<span>$1</span>");
+
     	this.setState({
     		content: text
     	});
+
+    	return text;
   	},
 	
 	handleSave: function(e) {
@@ -92,13 +120,13 @@ var TemplateEditor = React.createClass({
 
 				  		<div className="template-editor__separator"></div>
 
-			  			<Editor
+			  			<MediumEditor
 							tag="div"
-				          	text={this.state.content}
-				          	onChange={this.handleChange}
-				          	options={{toolbar: {buttons: ['bold', 'italic', 'underline']}}}
-				          	className="template-editor__content"
-				        />
+							ref="content" className="template-editor__content"
+							text={this.state.content}
+							onChange={this.handleChange}
+							options= {this.state.editorOptions}
+						/>
 			  		</div>
 
 

@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link, History } from 'react-router';
+
 var API = require('../api');
+var Auth = require('../auth');
 
 var TemplateList = React.createClass({
 	mixins: [History],
@@ -21,9 +23,11 @@ var TemplateList = React.createClass({
 
 		var self = this;
 
-		API.request("/madlibs/api/template/user/sam", "GET", null, function(request, data) {
+		var user = Auth.getCurrentUser();
 
-			for (var i = 0; i < data.templates.length; i++) { 
+		API.request("/madlibs/api/template/user/"+user, "GET", null, function(request, data) {
+
+			for (var i = 0; i < data.templates.length; i++) { 	
 			    data.templates[i].templatelink = "/template/"+data.templates[i].id;
 			}
 

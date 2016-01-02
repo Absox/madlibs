@@ -5,6 +5,7 @@
 */
 
 import h from './helpers';
+import history from './history';
 
 let API = {
 	details: {
@@ -35,6 +36,7 @@ let API = {
 		body = JSON.stringify(body);
 
 		var r = h.request(url, method, body, function(r, data) {
+
 			try {
 				var json = JSON.parse(data);
 
@@ -49,7 +51,12 @@ let API = {
 				console.error(e);
 			}
 		}, function(r) {
-			failure(r);
+
+			if(r.status == 401) {
+				history.replaceState(null, '/login/');
+			}
+
+			if(typeof failure === "function") failure(r);
 		});
 
 		return r;

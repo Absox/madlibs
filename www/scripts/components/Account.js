@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 var Account = React.createClass({
 
-	isLoggedIn: function() {
+	componentDidMount: function() {
 
 	},
 
