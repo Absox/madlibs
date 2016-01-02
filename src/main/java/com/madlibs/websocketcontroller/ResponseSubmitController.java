@@ -6,6 +6,7 @@ import com.madlibs.model.MadLibsSessionParticipant;
 import com.madlibs.server.MadLibsServer;
 import com.madlibs.websocketcontroller.messages.GameStateUpdateMessage;
 import com.madlibs.websocketcontroller.messages.ResponseSubmissionFailureMessage;
+import com.madlibs.websocketcontroller.messages.SessionCompleteMessage;
 import org.eclipse.jetty.websocket.api.Session;
 
 import java.io.IOException;
@@ -41,7 +42,7 @@ public class ResponseSubmitController {
 
                 MadLibsServer.getInstance().finalizeSession(gameSession.getId());
                 // TODO update spec on session complete message
-                gameSession.sendMessageToAllParticipants("Session complete");
+                gameSession.sendMessageToAllParticipants(new SessionCompleteMessage(gameSession).getContent());
 
             } else {
                 gameSession.sendMessageToAllParticipants(new GameStateUpdateMessage(gameSession).getContent());

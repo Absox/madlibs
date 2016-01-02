@@ -79,7 +79,7 @@ public class DatabaseService {
      * @param connection
      */
     private void initializeScriptTable(Connection connection) {
-        String scriptTableQueryString = "create table if not exists scripts(id TEXT, user TEXT, template TEXT, responses TEXT, chatlog TEXT";
+        String scriptTableQueryString = "create table if not exists scripts(id TEXT, user TEXT, template TEXT, responses TEXT, chatlog TEXT)";
         Query scriptTableQuery = connection.createQuery(scriptTableQueryString);
         scriptTableQuery.executeUpdate();
     }

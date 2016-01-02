@@ -1,5 +1,6 @@
 package com.madlibs;
 
+import com.madlibs.restcontroller.session.ScriptGetController;
 import com.madlibs.restcontroller.session.SessionCreateController;
 import com.madlibs.restcontroller.template.*;
 import com.madlibs.restcontroller.user.UserAccountUpdateController;
@@ -77,6 +78,8 @@ public class Bootstrap {
         post("/madlibs/api/template/:id/vote", "application/json", (request, response) -> new TemplateVoteUpdateController(request, response).getResponseBody());
         // Get template voting status
         post("/madlibs/api/template/:id/votestatus", "application/json", (request, response) -> new TemplateVoteGetController(request, response).getResponseBody());
+        // Get finished script.
+        get("/madlibs/api/script/:id", "application/json", (request, response) -> new ScriptGetController(request, response).getResponseBody());
     }
 
     /**

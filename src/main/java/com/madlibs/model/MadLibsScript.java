@@ -1,6 +1,7 @@
 package com.madlibs.model;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import java.util.List;
 
@@ -101,5 +102,14 @@ public class MadLibsScript {
     public String getChatlogJson() {
         Gson gson = new Gson();
         return gson.toJson(this.chatlog);
+    }
+
+    /**
+     * Json object.
+     * @return Json object.
+     */
+    public JsonObject getScriptJson() {
+        Gson gson = new Gson();
+        return gson.toJsonTree(this).getAsJsonObject();
     }
 }
