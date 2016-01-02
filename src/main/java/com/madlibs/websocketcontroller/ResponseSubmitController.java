@@ -36,7 +36,14 @@ public class ResponseSubmitController {
         // It's our turn
         if (gameSession.getCurrentParticipant().equals(participant)) {
             gameSession.addResponse(responseValue);
-            gameSession.sendMessageToAllParticipants(new GameStateUpdateMessage(gameSession).getContent());
+
+            if (gameSession.isFinished()) {
+                // Add to spec
+                gameSession.sendMessageToAllParticipants("Session complete");
+            } else {
+                gameSession.sendMessageToAllParticipants(new GameStateUpdateMessage(gameSession).getContent());
+            }
+
         } else {
             session.getRemote().sendString(new ResponseSubmissionFailureMessage("Not your turn!").getContent());
         }

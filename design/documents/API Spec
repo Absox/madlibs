@@ -346,5 +346,3 @@ Start Game Session:
                 "status" : "success",
                 "sessionId" : <sessionId>
             }
-
---- WEBSOCKET ---

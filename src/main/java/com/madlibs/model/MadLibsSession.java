@@ -103,6 +103,14 @@ public class MadLibsSession {
     }
 
     /**
+     * Checks if session is finished.
+     * @return True if session is finished.
+     */
+    public boolean isFinished() {
+        return currentPromptIndex >= prompts.size();
+    }
+
+    /**
      * Adds message to chat log.
      * @param message Message to add to chatlog.
      */

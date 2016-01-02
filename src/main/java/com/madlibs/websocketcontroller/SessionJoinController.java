@@ -42,8 +42,8 @@ public class SessionJoinController {
 
         if (gameSession != null) {
             String identifier;
-            if (parsedMessage.get("userIdentifier") != null) {
-                identifier = parsedMessage.get("userIdentifier").getAsString();
+            if (parsedMessage.get("user") != null) {
+                identifier = parsedMessage.get("user").getAsString();
             } else {
                 // Assign random celebrity name
                 List<String> identifiers = gameSession.getParticipantIdentifiers();
