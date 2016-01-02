@@ -7,9 +7,7 @@ var Header = React.createClass({
 	mixins: [History],
 
 	getDefaultProps: function() {
-		return {
-			currentUser: "anon"
-		};
+		
 	},
 
 	handleAccountToggle: function(e) {
@@ -31,27 +29,15 @@ var Header = React.createClass({
 
 			        <nav className="site-nav">
 			            <ul className="site-nav__list">
-			                <li className="site-nav__item"><Link className="site-nav__link" to="/templates/">Templates</Link></li>
+			                <li className="site-nav__item">
+			                	<Link className="site-nav__link" to="/templates/">Templates</Link>
+			                </li>
 
 			                <li className="site-nav__item">
-			                	<button className="site-nav__button" onClick={this.handleAccountToggle}>
-				                	Welcome <span className="current-user">{this.props.currentUser}</span>
+			                	<Link className="site-nav__link" to="/account/">
+			                		Welcome <span className="current-user">{this.props.currentUser.username}</span>
 				                	<img src="/images/member.svg"/>
-			                	</button>
-
-			                	<ul className="site-nav-dropdown">
-			                		<li className="site-nav-dropdown__item">
-			                			<Link className="site-nav-dropdown__link" to="/signup/">Sign up</Link>
-			                		</li>
-
-			                		<li className="site-nav-dropdown__item">
-			                			<Link className="site-nav-dropdown__link" to="/login/">Log in</Link>
-			                		</li>
-
-			                		<li className="site-nav-dropdown__item">
-			                			<Link className="site-nav-dropdown__link" to="/account/">Your account</Link>
-			                		</li>
-			                	</ul>
+			                	</Link>
 			                </li>
 			            </ul>
 			        </nav>

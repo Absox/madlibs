@@ -9,7 +9,11 @@ import Footer from '../components/Footer';
 var App = React.createClass({
 
 	getInitialState: function() {
-		return {};
+		return {
+			currentUser: {
+				username: 'anon'
+			}
+		};
 	},
 
 	/**
@@ -28,7 +32,7 @@ var App = React.createClass({
 
 		return (
 			<div>
-			  	<Header />
+			  	<Header currentUser={this.state.currentUser} />
 
 			  	<div className="site-content">
 					{this.props.children}
