@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class AnonymousIdentifiers {
 
     private List<String> identifiers;
+    private Random rng;
 
     private static AnonymousIdentifiers instance;
 
@@ -32,7 +33,7 @@ public class AnonymousIdentifiers {
      * @throws FileNotFoundException File not found
      */
     public AnonymousIdentifiers(String filename) throws FileNotFoundException {
-
+        this.rng = new Random();
         this.identifiers = new ArrayList<>();
         Scanner fileScanner = new Scanner(new File(filename));
 
@@ -67,7 +68,6 @@ public class AnonymousIdentifiers {
      * @return Random identifier.
      */
     public String getRandomIdentifier() {
-        Random random = new Random();
-        return identifiers.get(random.nextInt(identifiers.size()));
+        return identifiers.get(rng.nextInt(identifiers.size()));
     }
 }

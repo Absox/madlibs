@@ -31,4 +31,19 @@ public class AnonymousIdentifiersTest {
         }
 
     }
+
+    @Test
+    public void rngTest() {
+
+        try {
+            AnonymousIdentifiers identifiers = new AnonymousIdentifiers("testResources/testCelebs");
+            for (int c = 0; c < 5; c++) {
+                System.out.println(identifiers.getRandomIdentifier());
+            }
+
+        } catch (FileNotFoundException e) {
+            fail();
+        }
+
+    }
 }
