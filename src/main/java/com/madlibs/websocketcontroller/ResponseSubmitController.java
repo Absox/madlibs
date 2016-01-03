@@ -1,11 +1,13 @@
 package com.madlibs.websocketcontroller;
 
 import com.google.gson.JsonObject;
+import com.madlibs.model.MadLibsScript;
 import com.madlibs.model.MadLibsSession;
 import com.madlibs.model.MadLibsSessionParticipant;
 import com.madlibs.server.MadLibsServer;
 import com.madlibs.websocketcontroller.messages.GameStateUpdateMessage;
 import com.madlibs.websocketcontroller.messages.ResponseSubmissionFailureMessage;
+import com.madlibs.websocketcontroller.messages.SessionCompleteMessage;
 import org.eclipse.jetty.websocket.api.Session;
 
 import java.io.IOException;
@@ -38,8 +40,11 @@ public class ResponseSubmitController {
             gameSession.addResponse(responseValue);
 
             if (gameSession.isFinished()) {
-                // Add to spec
-                gameSession.sendMessageToAllParticipants("Session complete");
+
+                MadLibsScript script = MadLibsServer.getInstance().finalizeSession(gameSession.getId());
+                gameSession.sendMessageToAllParticipants(new SessionCompleteMessage(script).getContent());
+
+
             } else {
                 gameSession.sendMessageToAllParticipants(new GameStateUpdateMessage(gameSession).getContent());
             }

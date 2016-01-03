@@ -3,10 +3,12 @@ package com.madlibs.server;
 import com.madlibs.authentication.AuthToken;
 import com.madlibs.config.ServerConfigs;
 import com.madlibs.data.DatabaseService;
+import com.madlibs.model.MadLibsScript;
 import com.madlibs.model.MadLibsSession;
 import com.madlibs.model.MadLibsTemplate;
 import org.eclipse.jetty.websocket.api.Session;
 
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -177,14 +179,26 @@ public class MadLibsServer {
         MadLibsSession gameSession = this.sessionMap.get(session);
         gameSession.participantLeave(session);
         this.sessionMap.remove(session);
+
+        // Last participant left
+        if (gameSession.getNumParticipants() == 0) {
+            System.out.println("Last participant left: session " + gameSession.getId() + " removed!");
+            this.gameSessions.remove(gameSession.getId());
+        }
     }
 
     /**
      * Ends a game session, stores to db.
      * @param id Id of game session.
+     * @return Script created by finalizing session.
      */
-    public void finalizeSession(String id) {
-        // TODO
+    public MadLibsScript finalizeSession(String id) throws IOException {
+
+        MadLibsSession session = this.gameSessions.get(id);
+        MadLibsScript script = new MadLibsScript(session);
+        DatabaseService.getInstance().addScript(script);
+
+        return script;
     }
 
 }
