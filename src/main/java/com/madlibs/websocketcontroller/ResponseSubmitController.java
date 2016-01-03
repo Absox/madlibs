@@ -40,9 +40,10 @@ public class ResponseSubmitController {
 
             if (gameSession.isFinished()) {
 
-                MadLibsServer.getInstance().finalizeSession(gameSession.getId());
                 // TODO update spec on session complete message
                 gameSession.sendMessageToAllParticipants(new SessionCompleteMessage(gameSession).getContent());
+                MadLibsServer.getInstance().finalizeSession(gameSession.getId());
+
 
             } else {
                 gameSession.sendMessageToAllParticipants(new GameStateUpdateMessage(gameSession).getContent());
