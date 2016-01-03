@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { History } from 'react-router';
-var h = require('../helpers');
+var API = require('../api');
 
 var SignUp = React.createClass({
 	mixins: [History],
@@ -17,24 +17,21 @@ var SignUp = React.createClass({
 
 		this.setState({message:""});
 
-		var formdata = {
+		var post_body = {
 			user: this.refs.username.value,
 			password: this.refs.password.value
 		};
 
-		var post_body = JSON.stringify(formdata);
-
 		var self = this;
 
-		h.request("http://madlibs.samjarv.is/madlibs/api/register", "POST", post_body, function(request) {
-			var data = JSON.parse(request.responseText);
+		API.request("/madlibs/api/register", "POST", post_body, function(request, data) {
 
 			if(data.status == "failure") {
 				self.setMessage(data.why);
 			}
 
 			if(data.status == "success") {
-	    		self.history.pushState(null, '/account');
+	    		self.history.pushState(null, '/account/');
 		  	}
 		});
 	},

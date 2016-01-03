@@ -1,4 +1,3 @@
-
 import API from './api';
 
 let Auth = {
@@ -25,7 +24,7 @@ let Auth = {
 	isLoggedIn: function() {
 		var authtoken = this.getAuthToken();
 
-		return authtoken ? true : false;
+		return (authtoken != null) ? true : false;
 	},
 
 	/**

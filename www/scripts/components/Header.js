@@ -15,7 +15,6 @@ var Header = React.createClass({
 
 	handleAccountToggle: function(e) {
 		var button = e.currentTarget;
-		console.log(button);
 
 		button.classList.toggle('open');
 	},

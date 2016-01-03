@@ -243,6 +243,7 @@ body {
 }
 .wrapper,
 .site-content__standard-wrapper,
+.account-wrapper,
 .template-list-wrapper {
   max-width: 80em;
   width: 100%;
@@ -307,6 +308,7 @@ body {
           flex-direction: column;
 }
 .site-content__standard-wrapper,
+.account-wrapper,
 .template-list-wrapper {
   padding-top: 3em;
   padding-bottom: 3em;
@@ -541,6 +543,7 @@ a > .icon {
   margin-left: 1em;
   margin-right: -1.5em;
   float: right;
+  word-spacing: 0.1em;
 }
 .site-nav__list,
 .site-nav__item {
@@ -609,6 +612,9 @@ a > .icon {
   transition: -webkit-filter 0.2s ease;
   transition: filter 0.2s ease;
   transition: filter 0.2s ease, -webkit-filter 0.2s ease;
+}
+.site-nav .current-user {
+  font-weight: 900;
 }
 .site-nav__dropdown {
   position: absolute;
@@ -1019,6 +1025,11 @@ a > .icon {
   padding: 0;
   clear: both;
   border-top: 2px solid rgba(0,0,0,0.2);
+}
+.template-list:empty:before {
+  margin: 2em 0;
+  display: block;
+  content: "You have no templates.";
 }
 .template-list-item__link {
   display: block;
