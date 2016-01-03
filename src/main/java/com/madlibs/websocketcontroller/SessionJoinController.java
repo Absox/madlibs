@@ -41,15 +41,20 @@ public class SessionJoinController {
         MadLibsSession gameSession = MadLibsServer.getInstance().getSessionById(sessionId);
 
         if (gameSession != null) {
+            List<String> identifiers = gameSession.getParticipantIdentifiers();
             String identifier;
             if (parsedMessage.get("user") != null) {
                 identifier = parsedMessage.get("user").getAsString();
             } else {
                 // Assign random celebrity name
-                List<String> identifiers = gameSession.getParticipantIdentifiers();
                 do {
                     identifier = AnonymousIdentifiers.getInstance().getRandomIdentifier();
                 } while(identifiers.contains(identifier));
+            }
+
+            if (identifiers.contains(identifier)) {
+                session.getRemote().sendString(new JoinResponseFailureMessage(sessionId, "Another user with that identifier is already in the session!").getContent());
+                return;
             }
 
             // Send all participants notification of user joining.
