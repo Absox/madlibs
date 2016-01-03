@@ -182,6 +182,7 @@ public class MadLibsServer {
 
         // Last participant left
         if (gameSession.getNumParticipants() == 0) {
+            System.out.println("Last participant left: session " + gameSession.getId() + " removed!");
             this.gameSessions.remove(gameSession.getId());
         }
     }
@@ -189,12 +190,15 @@ public class MadLibsServer {
     /**
      * Ends a game session, stores to db.
      * @param id Id of game session.
+     * @return Script created by finalizing session.
      */
-    public void finalizeSession(String id) throws IOException {
+    public MadLibsScript finalizeSession(String id) throws IOException {
 
         MadLibsSession session = this.gameSessions.get(id);
         MadLibsScript script = new MadLibsScript(session);
         DatabaseService.getInstance().addScript(script);
+
+        return script;
     }
 
 }

@@ -1,6 +1,7 @@
 package com.madlibs.websocketcontroller.messages;
 
-import com.madlibs.model.MadLibsSession;
+import com.google.gson.JsonObject;
+import com.madlibs.model.MadLibsScript;
 
 /**
  * Session complete message.
@@ -8,8 +9,8 @@ import com.madlibs.model.MadLibsSession;
  */
 public class SessionCompleteMessage extends WebsocketMessage {
 
-    public SessionCompleteMessage(MadLibsSession session) {
-        // TODO
-        content.addProperty("type", "sessionComplete");
+    public SessionCompleteMessage(MadLibsScript script) {
+        this.content = script.getScriptJson();
+        this.content.addProperty("type", "sessionComplete");
     }
 }
