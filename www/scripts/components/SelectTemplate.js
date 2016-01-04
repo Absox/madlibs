@@ -1,7 +1,9 @@
 import React from 'react';
 import { History } from 'react-router';
 import ReactDOM from 'react-dom';
-var h = require('../helpers');
+
+var API = require('../api');
+var Auth = require('../auth');
 
 var SelectTemplate = React.createClass({
 	mixins: [History],
@@ -20,38 +22,43 @@ var SelectTemplate = React.createClass({
 	startGame: function(e) {
 		e.preventDefault();
 
-		var selectedTemplate = this.refs.selectedTemplate.value;
+		var post_body = {
+			templateId: this.refs.selectedTemplate.value
+		};
 
 		var self = this;
 
-		h.request("http://madlibs.samjarv.is/madlibs/api/session", "GET", null, function(request) {
-			self.history.pushState(null, '/game/asdasd/');
+		API.request("/madlibs/api/session", "POST", post_body, function(r, data) {
+			self.history.pushState(null, '/game/'+data.sessionId);
 		});
 	},
 
 	populateList: function() {
 		var self = this;
 
-		h.request("http://madlibs.samjarv.is/madlibs/api/template/user/sam", "GET", null, function(request) {
+		var user = Auth.getCurrentUser();
 
-			var templates = [
-				{
-					id: 2,
-					title: "test"
-				},
-				{
-					id: 3,
-					title: "asdasdasd"
-				}
-			];
+		API.request("/madlibs/api/template/user/"+user, "GET", null, function(request, data) {
 
 			self.setState({
-				publicTemplates: templates,
-				privateTemplates: templates
+				privateTemplates: data.templates
 			});
-			
 		});
 
+		var templates = [
+			{
+				id: 2,
+				title: "test"
+			},
+			{
+				id: 3,
+				title: "asdasdasd"
+			}
+		];
+
+		self.setState({
+			publicTemplates: templates,
+		});
 	},
 
 	render : function() {
@@ -68,15 +75,15 @@ var SelectTemplate = React.createClass({
 				  			<optgroup label="Public templates">
 					  			{
 									this.state.publicTemplates.map(function(template) {
-										return <option key={template.id}>{template.title}</option>
+										return <option key={template.id} value={template.id}>{template.title}</option>
 									})
 								} 
 							</optgroup>
 
-							<optgroup label="Public templates">
+							<optgroup label="Your templates">
 					  			{
 									this.state.privateTemplates.map(function(template) {
-										return <option key={template.id}>{template.title}</option>
+										return <option key={template.id} value={template.id}>{template.title}</option>
 									})
 								} 
 							</optgroup>

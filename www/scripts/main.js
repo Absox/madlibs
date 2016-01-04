@@ -14,6 +14,7 @@ import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import NotFound from './components/NotFound';
 
+
 var routes = (
 	<Router history={history}>
 		<Route path="/" component={App}>

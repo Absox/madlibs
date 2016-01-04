@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { History } from 'react-router';
+import { History, Link } from 'react-router';
 var API = require('../api');
 
 var LogIn = React.createClass({
@@ -52,6 +52,8 @@ var LogIn = React.createClass({
 				  		<input ref="password" type="password" required/>
 
 				  		<input type="submit" defaultValue="Log In" /> <span className="message">{this.state.message}</span>
+				  		
+				  		<Link to="/signup/">Sign up for an account <span className="icon">&rarr;</span></Link>
 				  	</form>
 			  	</div>
 		  	</div>

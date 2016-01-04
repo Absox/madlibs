@@ -27,7 +27,11 @@
 	border-top:2px solid rgba(0, 0, 0, 0.2);
 	
 	
-	
+	&:empty:before {
+		margin:2em 0;
+		display:block;
+		content:"You have no templates.";
+	}
 }
 
 .template-list-item {

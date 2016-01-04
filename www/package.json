@@ -41,6 +41,7 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
-    "react-medium-editor": "^1.6.1"
+    "react-medium-editor": "^1.6.1",
+    "react-websocket": "^1.0.0"
   }
 }
