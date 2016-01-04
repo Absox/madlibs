@@ -9,7 +9,7 @@ Game Messages:
         {
             "type" : "gameJoin",
             "id" : <sessionID>,
-            "user" : <userIdentifier> // Null if anonymous
+            "user" : <userIdentifier> // Exclude field if anonymous
         }
     JOIN RESPONSE SUCCESS | SERVER
         {
