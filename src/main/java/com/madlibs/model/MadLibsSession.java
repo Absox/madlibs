@@ -160,6 +160,19 @@ public class MadLibsSession {
     }
 
     /**
+     * Gets the next participant.
+     * @return Participant whose turn it is next.
+     */
+    public MadLibsSessionParticipant getNextParticipant() {
+        if (participants.size() == 0) return null;
+        if (queueHeadPosition + 1 >= participants.size()) {
+            return participants.get(0);
+        }
+
+        return participants.get(queueHeadPosition + 1);
+    }
+
+    /**
      * Adds a response.
      * @param value Value of response.
      */

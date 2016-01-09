@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60ab085f-66ab-4aa2-af29-d0a18158961a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/GameStateRequestController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design/documents/Websocket Spec" afterPath="$PROJECT_DIR$/design/documents/Websocket Spec" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/WebsocketMessageController.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/WebsocketMessageController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSession.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSession.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/messages/GameStateUpdateMessage.java" afterPath="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/messages/GameStateUpdateMessage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/unit/MadLibsSessionTest.java" afterPath="$PROJECT_DIR$/src/test/java/unit/MadLibsSessionTest.java" />
     </list>
     <ignored path="MadLibs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,10 +78,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameStateRequestController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MadLibsSession.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSession.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.310345">
+              <caret line="168" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameStateUpdateMessage.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/messages/GameStateUpdateMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7064935">
+              <caret line="21" column="90" selection-start-line="21" selection-start-column="90" selection-end-line="21" selection-end-column="90" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MadLibsSessionTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/unit/MadLibsSessionTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameStateRequestController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/GameStateRequestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65068495">
+            <state vertical-scroll-proportion="0.0">
               <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -166,7 +196,6 @@
         <option value="$PROJECT_DIR$/src/test/java/integration/ParticipantSessionMatchingTest/WebSocketTestController.java" />
         <option value="$PROJECT_DIR$/src/test/java/integration/participantsessionmatchingtest/WebSocketTestController.java" />
         <option value="$PROJECT_DIR$/src/test/java/integration/singleparticipantmatchingtest/WebSocketTestController.java" />
-        <option value="$PROJECT_DIR$/src/test/java/unit/MadLibsSessionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/SessionCreateController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/TemplateDeleteController.java" />
         <option value="$PROJECT_DIR$/src/test/java/unit/JsonParseTest.java" />
@@ -179,7 +208,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/messages/ChatReceivedMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/ChatController.java" />
         <option value="$PROJECT_DIR$/data/Celebs" />
-        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/messages/GameStateUpdateMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/messages/JoinResponseSuccessMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/messages/JoinResponseFailureMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/WebsocketCloseController.java" />
@@ -191,7 +219,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/template/TemplateVoteGetController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSessionParticipant.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/messages/ResponseSubmissionFailureMessage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSession.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/user/UserPasswordChangeController.java" />
         <option value="$PROJECT_DIR$/design/documents/API Spec" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/restcontroller/user/UserAccountUpdateController.java" />
@@ -210,6 +237,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/WebsocketMessageController.java" />
         <option value="$PROJECT_DIR$/design/documents/Websocket Spec" />
         <option value="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/GameStateRequestController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/unit/MadLibsSessionTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSession.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/messages/GameStateUpdateMessage.java" />
       </list>
     </option>
   </component>
@@ -823,7 +853,7 @@
       <recent name="com.madlibs.model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AnonymousIdentifiersTest.rngTest">
+  <component name="RunManager" selected="JUnit.MadLibsSessionTest.testJoin">
     <configuration default="false" name="Bootstrap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -842,32 +872,6 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="madlibs" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="MadLibsScriptTest.testJson" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="unit.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="madlibs" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="unit" />
-      <option name="MAIN_CLASS_NAME" value="unit.MadLibsScriptTest" />
-      <option name="METHOD_NAME" value="testJson" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
       <method />
     </configuration>
     <configuration default="false" name="DatabaseServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -935,6 +939,32 @@
       <option name="PACKAGE_NAME" value="unit" />
       <option name="MAIN_CLASS_NAME" value="unit.AnonymousIdentifiersTest" />
       <option name="METHOD_NAME" value="rngTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="MadLibsSessionTest.testJoin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="unit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="madlibs" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="unit" />
+      <option name="MAIN_CLASS_NAME" value="unit.MadLibsSessionTest" />
+      <option name="METHOD_NAME" value="testJoin" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1193,18 +1223,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.Bootstrap" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.MadLibsScriptTest.testJson" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.DatabaseServiceTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.AnonymousIdentifiersTest.testFileInput" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.AnonymousIdentifiersTest.rngTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.DatabaseServiceTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.AnonymousIdentifiersTest.testFileInput" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.AnonymousIdentifiersTest.rngTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.MadLibsSessionTest.testJoin" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.AnonymousIdentifiersTest.rngTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.AnonymousIdentifiersTest.testFileInput" />
-        <item index="2" class="java.lang.String" itemvalue="Application.Bootstrap" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.DatabaseServiceTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.MadLibsScriptTest.testJson" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.MadLibsSessionTest.testJoin" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.AnonymousIdentifiersTest.rngTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.AnonymousIdentifiersTest.testFileInput" />
+        <item index="3" class="java.lang.String" itemvalue="Application.Bootstrap" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.DatabaseServiceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -1233,12 +1263,6 @@
       <created>1450382699123</created>
       <option name="number" value="Default" />
       <updated>1450382699123</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Changed path of auth cookies to &quot;/&quot;.">
-      <created>1450904475515</created>
-      <option name="number" value="00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1450904475516</updated>
     </task>
     <task id="LOCAL-00055" summary="Added control code.">
       <created>1450911465478</created>
@@ -1528,33 +1552,39 @@
       <option name="project" value="LOCAL" />
       <updated>1451865851083</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="Updated websocket spec. Added request game state update websocket call.">
+      <created>1452297814968</created>
+      <option name="number" value="00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1452297814968</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AnonymousIdentifiersTest_rngTest - 2016.01.03 at 18h 31m 04s.xml">
-      <configuration name="AnonymousIdentifiersTest.rngTest" configurationId="JUnit" />
+    <history-entry file="MadLibsSessionTest_testJoin - 2016.01.08 at 19h 09m 16s.xml">
+      <configuration name="MadLibsSessionTest.testJoin" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AnonymousIdentifiersTest_rngTest - 2016.01.03 at 18h 33m 50s.xml">
-      <configuration name="AnonymousIdentifiersTest.rngTest" configurationId="JUnit" />
+    <history-entry file="MadLibsSessionTest_testJoin - 2016.01.08 at 19h 11m 50s.xml">
+      <configuration name="MadLibsSessionTest.testJoin" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AnonymousIdentifiersTest_testFileInput - 2016.01.03 at 18h 30m 03s.xml">
-      <configuration name="AnonymousIdentifiersTest.testFileInput" configurationId="JUnit" />
+    <history-entry file="MadLibsSessionTest_testJoin - 2016.01.08 at 19h 12m 57s.xml">
+      <configuration name="MadLibsSessionTest.testJoin" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MadLibsScriptTest_testJson - 2016.01.02 at 09h 49m 43s.xml">
-      <configuration name="MadLibsScriptTest.testJson" configurationId="JUnit" />
+    <history-entry file="MadLibsSessionTest_testJoin - 2016.01.08 at 19h 13m 11s.xml">
+      <configuration name="MadLibsSessionTest.testJoin" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MadLibsScriptTest_testJson - 2016.01.02 at 09h 50m 24s.xml">
-      <configuration name="MadLibsScriptTest.testJson" configurationId="JUnit" />
+    <history-entry file="MadLibsSessionTest_testJoin - 2016.01.08 at 19h 13m 28s.xml">
+      <configuration name="MadLibsSessionTest.testJoin" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MadLibsScriptTest_testJson - 2016.01.02 at 09h 50m 38s.xml">
-      <configuration name="MadLibsScriptTest.testJson" configurationId="JUnit" />
+    <history-entry file="MadLibsSessionTest_testJoin - 2016.01.08 at 19h 14m 09s.xml">
+      <configuration name="MadLibsSessionTest.testJoin" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="unit_in_madlibs - 2015.12.25 at 16h 23m 22s.xml">
-      <configuration name="unit in madlibs" configurationId="JUnit" />
+    <history-entry file="MadLibsSessionTest_testJoin - 2016.01.08 at 19h 14m 18s.xml">
+      <configuration name="MadLibsSessionTest.testJoin" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="unit_in_madlibs - 2015.12.25 at 16h 27m 39s.xml">
-      <configuration name="unit in madlibs" configurationId="JUnit" />
+    <history-entry file="MadLibsSessionTest_testJoin - 2016.01.08 at 19h 14m 23s.xml">
+      <configuration name="MadLibsSessionTest.testJoin" configurationId="JUnit" />
     </history-entry>
     <history-entry file="unit_in_madlibs - 2015.12.30 at 17h 28m 26s.xml">
       <configuration name="unit in madlibs" configurationId="JUnit" />
@@ -1578,10 +1608,12 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39770868" sideWeight="0.5121029" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48608837" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32405892" sideWeight="0.48789713" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3051948" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2526475" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1590,15 +1622,13 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.39770868" sideWeight="0.4969743" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.39770868" sideWeight="0.4969743" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32502708" sideWeight="0.48789713" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32242227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1615,7 +1645,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated paths." />
     <MESSAGE value="Added prompt parsing to MadLibsTemplate" />
     <MESSAGE value="Added celebrity identifiers for anon users." />
     <MESSAGE value="Added websocket controllers." />
@@ -1640,7 +1669,8 @@
     <MESSAGE value="Back-end completion." />
     <MESSAGE value="Updated message ordering. Session destroy upon last user disconnect." />
     <MESSAGE value="Updated spec." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated spec." />
+    <MESSAGE value="Updated websocket spec. Added request game state update websocket call." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated websocket spec. Added request game state update websocket call." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1653,13 +1683,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/integration/singleparticipantmatchingtest/ParticipantSessionMatchingTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="41" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/authentication/AuthToken.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.044270832">
@@ -1896,7 +1919,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1917,20 +1940,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSession.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33277312">
-          <caret line="140" column="24" selection-start-line="140" selection-start-column="24" selection-end-line="140" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/config/AnonymousIdentifiers.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
           <folding>
-            <element signature="e#1955#1956#0" expanded="true" />
+            <element signature="e#1955#1956#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1983,14 +1998,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/messages/GameStateUpdateMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/SessionJoinController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9315069">
@@ -2027,11 +2034,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/GameStateRequestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65068495">
+        <state vertical-scroll-proportion="0.0">
           <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/unit/MadLibsSessionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/model/MadLibsSession.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.310345">
+          <caret line="168" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/madlibs/websocketcontroller/messages/GameStateUpdateMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7064935">
+          <caret line="21" column="90" selection-start-line="21" selection-start-column="90" selection-end-line="21" selection-end-column="90" />
+          <folding />
         </state>
       </provider>
     </entry>

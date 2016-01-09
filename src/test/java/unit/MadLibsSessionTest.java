@@ -49,9 +49,11 @@ public class MadLibsSessionTest {
 
         assertEquals(testSession.getNumParticipants(), 2);
         assertEquals(testSession.getCurrentParticipant().getIdentifier(), "absox");
+        assertEquals(testSession.getNextParticipant().getIdentifier(), "sam");
 
         testSession.participantLeave("absox");
         assertEquals(testSession.getCurrentParticipant().getIdentifier(), "sam");
+        assertEquals(testSession.getNextParticipant().getIdentifier(), "sam");
     }
 
     @Test

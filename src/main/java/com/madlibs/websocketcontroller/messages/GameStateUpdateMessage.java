@@ -19,5 +19,6 @@ public class GameStateUpdateMessage extends WebsocketMessage {
         content.add("users", new Gson().toJsonTree(gameSession.getParticipantIdentifiers()));
         content.addProperty("currentPrompt", gameSession.getCurrentPrompt());
         content.addProperty("currentTurn", gameSession.getCurrentParticipant().getIdentifier());
+        content.addProperty("nextTurn", gameSession.getNextParticipant().getIdentifier());
     }
 }
