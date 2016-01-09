@@ -36,7 +36,7 @@ let Auth = {
 	getCurrentUser: function() {
 		var authtoken = this.getAuthToken();
 
-		return authtoken ? authtoken.username : "anon";
+		return authtoken ? authtoken.username : null;
 	}
 }
 
