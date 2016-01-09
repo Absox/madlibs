@@ -171,6 +171,7 @@ body:before {
   font-size: 4.6em;
   -webkit-animation: breakpoint-fader-even 2s forwards ease-out;
           animation: breakpoint-fader-even 2s forwards ease-out;
+  pointer-events: none;
 }
 @media all and (min-width: 30em) {
   body:before {
@@ -886,6 +887,39 @@ a > .icon {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
+  position: relative;
+}
+.game-step-list-item {
+  position: absolute;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  text-align: center;
+  top: 100%;
+  -webkit-transform: scale(1) translateY(-50%);
+          transform: scale(1) translateY(-50%);
+  opacity: 0.5;
+}
+.game-step-list-item.past {
+  top: 0;
+  -webkit-transform: scale(1) translateY(-50%);
+          transform: scale(1) translateY(-50%);
+  opacity: 0.5;
+}
+.game-step-list-item.present {
+  top: 50%;
+}
+.game-step-list-item.imminent {
+  top: 75%;
+}
+.game-step-list-item.future {
+  top: 100%;
+  -webkit-transform: scale(1) translateY(-50%);
+          transform: scale(1) translateY(-50%);
+  opacity: 0.5;
 }
 .not-connected-wrapper {
   display: -webkit-box;

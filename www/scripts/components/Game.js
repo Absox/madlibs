@@ -20,9 +20,11 @@ var Game = React.createClass({
 			ws: ws,
 			currentPlayer: Auth.getCurrentUser(),
 			nextPlayer: null,
+			currentPrompt: "",
 			users: [],
 			hasEnded: false,
-			hasConnection: false,
+			hasJoined: false,
+			hasReceivedState: false,
 			connectionMessage: "Connecting!"
 		};
 	},
@@ -42,7 +44,6 @@ var Game = React.createClass({
 		var ws = new WebSocket("ws://" + "madlibs.samjarv.is" + (location.port ? ':' + location.port : '') + "/madlibs/api/websocket");
 
 		var self = this;
-
 
 		ws.onopen = function() {
 			var data = {
@@ -68,33 +69,16 @@ var Game = React.createClass({
 
 			switch(data.type) {
 				case "userJoinedUpdate":
-					var users = self.state.users;
-					users = users.concat(data.user);
-
-					self.setState({
-						users: users
-					});
+					console.log(data.user + " joined!");
 
 					break;
 
 				case "userLeftUpdate":
-					var users = self.state.users;
-					var user_to_remove = data.user;
-
-					for(var i = users.length - 1; i >= 0; i--) {
-					    if(self.state.users[i] === user_to_remove) {
-							users.splice(i, 1);
-					    }
-					}
-
-					self.setState({
-						users: users
-					});
+					console.log(data.user + " left!");
 
 					break;
 
 				case "gameJoinResponse":
-
 					if(data.status == "failure") {
 						self.setState({
 			        		connectionMessage: data.why
@@ -104,21 +88,19 @@ var Game = React.createClass({
 					if(data.status == "success") {
 						self.setState({
 			        		currentPlayer: data.user,
-			        		hasConnection: true
+			        		hasJoined: true
 				        });
 					}
 
 					break;
 
 			    case "gameStateUpdate":
-
-					console.log(data.nextTurn);
-
 			        self.setState({
 			        	currentPrompt: data.currentPrompt,
 						users: data.users,
 						currentTurn: data.currentTurn,
-						nextPlayer: data.nextTurn
+						nextTurn: data.nextTurn,
+						hasReceivedState: true
 			        });
 
 			        break;
@@ -136,7 +118,6 @@ var Game = React.createClass({
 			    	break;
 
 			   	case "sessionComplete":
-
 			   		self.setState({
 			   			hasEnded: true
 			   		});
@@ -155,15 +136,19 @@ var Game = React.createClass({
 
 		var mainui;
 
-		if(this.state.hasEnded) {
-			mainui = <GameEnd />;
-		} else {
-			mainui = <GameUI ws={this.state.ws} gameID={this.state.gameID} currentPlayer={this.state.currentPlayer} nextPlayer={this.state.nextPlayer} />;
-		}
 
-		if(!this.state.hasConnection) {
+
+		if(this.state.hasJoined && this.state.hasReceivedState) {
+			if(this.state.hasEnded) {
+				mainui = <GameEnd />;
+			} else {
+				mainui = <GameUI ws={this.state.ws} gameID={this.state.gameID} currentPrompt={this.state.currentPrompt} currentPlayer={this.state.currentPlayer} currentTurn={this.state.currentTurn} nextTurn={this.state.nextTurn} />;
+			}
+		} else {
 			mainui = <GameNotConnected message={this.state.connectionMessage}/>;
 		}
+
+		
 
 		return (
 		  	<div className="game-wrapper">
@@ -193,6 +178,52 @@ var GameUI = React.createClass({
 		}
 	},
 
+	addStep: function(step) {
+		var steps = this.state.steps;
+		steps.push(step);
+		this.setState({
+			steps: steps
+		});
+	},
+
+	componentDidMount: function() {
+
+		if(this.props.currentPlayer == this.props.currentTurn) {
+
+		}
+	},
+
+	handleClick: function() {
+		this.addStep({
+			value: 2
+		});
+	},
+
+	render : function() {
+		return (
+			<div className="game-ui" onClick={this.handleClick}>
+				{
+					this.state.steps.map(function(step) {
+						return <GameUIStep value={step.value}/>
+					})
+				}
+
+		  		<NextPlayerInfo currentPlayer={this.props.currentPlayer} nextTurn={this.props.nextTurn} />
+	  		</div>
+		)
+	}
+});
+
+var GameUIStep = React.createClass({
+	render: function() {
+		return <div className="game-step-list-item future" onTransitionEnd={this.handleTransitionEnd}>
+			{this.props.value}
+		</div>;
+	}
+});
+
+var ResponsePrompt = React.createClass({
+
 	submitWord: function(e) {
 		e.preventDefault();
 
@@ -208,27 +239,15 @@ var GameUI = React.createClass({
 		this.refs.wordInput.value = "";
 	},
 
-
 	render : function() {
 		return (
-			<div className="game-ui">
-		  		<div className="give-me">Give me a <span></span></div>
+			<div>
+				<div className="give-me">Give me a <span>{this.props.currentPrompt}</span></div>
 
 		  		<form onSubmit={this.submitWord}>
 		  			<input className="word-input" ref="wordInput" type="text" />
 		  		</form>
-
-		  		<NextPlayerInfo currentPlayer={this.props.currentPlayer} nextPlayer={this.props.nextPlayer} />
-	  		</div>
-		)
-	}
-});
-
-
-var ResponsePrompt = React.createClass({
-	render : function() {
-		return (
-			<div></div>
+		  	</div>
 		)
 	}
 });
@@ -236,7 +255,7 @@ var ResponsePrompt = React.createClass({
 var NextPlayerInfo = React.createClass({
 	render : function() {
 		return (
-			<div>{this.props.nextPlayer == this.props.currentPlayer ? "You are" : this.props.nextPlayer + " is"} up next.</div>
+			<div>{this.props.nextTurn == this.props.currentPlayer ? "You are" : this.props.nextTurn + " is"} up next.</div>
 		)
 	}
 });
@@ -284,6 +303,17 @@ var PlayersConnected = React.createClass({
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
 var Chat = React.createClass({
 	
 	componentDidMount: function() {
@@ -311,6 +341,14 @@ var Chat = React.createClass({
 		)
 	}
 });
+
+
+
+
+
+
+
+
 
 
 

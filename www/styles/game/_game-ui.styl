@@ -8,4 +8,37 @@
 	display:flex;
 	flex:1;
     flex-direction: column;
+    position:relative;
+}
+
+.game-step-list-item {
+	position:absolute;
+	left:0;
+	right:0;
+	transform:translateY(-50%);
+	transition:all 1s ease;
+	text-align:center;
+	top:100%;
+	transform:scale(1) translateY(-50%);
+	opacity:0.5;
+	
+	&.past {
+		top:0;
+		transform:scale(1) translateY(-50%);
+		opacity:0.5;
+	}
+
+	&.present {
+		top:50%;
+	}
+	
+	&.imminent {
+		top:75%;
+	}
+	
+	&.future {
+		top:100%;
+		transform:scale(1) translateY(-50%);
+		opacity:0.5;
+	}
 }
