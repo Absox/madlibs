@@ -33,6 +33,9 @@ public class WebsocketMessageController {
      */
     public void handle() throws IOException {
         switch (this.parsedMessage.get("type").getAsString()) {
+            case "gameStateRequest":
+                new GameStateRequestController(parsedMessage, session).handle();
+                break;
             case "gameJoin":
                 new SessionJoinController(parsedMessage, session).handle();
                 break;

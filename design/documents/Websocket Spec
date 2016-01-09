@@ -5,6 +5,18 @@ Path:
 
 Game Messages:
 
+    REQUEST GAME STATE | USER
+        {
+            "type" : "gameStateRequest",
+            "id" : <sessionD>
+        }
+
+    REQUEST GAME STATE FAILURE | SERVER
+        {
+            "type" : "gameStateUpdateFailure",
+            "why" : <reason>
+        }
+
     JOIN | USER
         {
             "type" : "gameJoin",
