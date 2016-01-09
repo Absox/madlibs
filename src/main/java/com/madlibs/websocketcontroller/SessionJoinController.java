@@ -63,7 +63,8 @@ public class SessionJoinController {
 
             // Send success response, game state.
             session.getRemote().sendString(new JoinResponseSuccessMessage(sessionId, identifier).getContent());
-            session.getRemote().sendString(new GameStateUpdateMessage(gameSession).getContent());
+
+            gameSession.sendMessageToAllParticipants(new GameStateUpdateMessage(gameSession).getContent());
 
         } else {
             session.getRemote().sendString(new JoinResponseFailureMessage(sessionId, "Session doesn't exist or has been removed").getContent());

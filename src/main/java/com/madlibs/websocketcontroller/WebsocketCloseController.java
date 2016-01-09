@@ -3,6 +3,7 @@ package com.madlibs.websocketcontroller;
 import com.madlibs.model.MadLibsSession;
 import com.madlibs.model.MadLibsSessionParticipant;
 import com.madlibs.server.MadLibsServer;
+import com.madlibs.websocketcontroller.messages.GameStateUpdateMessage;
 import com.madlibs.websocketcontroller.messages.UserLeftGameMessage;
 import org.eclipse.jetty.websocket.api.Session;
 
@@ -37,6 +38,7 @@ public class WebsocketCloseController {
             MadLibsSessionParticipant participant = gameSession.getParticipantBySession(session);
             MadLibsServer.getInstance().disconnectParticipant(this.session);
             gameSession.sendMessageToAllParticipants(new UserLeftGameMessage(participant.getIdentifier(), gameSession.getId()).getContent());
+            gameSession.sendMessageToAllParticipants(new GameStateUpdateMessage(gameSession).getContent());
         }
     }
 
