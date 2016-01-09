@@ -2,12 +2,10 @@ package com.madlibs.websocketcontroller;
 
 import com.google.gson.JsonObject;
 import com.madlibs.config.AnonymousIdentifiers;
+import com.madlibs.data.DatabaseService;
 import com.madlibs.model.MadLibsSession;
 import com.madlibs.server.MadLibsServer;
-import com.madlibs.websocketcontroller.messages.GameStateUpdateMessage;
-import com.madlibs.websocketcontroller.messages.JoinResponseFailureMessage;
-import com.madlibs.websocketcontroller.messages.JoinResponseSuccessMessage;
-import com.madlibs.websocketcontroller.messages.UserJoinedGameMessage;
+import com.madlibs.websocketcontroller.messages.*;
 import org.eclipse.jetty.websocket.api.Session;
 
 import java.io.IOException;
@@ -64,7 +62,12 @@ public class SessionJoinController {
             // Send success response, game state.
             session.getRemote().sendString(new JoinResponseSuccessMessage(sessionId, identifier).getContent());
 
-            gameSession.sendMessageToAllParticipants(new GameStateUpdateMessage(gameSession).getContent());
+            if (gameSession.isFinished()) {
+                session.getRemote().sendString(new SessionCompleteMessage(DatabaseService.getInstance().getScript(gameSession.getId())).getContent());
+            } else {
+                gameSession.sendMessageToAllParticipants(new GameStateUpdateMessage(gameSession).getContent());
+            }
+
 
         } else {
             session.getRemote().sendString(new JoinResponseFailureMessage(sessionId, "Session doesn't exist or has been removed").getContent());
