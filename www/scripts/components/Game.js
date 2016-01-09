@@ -18,8 +18,12 @@ var Game = React.createClass({
 			gameID: gameID,
 			gameURL: gameURL,
 			ws: ws,
-			currentUser: Auth.getCurrentUser(),
-			users: []
+			currentPlayer: Auth.getCurrentUser(),
+			nextPlayer: null,
+			users: [],
+			hasEnded: false,
+			hasConnection: false,
+			connectionMessage: "Connecting!"
 		};
 	},
 
@@ -43,9 +47,12 @@ var Game = React.createClass({
 		ws.onopen = function() {
 			var data = {
 				'type': 'gameJoin',
-				'id': self.state.gameID,
-				'user': self.state.currentUser
+				'id': self.state.gameID
 			};
+
+			if(self.state.currentPlayer != null) {
+				data.user = self.state.currentPlayer;
+			}
 
 			data = JSON.stringify(data);
 
@@ -89,19 +96,29 @@ var Game = React.createClass({
 				case "gameJoinResponse":
 
 					if(data.status == "failure") {
-
+						self.setState({
+			        		connectionMessage: data.why
+				        });
 					}
 
 					if(data.status == "success") {
+						self.setState({
+			        		currentPlayer: data.user,
+			        		hasConnection: true
+				        });
 					}
 
 					break;
 
 			    case "gameStateUpdate":
+
+					console.log(data.nextTurn);
+
 			        self.setState({
 			        	currentPrompt: data.currentPrompt,
+						users: data.users,
 						currentTurn: data.currentTurn,
-						users: data.users
+						nextPlayer: data.nextTurn
 			        });
 
 			        break;
@@ -118,6 +135,14 @@ var Game = React.createClass({
 
 			    	break;
 
+			   	case "sessionComplete":
+
+			   		self.setState({
+			   			hasEnded: true
+			   		});
+
+			   		break;
+
 			    default:
 			        console.error("Unhandled message type received:"+data.type);
 			}
@@ -127,9 +152,23 @@ var Game = React.createClass({
 	},
 
 	render : function() {
+
+		var mainui;
+
+		if(this.state.hasEnded) {
+			mainui = <GameEnd />;
+		} else {
+			mainui = <GameUI ws={this.state.ws} gameID={this.state.gameID} currentPlayer={this.state.currentPlayer} nextPlayer={this.state.nextPlayer} />;
+		}
+
+		if(!this.state.hasConnection) {
+			mainui = <GameNotConnected message={this.state.connectionMessage}/>;
+		}
+
 		return (
 		  	<div className="game-wrapper">
-		  		<GameUI ws={this.state.ws} gameID={this.state.gameID} currentUser={this.state.currentUser} />
+		  		
+		  		{mainui}
 
 		  		<div className="wrapper">
 		  			<div className="game-bar">
@@ -148,6 +187,11 @@ var Game = React.createClass({
 
 var GameUI = React.createClass({
 
+	getInitialState: function() {
+		return {
+			steps: []
+		}
+	},
 
 	submitWord: function(e) {
 		e.preventDefault();
@@ -157,7 +201,7 @@ var GameUI = React.createClass({
 		this.props.ws.send(JSON.stringify({
 			type : "responseSubmit",
             id : this.props.gameID,
-            user : this.props.currentUser,
+            user : this.props.currentPlayer,
             value : submittedWord
 		}));
 
@@ -173,10 +217,31 @@ var GameUI = React.createClass({
 		  		<form onSubmit={this.submitWord}>
 		  			<input className="word-input" ref="wordInput" type="text" />
 		  		</form>
+
+		  		<NextPlayerInfo currentPlayer={this.props.currentPlayer} nextPlayer={this.props.nextPlayer} />
 	  		</div>
 		)
 	}
 });
+
+
+var ResponsePrompt = React.createClass({
+	render : function() {
+		return (
+			<div></div>
+		)
+	}
+});
+
+var NextPlayerInfo = React.createClass({
+	render : function() {
+		return (
+			<div>{this.props.nextPlayer == this.props.currentPlayer ? "You are" : this.props.nextPlayer + " is"} up next.</div>
+		)
+	}
+});
+
+
 
 
 
@@ -218,6 +283,7 @@ var PlayersConnected = React.createClass({
 	}
 });
 
+
 var Chat = React.createClass({
 	
 	componentDidMount: function() {
@@ -245,5 +311,25 @@ var Chat = React.createClass({
 		)
 	}
 });
+
+
+
+var GameEnd = React.createClass({
+	render : function() {
+		return (
+			<div className="game-end-wrapper">Game end!</div>
+		)
+	}
+});
+
+
+var GameNotConnected = React.createClass({
+	render : function() {
+		return (
+			<div className="not-connected-wrapper">{this.props.message}</div>
+		)
+	}
+});
+
 
 export default Game;

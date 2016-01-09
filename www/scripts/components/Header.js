@@ -9,7 +9,7 @@ var Header = React.createClass({
 
 	getInitialState: function() {
 		return {
-			username: Auth.getCurrentUser()
+			username: Auth.getCurrentUser() ? Auth.getCurrentUser() : "anon"
 		}
 	},
 
