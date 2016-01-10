@@ -136,8 +136,6 @@ var Game = React.createClass({
 
 		var mainui;
 
-
-
 		if(this.state.hasJoined && this.state.hasReceivedState) {
 			if(this.state.hasEnded) {
 				mainui = <GameEnd />;
@@ -147,8 +145,6 @@ var Game = React.createClass({
 		} else {
 			mainui = <GameNotConnected message={this.state.connectionMessage}/>;
 		}
-
-		
 
 		return (
 		  	<div className="game-wrapper">
@@ -173,89 +169,78 @@ var Game = React.createClass({
 var GameUI = React.createClass({
 
 	getInitialState: function() {
-		return {
-			steps: []
-		}
-	},
-
-	addStep: function(step) {
-		var steps = this.state.steps;
-		steps.push(step);
-		this.setState({
-			steps: steps
-		});
-	},
-
-	componentDidMount: function() {
-
-		if(this.props.currentPlayer == this.props.currentTurn) {
-
-		}
-	},
-
-	handleClick: function() {
-		this.addStep({
-			value: 2
-		});
+		return {};
 	},
 
 	render : function() {
-		return (
-			<div className="game-ui" onClick={this.handleClick}>
-				{
-					this.state.steps.map(function(step) {
-						return <GameUIStep value={step.value}/>
-					})
-				}
+		var self = this;
 
-		  		<NextPlayerInfo currentPlayer={this.props.currentPlayer} nextTurn={this.props.nextTurn} />
+		return (
+			<div className="game-ui">
+				{
+					(this.props.currentPlayer == this.props.currentTurn) ?
+					<ResponsePrompt ws={this.props.ws} currentPrompt={this.props.currentPrompt} /> :
+					<OtherPlayerChoosing currentPrompt={this.props.currentPrompt} currentTurn={this.props.currentTurn} />
+				}
+				<NextPlayerInfo currentPlayer={this.props.currentPlayer} nextTurn={this.props.nextTurn} />
 	  		</div>
 		)
 	}
 });
 
-var GameUIStep = React.createClass({
-	render: function() {
-		return <div className="game-step-list-item future" onTransitionEnd={this.handleTransitionEnd}>
-			{this.props.value}
-		</div>;
-	}
-});
-
 var ResponsePrompt = React.createClass({
+
+	componentDidMount: function() {
+		this.refs.playerResponse.focus();
+	},
 
 	submitWord: function(e) {
 		e.preventDefault();
-
-		var submittedWord = this.refs.wordInput.value;
 
 		this.props.ws.send(JSON.stringify({
 			type : "responseSubmit",
             id : this.props.gameID,
             user : this.props.currentPlayer,
-            value : submittedWord
+            value : this.refs.playerResponse.value
 		}));
 
-		this.refs.wordInput.value = "";
+		this.refs.playerResponse.value = "";
 	},
 
 	render : function() {
+
 		return (
-			<div>
-				<div className="give-me">Give me a <span>{this.props.currentPrompt}</span></div>
+			<div className="response-prompt">
+				<div className="response-prompt__title">Please specify a <span className="response-prompt__request">{this.props.currentPrompt}</span></div>
 
 		  		<form onSubmit={this.submitWord}>
-		  			<input className="word-input" ref="wordInput" type="text" />
+		  			<input className="response-prompt__input" ref="playerResponse" type="text" />
 		  		</form>
 		  	</div>
 		)
 	}
 });
 
+var OtherPlayerChoosing = React.createClass({
+	render : function() {
+		return (
+			<div className="player-choosing">
+				<div className="player-choosing__title"><span className="response-prompt__player-name" data-player-name={this.props.currentTurn}>{this.props.currentTurn}</span> is picking a <span className="response-prompt__request">{this.props.currentPrompt}</span></div>
+				<div className="player-choosing__ellipsis">
+					<div className="player-choosing__ellipsis-dot"/>
+					<div className="player-choosing__ellipsis-dot"/>
+					<div className="player-choosing__ellipsis-dot"/>
+				</div>
+			</div>
+		)
+	}
+});
+
+
 var NextPlayerInfo = React.createClass({
 	render : function() {
 		return (
-			<div>{this.props.nextTurn == this.props.currentPlayer ? "You are" : this.props.nextTurn + " is"} up next.</div>
+			<div className="next-player-info">{this.props.nextTurn == this.props.currentPlayer ? "You are" : this.props.nextTurn + " is"} up next.</div>
 		)
 	}
 });
@@ -293,9 +278,10 @@ var PlayersConnected = React.createClass({
 	},
 
 	render : function() {
+		var user_list = this.props.users.join(" | ");
 
 		return (
-			<div className="game-bar__connected">
+			<div className="game-bar__connected" title={user_list}>
   				{this.props.users.length} connected
   			</div>
 		)
