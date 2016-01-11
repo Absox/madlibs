@@ -1,0 +1,41 @@
+.game-setup-wrapper {
+	@extend .site-content__centered-wrapper;
+}
+
+
+.template-select {
+	font-family:fancy-font-family;
+	min-width:300px;
+	font-size:0.8em;
+	
+	h1 {
+		font-weight:lighter;
+		margin-top:0;
+		margin-bottom:0.5em;
+	}
+	
+	+bp(1) {
+		font-size:0.9em;
+	}
+	
+	+bp(2) {
+		font-size:1em;
+	}
+}
+
+.template-select__select {
+	padding:1em;
+	box-sizing:border-box;
+	width:100%;
+}
+
+.template-select__start {
+	width:100%;
+	font-size:1.4em;
+	margin:1em 0 0 0;
+}
+
+.template-select__private {
+	font-size:1.4em;
+	margin:0.7em 0;
+}
