@@ -19,9 +19,10 @@
 	text-align:center;
 	font-family:fancy-font-family;
 	font-weight:lighter;
+	margin-top: 1em;
 	margin-bottom:2em;
 	
-	&__request {
+	&__prompt {
 		color:brandcolor;
 		font-weight:900;
 	}
@@ -32,11 +33,23 @@
 
 	&__input {
 		background-color:white;
-		box-shadow:0 0.1em 0.3em -0.1em rgba(0, 0, 0, 0.3);
-		border:none;
+		box-shadow:0 0.1em 0.4em -0.1em rgba(0, 0, 0, 0.2);
+		border:3px solid white;
 		text-align:center;
+		border-radius:4px;
 		width:100%;
 		margin:0;
+		transition:
+			border-color 0.2s ease,
+			box-shadow 0.2s ease;
+		
+		&:focus {
+			border-color:brandcolor;
+			border-bottom-color:darken(brandcolor, 15);
+			border-top-color:lighten(brandcolor, 10);
+			box-shadow:0 0.3em 0.5em -0.2em rgba(0, 0, 0, 0.3);
+			outline:none;
+		}
 	}
 	
 	form {
@@ -60,9 +73,6 @@
 
 .player-choosing {
 	@extend .response-prompt;
-	
-	&__ellipsis {
-	}
 	
 	&__ellipsis-dot {
 		box-sizing:border-box;

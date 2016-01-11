@@ -37,7 +37,7 @@ var Header = React.createClass({
 
 			                <li className="site-nav__item">
 			                	<Link className="site-nav__link" to="/account/">
-			                		Welcome <span className="current-user">{this.state.username}</span>
+			                		<span className="welcome">Welcome</span> <span className="current-user">{this.state.username}</span>
 				                	<img src="/images/member.svg"/>
 			                	</Link>
 			                </li>

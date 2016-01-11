@@ -5,8 +5,8 @@ import history from './history'
 
 import App from './components/App';
 import GameIntro from './components/GameIntro';
-import Game from './components/Game';
-import SelectTemplate from './components/SelectTemplate';
+import Game from './components/game/Game';
+import GameSetup from './components/GameSetup';
 import TemplateList from './components/TemplateList';
 import TemplateEditor from './components/TemplateEditor';
 import Account from './components/Account';
@@ -14,12 +14,11 @@ import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import NotFound from './components/NotFound';
 
-
 var routes = (
 	<Router history={history}>
 		<Route path="/" component={App}>
 			<IndexRoute component={GameIntro}/>
-			<Route path="/select-template/" components={SelectTemplate} />
+			<Route path="/setup/" components={GameSetup} />
 			<Route path="/game/:gameID" component={Game} />
 			<Route path="/templates" component={TemplateList} />
 			<Route path="/template/:templateID" component={TemplateEditor} />

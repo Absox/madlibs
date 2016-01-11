@@ -23,7 +23,7 @@ var GameIntro = React.createClass({
 		return (
 		  	<div className="home-screen">
 				<div className="home-options">
-					<Link to="/select-template/" ref="startButton" className="home-options__option">Start a new game</Link>
+					<Link to="/setup/" ref="startButton" className="home-options__option">Start a new game</Link>
 					
 					<em>- or -</em>
 
