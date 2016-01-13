@@ -28,7 +28,6 @@ var GameUI = React.createClass({
 var ResponsePrompt = React.createClass({
 
 	componentDidMount: function() {
-		this.refs.playerResponse.focus();
 	},
 
 	submitWord: function(e) {

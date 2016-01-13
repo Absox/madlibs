@@ -170,7 +170,7 @@ var Game = React.createClass({
 
 		var mainui;
 
-		if(this.state.hasConnection && this.state.hasJoined && this.state.hasReceivedState) {
+		if(this.state.hasConnection && this.state.hasJoined && (this.state.hasReceivedState || this.state.hasEnded)) {
 			if(this.state.hasEnded) {
 				mainui = <GameEnd 
 					ws={this.state.ws}
