@@ -1,5 +1,7 @@
 package com.madlibs.model;
 
+import org.owasp.html.Sanitizers;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -42,7 +44,7 @@ public class MadLibsTemplate {
         this.title = title;
         this.creator = creator;
         this.rating = rating;
-        this.content = content;
+        this.setContent(content);
     }
 
     /**
@@ -98,7 +100,7 @@ public class MadLibsTemplate {
      * @param content New content of template.
      */
     public void setContent(String content) {
-        this.content = content;
+        this.content = Sanitizers.FORMATTING.and(Sanitizers.BLOCKS).sanitize(content);
     }
 
     /**
