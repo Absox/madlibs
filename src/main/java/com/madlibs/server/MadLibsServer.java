@@ -181,10 +181,10 @@ public class MadLibsServer {
         this.sessionMap.remove(session);
 
         // Last participant left
-        if (gameSession.getNumParticipants() == 0) {
+        /*if (gameSession.getNumParticipants() == 0) {
             System.out.println("Last participant left: session " + gameSession.getId() + " removed!");
             this.gameSessions.remove(gameSession.getId());
-        }
+        }*/
     }
 
     /**
