@@ -34,6 +34,11 @@ public class TemplateCreateController extends RestEndpoint {
 
         // Create template, add to database, update server configs.
         MadLibsTemplate newTemplate = new MadLibsTemplate(MadLibsServer.getInstance().getConfigs().getNextTemplateId(), title, user.getUsername(), content);
+        if (newTemplate.getNumBlanks() == 0) {
+            blankTemplateFailure();
+            return;
+        }
+
         DatabaseService.getInstance().addTemplate(newTemplate);
         DatabaseService.getInstance().updateServerConfigs(MadLibsServer.getInstance().getConfigs());
 
