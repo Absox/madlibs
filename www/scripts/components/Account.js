@@ -22,8 +22,6 @@ var Account = React.createClass({
 
 	handleSave: function(e) {
 		e.preventDefault();
-
-		API.request
 	},
 
 	render : function() {

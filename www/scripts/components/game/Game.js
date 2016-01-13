@@ -4,18 +4,16 @@ import ReactDOM from 'react-dom';
 import GameUI from './GameUI';
 import GameMeta from './GameMeta';
 import GameChat from './GameChat';
+import GameEnd from './GameEnd';
 
 var API = require('../../api');
 var Auth = require('../../auth');
 
+
 var Game = React.createClass({
-	
 	getInitialState: function(){
-
 		var ws = this.connectToServer();
-
 		let { gameID } = this.props.params;
-
 		var gameURL = location.protocol + "//" + location.hostname + "/game/" + gameID;
 
 		return {
@@ -31,7 +29,9 @@ var Game = React.createClass({
 			hasJoined: false,
 			hasConnection: false,
 			hasReceivedState: false,
-			connectionMessage: "Connecting!"
+			connectionMessage: "Connecting!",
+			template: {},
+			responses: []
 		};
 	},
 
@@ -49,27 +49,25 @@ var Game = React.createClass({
 
 		var ws = new WebSocket("ws://" + "madlibs.samjarv.is" + (location.port ? ':' + location.port : '') + "/madlibs/api/websocket");
 
-		var self = this;
-
 		var time;
 
 		ws.onopen = function() {
 			var data = {
 				'type': 'gameJoin',
-				'id': self.state.gameID
+				'id': this.state.gameID
 			};
 
-			if(self.state.currentPlayer != null) {
-				data.user = self.state.currentPlayer;
+			if(this.state.currentPlayer != null) {
+				data.user = this.state.currentPlayer;
 			}
 
 			data = JSON.stringify(data);
 
 			time = new Date();
 
-			this.send(data);
+			ws.send(data);
 
-			self.setState({
+			this.setState({
 				hasConnection: true
 			});
 
@@ -79,7 +77,7 @@ var Game = React.createClass({
 					'type': 'keepalive'
 				});
 			}, 20000000);
-		}
+		}.bind(this);
 
 		ws.onmessage = function(e) {
 			var data = JSON.parse(e.data);
@@ -99,13 +97,13 @@ var Game = React.createClass({
 
 				case "gameJoinResponse":
 					if(data.status == "failure") {
-						self.setState({
+						this.setState({
 			        		connectionMessage: data.why
 				        });
 					}
 
 					if(data.status == "success") {
-						self.setState({
+						this.setState({
 			        		currentPlayer: data.user,
 			        		hasJoined: true
 				        });
@@ -114,7 +112,7 @@ var Game = React.createClass({
 					break;
 
 			    case "gameStateUpdate":
-			        self.setState({
+			        this.setState({
 			        	currentPrompt: data.currentPrompt,
 						users: data.users,
 						currentTurn: data.currentTurn,
@@ -126,7 +124,7 @@ var Game = React.createClass({
 
 			    case "chatReceive":
 
-			    	var chatLog = self.state.chatLog;
+			    	var chatLog = this.state.chatLog;
 
 			    	chatLog.push({
 			    		"user": data.user,
@@ -134,7 +132,7 @@ var Game = React.createClass({
 			    		"time": data.time
 			    	});
 
-			    	self.setState({
+			    	this.setState({
 			    		chatLog: chatLog
 			    	});
 
@@ -145,8 +143,10 @@ var Game = React.createClass({
 			   		break;
 
 			   	case "sessionComplete":
-			   		self.setState({
-			   			hasEnded: true
+			   		this.setState({
+			   			hasEnded: true,
+			   			template: data.template,
+			   			responses: data.responses
 			   		});
 
 			   		break;
@@ -154,14 +154,14 @@ var Game = React.createClass({
 			    default:
 			        console.error("Unhandled message type received:"+data.type);
 			}
-		}
+		}.bind(this);
 
 		ws.onclose = function() {
-			self.setState({
+			if(this.isMounted()) this.setState({
 	   			hasConnection: false,
 	   			connectionMessage: "Connection to the server has been lost."
 	   		});
-		}
+		}.bind(this);
 
 		return ws;
 	},
@@ -172,9 +172,20 @@ var Game = React.createClass({
 
 		if(this.state.hasConnection && this.state.hasJoined && this.state.hasReceivedState) {
 			if(this.state.hasEnded) {
-				mainui = <GameEnd />;
+				mainui = <GameEnd 
+					ws={this.state.ws}
+					gameID={this.state.gameID}
+					template={this.state.template}
+				/>;
 			} else {
-				mainui = <GameUI ws={this.state.ws} gameID={this.state.gameID} currentPrompt={this.state.currentPrompt} currentPlayer={this.state.currentPlayer} currentTurn={this.state.currentTurn} nextTurn={this.state.nextTurn} />;
+				mainui = <GameUI
+					ws={this.state.ws}
+					gameID={this.state.gameID}
+					currentPrompt={this.state.currentPrompt}
+					currentPlayer={this.state.currentPlayer}
+					currentTurn={this.state.currentTurn}
+					nextTurn={this.state.nextTurn}
+				/>;
 			}
 		} else {
 			mainui = <GameNotConnected message={this.state.connectionMessage}/>;
@@ -190,23 +201,12 @@ var Game = React.createClass({
 		  		<div className="wrapper">
 		  			<GameMeta gameURL={this.state.gameURL} users={this.state.users} />
 		  		</div>
-
 		  	</div>
 		)
 	}
 });
 
 
-
-
-
-var GameEnd = React.createClass({
-	render : function() {
-		return (
-			<div className="game-end-wrapper">Game end!</div>
-		)
-	}
-});
 
 
 var GameNotConnected = React.createClass({
