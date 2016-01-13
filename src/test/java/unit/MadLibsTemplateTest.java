@@ -54,7 +54,7 @@ public class MadLibsTemplateTest {
         assertEquals(prompts.size(), 5);
         assertEquals(prompts.get(0), "[noun]");
         assertEquals(prompts.get(1), "[plural nouns]");
-        assertEquals(prompts.get(2), "[verb ending in 'ing']");
+        assertEquals(prompts.get(2), "[verb ending in &#39;ing&#39;]");
         assertEquals(prompts.get(3), "[adjective]");
         assertEquals(prompts.get(4), "[noun]");
     }

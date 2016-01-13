@@ -6,7 +6,7 @@
 
     <groupId>goatdev</groupId>
     <artifactId>madlibs</artifactId>
-    <version>0.174-SNAPSHOT</version>
+    <version>0.182-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -45,6 +45,11 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
+            <artifactId>owasp-java-html-sanitizer</artifactId>
+            <version>1.1</version>
         </dependency>
     </dependencies>
 

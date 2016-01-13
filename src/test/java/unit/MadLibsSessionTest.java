@@ -3,6 +3,7 @@ package unit;
 import com.madlibs.model.*;
 import org.junit.Before;
 import org.junit.Test;
+import org.owasp.html.Sanitizers;
 
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class MadLibsSessionTest {
     public void testBasic() {
         assertEquals(testSession.getHost(), "absox");
         assertEquals(testSession.getCurrentPrompt(), "[noun]");
-        assertEquals(testSession.getTemplateContent(), testTemplateBody);
+        assertEquals(testSession.getTemplateContent(), Sanitizers.FORMATTING.and(Sanitizers.BLOCKS).sanitize(testTemplateBody));
     }
 
     @Test
@@ -69,7 +70,7 @@ public class MadLibsSessionTest {
         assertEquals(testSession.getCurrentParticipant().getIdentifier(), "sam");
 
         testSession.addResponse("peanuts");
-        assertEquals(testSession.getCurrentPrompt(), "[verb ending in 'ing']");
+        assertEquals(testSession.getCurrentPrompt(), "[verb ending in &#39;ing&#39;]");
         assertEquals(testSession.getCurrentParticipant().getIdentifier(), "absox");
 
         testSession.addResponse("running");

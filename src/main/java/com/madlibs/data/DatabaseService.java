@@ -485,6 +485,7 @@ public class DatabaseService {
 
         String sql = "select * from scripts where id = :id";
         Query query = connection.createQuery(sql);
+        query.addParameter("id", id);
         List<Map<String, Object>> results = query.executeAndFetchTable().asList();
         connection.close();
 
