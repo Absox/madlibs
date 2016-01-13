@@ -48,6 +48,11 @@ public class TemplateUpdateController extends RestEndpoint {
         // Update template, success response
         template.setContent(value);
         template.setTitle(title);
+
+        if (template.getNumBlanks() == 0) {
+            blankTemplateFailure();
+        }
+
         DatabaseService.getInstance().updateTemplate(template);
 
         response.status(200);

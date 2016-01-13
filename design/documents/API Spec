@@ -98,6 +98,13 @@ Create Template:
                     "why" : "User does not exist/Not logged in"
                 }
 
+        Failure - Blank Template
+            CODE: 200 OK
+            Content:
+                {
+                    "status" : "failure",
+                    "why" : "Template has no blanks"
+                }
 
 Get List of Templates For User:
     Method: GET
@@ -179,6 +186,13 @@ Update Template:
                 {
                     "status" : "failure",
                     "why" : "Template does not exist"
+                }
+        Failure - Blank Template
+            CODE: 200 OK
+            Content:
+                {
+                    "status" : "failure",
+                    "why" : "Template has no blanks"
                 }
 
 Delete Template:

@@ -124,4 +124,10 @@ public abstract class RestEndpoint {
         responseBody.addProperty("status", "failure");
         responseBody.addProperty("why", "Resource doesn't exist");
     }
+
+    protected void blankTemplateFailure() {
+        response.status(200);
+        responseBody.addProperty("status", "failure");
+        responseBody.addProperty("why", "Template has no blanks");
+    }
 }
